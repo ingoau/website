@@ -34,14 +34,6 @@ const path = Astro.url.pathname;
                             )}
                         >
                             {item.label}
-                            {path === item.url ? (
-                                <div
-                                    style="view-transition-name: navbar-item"
-                                    class="border-b border-primary w-full"
-                                />
-                            ) : (
-                                <div class="border-b border-transparent w-full" />
-                            )}
                         </a>
                     </div>
                 ))
