@@ -31,8 +31,8 @@ export default defineConfig({
       },
       {
         provider: fontProviders.google(),
-        name: "Jost",
-        cssVariable: "--font-jost",
+        name: "Outfit",
+        cssVariable: "--font-outfit",
         weights: ["100 900"],
       },
     ],
