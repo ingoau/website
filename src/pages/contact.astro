@@ -64,10 +64,11 @@ const socials = [
         </Header>
         <div class="grid sm:grid-cols-2">
             {contactMethods.map((method)=> (
-            <a href={method.url} target="_blank" class={cn("block border-r border-b p-4 btn-interactive", method.preferred ? "bg-primary text-primary-foreground hover:bg-primary/90" : "")}>
+            <div class="border-r border-b w-full h-full">
+            <a href={method.url} target="_blank" class={cn("block p-4 btn-interactive", method.preferred ? "bg-primary text-primary-foreground hover:bg-primary/90" : "")}>
                 <h1 class="text-2xl">{method.title} {method.preferred ? "(Preferred)" : ""}</h1>
                 <p class="text-lg font-mono">{method.subtitle}</p>
-            </a>
+            </a></div>
             ))}
         </div>
     </div>
