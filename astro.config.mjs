@@ -7,8 +7,6 @@ import react from "@astrojs/react";
 
 import cloudflare from "@astrojs/cloudflare";
 
-import sanity from "@sanity/astro";
-
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -19,14 +17,7 @@ export default defineConfig({
     prefetchAll: true,
   },
 
-  integrations: [
-    react(),
-    sanity({
-      projectId: process.env.SANITY_PROJECT_ID,
-      dataset: process.env.SANITY_DATASET,
-      useCdn: false,
-    }),
-  ],
+  integrations: [react()],
 
   compressHTML: true,
 
