@@ -86,5 +86,21 @@ const socials = [
     <div class="border-r border-b p-4">
       <h2 class="text-2xl">Socials</h2>
     </div>
+    <div class="grid sm:grid-cols-3">
+      {
+        socials.map((social) => (
+          <div class="border-r border-b w-full h-full">
+            <a
+              href={social.link}
+              target="_blank"
+              class={cn("block p-4 btn-interactive")}
+            >
+              <h1 class="text-2xl">{social.name}</h1>
+              <p class="text-lg font-mono">{social.username}</p>
+            </a>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </Layout>
