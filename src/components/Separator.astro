@@ -2,17 +2,17 @@
 import { cn } from "@/lib/utils";
 
 const {
-    class: className,
-    separatorType = "lines",
+  class: className,
+  separatorType = "lines",
 }: { class?: string; separatorType?: "lines" | "striped" } = Astro.props;
 ---
 
 <div
-    class={cn(
-        "w-full mx-auto max-w-5xl border-x h-10 border-b",
-        separatorType === "lines" && "bg-diagonal-lines",
-        separatorType === "striped" && "bg-striped-gradient",
-        className,
-    )}
+  class={cn(
+    "w-full mx-auto max-w-5xl border-x h-10 border-b",
+    separatorType === "lines" && "bg-diagonal-lines",
+    separatorType === "striped" && "bg-striped-gradient",
+    className,
+  )}
 >
 </div>

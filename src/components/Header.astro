@@ -1,18 +1,11 @@
 ---
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-
-const {
-  class: className
-} = Astro.props
+const { class: className } = Astro.props;
 ---
-<div
-      class={cn(
-        "w-full mx-auto flex h-fit p-4 border-b",
-        className,
-      )}
-    >
-      <h1 class="text-6xl text-primary font-mono">
-          <slot />
-      </h1>
+
+<div class={cn("w-full mx-auto flex h-fit p-4 border-b", className)}>
+  <h1 class="text-6xl text-primary font-mono">
+    <slot />
+  </h1>
 </div>

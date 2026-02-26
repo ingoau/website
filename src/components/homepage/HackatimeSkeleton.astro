@@ -2,51 +2,51 @@
 import { cn } from "@/lib/utils";
 
 const quickStats = [
-    {
-        title: "Total Coding Time",
-        className: "col-span-14 bg-diagonal-lines",
-    },
-    {
-        title: "This Week",
-        className: "col-span-9",
-    },
-    {
-        title: "Today",
-        className: "col-span-9",
-    },
+  {
+    title: "Total Coding Time",
+    className: "col-span-14 bg-diagonal-lines",
+  },
+  {
+    title: "This Week",
+    className: "col-span-9",
+  },
+  {
+    title: "Today",
+    className: "col-span-9",
+  },
 ];
 ---
 
 <div class="w-full mx-auto max-w-5xl">
-    <div class="grid grid-cols-1 md:grid-cols-32 border-l">
-        {
-            quickStats.map((stat, index) => (
-                <div
-                    class={cn(
-                        stat.className,
-                        "p-4 flex flex-col border-r border-b h-28 items-center justify-center",
-                    )}
-                >
-                    <div class="h-9 w-32 bg-muted rounded mb-2" />
-                    <div class="h-4 w-24 bg-muted rounded" />
-                </div>
-            ))
-        }
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 border-l">
-        {
-            Array.from({ length: 10 }).map((_, index) => (
-                <div class="flex flex-row border-r border-b items-center">
-                    <div class="size-14 flex justify-center items-center text-xl border-r z-10 aspect-square bg-card">
-                        <div class="h-6 w-6 bg-muted rounded" />
-                    </div>
-                    <div class="w-full flex flex-row relative p-4">
-                        <div class="h-5 w-24 bg-muted rounded" />
-                        <div class="grow" />
-                        <div class="h-5 w-16 bg-muted rounded" />
-                    </div>
-                </div>
-            ))
-        }
-    </div>
+  <div class="grid grid-cols-1 md:grid-cols-32 border-l">
+    {
+      quickStats.map((stat, index) => (
+        <div
+          class={cn(
+            stat.className,
+            "p-4 flex flex-col border-r border-b h-28 items-center justify-center",
+          )}
+        >
+          <div class="h-9 w-32 bg-muted rounded mb-2" />
+          <div class="h-4 w-24 bg-muted rounded" />
+        </div>
+      ))
+    }
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 border-l">
+    {
+      Array.from({ length: 10 }).map((_, index) => (
+        <div class="flex flex-row border-r border-b items-center">
+          <div class="size-14 flex justify-center items-center text-xl border-r z-10 aspect-square bg-card">
+            <div class="h-6 w-6 bg-muted rounded" />
+          </div>
+          <div class="w-full flex flex-row relative p-4">
+            <div class="h-5 w-24 bg-muted rounded" />
+            <div class="grow" />
+            <div class="h-5 w-16 bg-muted rounded" />
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </div>

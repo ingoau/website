@@ -3,20 +3,20 @@ import { Menu, Search } from "@lucide/astro";
 ---
 
 <div class="border-l w-fit">
-    <button
-        class="menu-item btn-interactive px-6 cursor-pointer"
-        id="search-button"
-    >
-        <Search class="size-4 hidden md:block" />
-        <Menu class="size-4 md:hidden" />
-        <span class="sr-only">Menu</span>
-    </button>
+  <button
+    class="menu-item btn-interactive px-6 cursor-pointer"
+    id="search-button"
+  >
+    <Search class="size-4 hidden md:block" />
+    <Menu class="size-4 md:hidden" />
+    <span class="sr-only">Menu</span>
+  </button>
 </div>
 
 <script>
-    import { isMenuOpen } from "@/lib/state";
+  import { isMenuOpen } from "@/lib/state";
 
-    document.getElementById("search-button")?.addEventListener("click", () => {
-        isMenuOpen.set(true);
-    });
+  document.getElementById("search-button")?.addEventListener("click", () => {
+    isMenuOpen.set(true);
+  });
 </script>

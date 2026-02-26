@@ -1,20 +1,20 @@
 <time id="clock">LO:AD:IN G.</time>
 
 <script>
-    const getTime = (): string => {
-        const date = new Date();
-        return date.toLocaleString("en-US", {
-            timeZone: "Australia/Sydney",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: true,
-        });
-    };
+  const getTime = (): string => {
+    const date = new Date();
+    return date.toLocaleString("en-US", {
+      timeZone: "Australia/Sydney",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+  };
 
-    const clockElement = document.getElementById("clock")!;
+  const clockElement = document.getElementById("clock")!;
+  clockElement.textContent = getTime();
+  setInterval(() => {
     clockElement.textContent = getTime();
-    setInterval(() => {
-        clockElement.textContent = getTime();
-    }, 100);
+  }, 100);
 </script>

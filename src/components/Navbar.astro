@@ -7,45 +7,45 @@ const path = Astro.url.pathname;
 ---
 
 <div class="fixed top-0 left-0 w-full z-50 bg-background">
-    <div class="w-full px-4">
-        <div class="h-4 w-full max-w-5xl mx-auto">
-            <div class="border-x w-full h-full"></div>
-        </div>
+  <div class="w-full px-4">
+    <div class="h-4 w-full max-w-5xl mx-auto">
+      <div class="border-x w-full h-full"></div>
     </div>
-    <div class="border-y px-4">
-        <div class="border-x w-full max-w-5xl mx-auto flex flex-row">
-            <div class="border-r">
-                <a
-                    href="/"
-                    class="flex justify-center items-center p-4 text-xl py-4! px-4! active:font-normal font-extrabold min-w-36 font-mono btn-interactive"
-                >
-                    Ingo Wolf
-                </a>
-            </div>
-            <div class="grow bg-diagonal-lines bg-fixed self-stretch"></div>
-            {
-                NAVBAR_ITEMS.map((item) => (
-                    <div class="border-l hidden md:block">
-                        <a
-                            href={item.url}
-                            class={cn(
-                                "menu-item btn-interactive flex flex-col",
-                                path === item.url && "text-primary",
-                            )}
-                        >
-                            {item.label}
-                        </a>
-                    </div>
-                ))
-            }
-            <SearchButton />
-        </div>
+  </div>
+  <div class="border-y px-4">
+    <div class="border-x w-full max-w-5xl mx-auto flex flex-row">
+      <div class="border-r">
+        <a
+          href="/"
+          class="flex justify-center items-center p-4 text-xl py-4! px-4! active:font-normal font-extrabold min-w-36 font-mono btn-interactive"
+        >
+          Ingo Wolf
+        </a>
+      </div>
+      <div class="grow bg-diagonal-lines bg-fixed self-stretch"></div>
+      {
+        NAVBAR_ITEMS.map((item) => (
+          <div class="border-l hidden md:block">
+            <a
+              href={item.url}
+              class={cn(
+                "menu-item btn-interactive flex flex-col",
+                path === item.url && "text-primary",
+              )}
+            >
+              {item.label}
+            </a>
+          </div>
+        ))
+      }
+      <SearchButton />
     </div>
+  </div>
 </div>
 
 <div class="w-full px-4">
-    <div
-        class="h-[calc((var(--spacing)*20)-2px)] w-full bg-diagonal-lines bg-fixed border max-w-5xl mx-auto"
-    >
-    </div>
+  <div
+    class="h-[calc((var(--spacing)*20)-2px)] w-full bg-diagonal-lines bg-fixed border max-w-5xl mx-auto"
+  >
+  </div>
 </div>
