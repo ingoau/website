@@ -27,6 +27,8 @@
     "luxon": "^3.7.2",
     "motion": "^12.34.0",
     "nanostores": "^1.1.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
     "radix-ui": "^1.4.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
