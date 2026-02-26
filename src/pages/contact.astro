@@ -1,4 +1,5 @@
 ---
+import Header from "@/components/Header.astro";
 import Layout from "@/layouts/Layout.astro";
 
 const contactMethods = [
@@ -55,4 +56,10 @@ const socials = [
 ];
 ---
 
-<Layout />
+<Layout>
+    <div class="w-full border-x">
+        <Header>
+            Contact
+        </Header>
+    </div>
+</Layout>
