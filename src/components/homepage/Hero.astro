@@ -6,114 +6,126 @@ import { ArrowRight, Building, ClockIcon, Earth, Mail } from "@lucide/astro";
 import Clock from "@/components/homepage/Clock.astro";
 ---
 
-<div
-  class="w-full mx-auto flex flex-row h-fit sm:border-x sm:border-b max-w-5xl sm:px-10 bg-diagonal-lines bg-fixed"
->
-  <div class="flex flex-col sm:flex-row border-x bg-background">
-    <div class="flex flex-col">
-      <div class="flex flex-col border-b">
-        <div
-          class="text-primary border-b w-full p-4 from-destructive-foreground to-background bg-linear-to-br relative"
-        >
+<div class="bg-destructive-foreground/50">
+  <div
+    class="h-10 bg-diagonal-lines bg-fixed border-x sm:px-10 border-b sm:block hidden"
+  >
+    <div class="w-full border-x h-full"></div>
+  </div>
+  <div
+    class="w-full mx-auto flex flex-row h-fit sm:border-x sm:border-b max-w-5xl sm:px-10 bg-diagonal-lines bg-fixed"
+  >
+    <div class="flex flex-col sm:flex-row border-x bg-background">
+      <div class="flex flex-col">
+        <div class="flex flex-col border-b">
           <div
-            class="z-10 relative flex flex-col sm:flex-row sm:items-end justify-between text-4xl/12 lg:text-5xl/15 font-mono"
+            class="text-primary border-b w-full p-4 from-destructive-foreground to-background bg-linear-to-br relative"
           >
-            <h1 class="">
-              Hello, <br /> I&apos;m Ingo Wolf!
-            </h1>
-            <span class="text-lg text-muted-foreground"> he/him</span>
+            <div
+              class="z-10 relative flex flex-col sm:flex-row sm:items-end justify-between text-4xl/12 lg:text-5xl/15 font-mono"
+            >
+              <h1 class="">
+                Hello, <br /> I&apos;m Ingo Wolf!
+              </h1>
+              <span class="text-lg text-muted-foreground"> he/him</span>
+            </div>
+            <div
+              class="w-full h-full top-0 left-0 absolute bg-size-[20px_20px] bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% z-0"
+            >
+            </div>
           </div>
-          <div
-            class="w-full h-full top-0 left-0 absolute bg-size-[20px_20px] bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% z-0"
-          >
-          </div>
+          <p class="text-xl p-4">
+            I am a 16 year old tech nerd from Canberra, Australia{" "}
+            <Image
+              loading="eager"
+              src={australiaParrot}
+              width={48}
+              height={48}
+              alt="Australia Parrot"
+              class="inline align-baseline size-6"
+            />
+            . I like building random projects, usually with web technologies, especially
+            Next.js. I also like spinning up docker containers in{" "}
+            <a href="https://notoverkill.com" target="_blank">my homelab</a>
+            and reconfiguring my not at all overkill home network. And when I&apos;m
+            not doing any of that, I&apos;m probably doing schoolwork, reading, walking,
+            or chatting on the{" "}
+            <a
+              href="https://hackclub.com"
+              target="_blank"
+              rel="noopener noreferrer">Hack Club</a
+            >
+            Slack.
+          </p>
         </div>
-        <p class="text-xl p-4">
-          I am a 16 year old tech nerd from Canberra, Australia{" "}
-          <Image
-            loading="eager"
-            src={australiaParrot}
-            width={48}
-            height={48}
-            alt="Australia Parrot"
-            class="inline align-baseline size-6"
-          />
-          . I like building random projects, usually with web technologies, especially
-          Next.js. I also like spinning up docker containers in{" "}
-          <a href="https://notoverkill.com" target="_blank">my homelab</a>
-          and reconfiguring my not at all overkill home network. And when I&apos;m
-          not doing any of that, I&apos;m probably doing schoolwork, reading, walking,
-          or chatting on the{" "}
-          <a
-            href="https://hackclub.com"
-            target="_blank"
-            rel="noopener noreferrer">Hack Club</a
-          >
-          Slack.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 h-full">
-        {
-          [
-            // { text: "Projects", link: "/projects" },
-            { text: "Blog", link: "/blog" },
-            { text: "Contact", link: "/contact" },
-          ].map((item, index) => (
-            <div class="border-b md:border-b-0 md:border-r last:border-0">
-              <a
-                class="flex flex-row gap-2 items-center justify-center p-4 h-full w-full btn-interactive"
-                href={item.link}
-              >
-                {item.text}
-                <ArrowRight class="size-4" />
-              </a>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-    <div class="w-full sm:w-0 min-w-64 sm:border-l">
-      <Image
-        loading="eager"
-        src={ingoIcon}
-        alt="Ingo"
-        class="w-full h-fit border-b hidden sm:block"
-      />
-      <div class="flex flex-col border-t sm:border-t-0">
-        {
-          [
-            { icon: Earth, content: <>Canberra, Australia</> },
-            {
-              icon: ClockIcon,
-              content: (
-                <>
-                  <Clock />
-                </>
-              ),
-            },
-            {
-              icon: Building,
-              content: (
+        <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+          {
+            [
+              // { text: "Projects", link: "/projects" },
+              { text: "Blog", link: "/blog" },
+              { text: "Contact", link: "/contact" },
+            ].map((item, index) => (
+              <div class="border-b md:border-b-0 md:border-r last:border-0">
                 <a
-                  href="https://cloudearth.au"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  class="flex flex-row gap-2 items-center justify-center p-4 h-full w-full btn-interactive"
+                  href={item.link}
                 >
-                  Cloud Earth
+                  {item.text}
+                  <ArrowRight class="size-4" />
                 </a>
-              ),
-            },
-            {
-              icon: Mail,
-              content: <a href="mailto:me@ingo.au">me@ingo.au</a>,
-            },
-          ].map((item, index) => (
-            <div class="flex flex-row gap-2 items-center p-4 sm:p-2 border-b sm:last:border-b-0 font-mono">
-              <item.icon class="size-5" /> {item.content}
-            </div>
-          ))
-        }
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="w-full sm:w-0 min-w-64 sm:border-l">
+        <Image
+          loading="eager"
+          src={ingoIcon}
+          alt="Ingo"
+          class="w-full h-fit border-b hidden sm:block"
+        />
+        <div class="flex flex-col border-t sm:border-t-0">
+          {
+            [
+              { icon: Earth, content: <>Canberra, Australia</> },
+              {
+                icon: ClockIcon,
+                content: (
+                  <>
+                    <Clock />
+                  </>
+                ),
+              },
+              {
+                icon: Building,
+                content: (
+                  <a
+                    href="https://cloudearth.au"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Cloud Earth
+                  </a>
+                ),
+              },
+              {
+                icon: Mail,
+                content: <a href="mailto:me@ingo.au">me@ingo.au</a>,
+              },
+            ].map((item, index) => (
+              <div class="flex flex-row gap-2 items-center p-4 sm:p-2 border-b sm:last:border-b-0 font-mono">
+                <item.icon class="size-5" /> {item.content}
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
+  </div>
+  <div
+    class="h-10 bg-diagonal-lines bg-fixed border-x sm:px-10 border-b sm:block hidden"
+  >
+    <div class="w-full border-x h-full"></div>
   </div>
 </div>
