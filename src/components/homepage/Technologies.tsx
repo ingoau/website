@@ -220,6 +220,9 @@ export default function Technologies() {
 
   return (
     <div className="w-full mx-auto max-w-5xl border-b sm:px-10 bg-diagonal-lines sm:border-x">
+      <div className="border-b border-x p-4">
+        <h2 className="text-primary text-2xl">Technologies I use</h2>
+      </div>
       <div className="w-full overflow-auto border-x border-b bg-background">
         <Carousel opts={{ skipSnaps: true }} plugins={[WheelGesturesPlugin()]}>
           <CarouselContent className="ml-0">
