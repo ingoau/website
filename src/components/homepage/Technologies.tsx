@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { GitBranch } from "lucide-react";
+import { GitBranch, MoreHorizontalIcon } from "lucide-react";
 import { FaReact, FaHtml5, FaCss3, FaNodeJs } from "react-icons/fa";
 import {
   RiNextjsFill,
@@ -46,16 +46,12 @@ const technologies = [
     icon: RiSvelteFill,
   },
   {
-    name: "React Router",
-    icon: SiReactrouter,
+    name: "TypeScript",
+    icon: SiTypescript,
   },
   {
     name: "HTML",
     icon: FaHtml5,
-  },
-  {
-    name: "CSS",
-    icon: FaCss3,
   },
   {
     name: "Bun",
@@ -68,14 +64,6 @@ const technologies = [
   {
     name: "Convex",
     icon: ConvexIcon,
-  },
-  {
-    name: "Drizzle ORM",
-    icon: SiDrizzle,
-  },
-  {
-    name: "TypeScript",
-    icon: SiTypescript,
   },
   {
     name: "Sanity CMS",
@@ -94,16 +82,8 @@ const technologies = [
     icon: SiLinux,
   },
   {
-    name: "Github Actions",
-    icon: SiGithubactions,
-  },
-  {
     name: "Nix",
     icon: SiNixos,
-  },
-  {
-    name: "Bash",
-    icon: SiGnubash,
   },
   {
     name: "Git",
@@ -118,20 +98,12 @@ const technologies = [
     icon: RiMicrosoftFill,
   },
   {
-    name: "Microsoft 365",
-    icon: RiMicrosoftFill,
-  },
-  {
-    name: "Azure",
-    icon: VscAzure,
-  },
-  {
     name: "UniFi",
     icon: SiUbiquiti,
   },
   {
-    name: "Fortinet",
-    icon: SiFortinet,
+    name: "More",
+    icon: MoreHorizontalIcon,
   },
 ];
 
