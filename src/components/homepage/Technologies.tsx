@@ -196,7 +196,7 @@ export default function Technologies() {
           <div
             key={item.name}
             className={cn(
-              "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-active:opacity-100 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
+              "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
               index % 2 === 0 ? "" : "bg-diagonal-lines",
             )}
           >
