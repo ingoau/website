@@ -204,16 +204,16 @@ export default function Technologies() {
             <span className="text-lg">{item.name}</span>
           </div>
         ))}
-        {/*<Placeholders
+        <Placeholders
           cols={3}
           className="block md:hidden"
-          selectedCategory={props.selectedCategory}
+          length={technologies.backend.items.length}
         />
         <Placeholders
           cols={5}
           className="md:block hidden"
-          selectedCategory={props.selectedCategory}
-        />*/}
+          length={technologies.backend.items.length}
+        />
       </div>
     </div>
   );
@@ -222,25 +222,23 @@ export default function Technologies() {
 function Placeholders({
   cols,
   className,
-  selectedCategory,
+  length,
 }: {
   cols: number;
   className: string;
-  selectedCategory: keyof typeof technologies;
+  length: number;
 }) {
-  if (technologies[selectedCategory].items.length % cols === 0) return;
+  if (length % cols === 0) return;
   return (
     <>
-      {Array(cols - (technologies[selectedCategory].items.length % cols))
+      {Array(cols - (length % cols))
         .fill(null)
         .map((_, index) => (
           <div
             key={index}
             className={cn(
               "border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
-              (technologies[selectedCategory].items.length + index) % 2 === 0
-                ? ""
-                : "bg-diagonal-lines",
+              (length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
               className,
             )}
           ></div>
