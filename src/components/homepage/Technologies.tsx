@@ -46,12 +46,12 @@ const technologies = [
     icon: RiSvelteFill,
   },
   {
-    name: "TypeScript",
-    icon: SiTypescript,
-  },
-  {
     name: "HTML",
     icon: FaHtml5,
+  },
+  {
+    name: "CSS",
+    icon: FaCss3,
   },
   {
     name: "Bun",
