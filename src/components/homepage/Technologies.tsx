@@ -24,136 +24,116 @@ import {
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 
-const technologies = {
-  frontend: {
-    title: "Frontend",
-    items: [
-      {
-        name: "React",
-        icon: FaReact,
-      },
-      {
-        name: "Next.js",
-        icon: RiNextjsFill,
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-      },
-      {
-        name: "Tailwind",
-        icon: RiTailwindCssFill,
-      },
-      {
-        name: "Svelte",
-        icon: RiSvelteFill,
-      },
-      {
-        name: "React Router",
-        icon: SiReactrouter,
-      },
-      {
-        name: "HTML",
-        icon: FaHtml5,
-      },
-      {
-        name: "CSS",
-        icon: FaCss3,
-      },
-    ],
+const technologies = [
+  {
+    name: "React",
+    icon: FaReact,
   },
-  backend: {
-    title: "Backend",
-    items: [
-      {
-        name: "Bun",
-        icon: SiBun,
-      },
-      {
-        name: "Node.js",
-        icon: FaNodeJs,
-      },
-      {
-        name: "Convex",
-        icon: ConvexIcon,
-      },
-      {
-        name: "Drizzle ORM",
-        icon: SiDrizzle,
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-      },
-      {
-        name: "Sanity CMS",
-        icon: SiSanity,
-      },
-    ],
+  {
+    name: "Next.js",
+    icon: RiNextjsFill,
   },
-  infrastructure: {
-    title: "Infrastructure",
-    items: [
-      {
-        name: "Docker",
-        icon: SiDocker,
-      },
-      {
-        name: "Traefik",
-        icon: SiTraefikproxy,
-      },
-      {
-        name: "Linux",
-        icon: SiLinux,
-      },
-      {
-        name: "Github Actions",
-        icon: SiGithubactions,
-      },
-      {
-        name: "Nix",
-        icon: SiNixos,
-      },
-      {
-        name: "Bash",
-        icon: SiGnubash,
-      },
-      {
-        name: "Git",
-        icon: GitBranch,
-      },
-    ],
+  {
+    name: "TypeScript",
+    icon: SiTypescript,
   },
-  enterprise: {
-    title: "Enterprise",
-    items: [
-      {
-        name: "Entra ID",
-        icon: RiMicrosoftFill,
-      },
-      {
-        name: "Intune",
-        icon: RiMicrosoftFill,
-      },
-      {
-        name: "Microsoft 365",
-        icon: RiMicrosoftFill,
-      },
-      {
-        name: "Azure",
-        icon: VscAzure,
-      },
-      {
-        name: "UniFi",
-        icon: SiUbiquiti,
-      },
-      {
-        name: "Fortinet",
-        icon: SiFortinet,
-      },
-    ],
+  {
+    name: "Tailwind",
+    icon: RiTailwindCssFill,
   },
-};
+  {
+    name: "Svelte",
+    icon: RiSvelteFill,
+  },
+  {
+    name: "React Router",
+    icon: SiReactrouter,
+  },
+  {
+    name: "HTML",
+    icon: FaHtml5,
+  },
+  {
+    name: "CSS",
+    icon: FaCss3,
+  },
+  {
+    name: "Bun",
+    icon: SiBun,
+  },
+  {
+    name: "Node.js",
+    icon: FaNodeJs,
+  },
+  {
+    name: "Convex",
+    icon: ConvexIcon,
+  },
+  {
+    name: "Drizzle ORM",
+    icon: SiDrizzle,
+  },
+  {
+    name: "TypeScript",
+    icon: SiTypescript,
+  },
+  {
+    name: "Sanity CMS",
+    icon: SiSanity,
+  },
+  {
+    name: "Docker",
+    icon: SiDocker,
+  },
+  {
+    name: "Traefik",
+    icon: SiTraefikproxy,
+  },
+  {
+    name: "Linux",
+    icon: SiLinux,
+  },
+  {
+    name: "Github Actions",
+    icon: SiGithubactions,
+  },
+  {
+    name: "Nix",
+    icon: SiNixos,
+  },
+  {
+    name: "Bash",
+    icon: SiGnubash,
+  },
+  {
+    name: "Git",
+    icon: GitBranch,
+  },
+  {
+    name: "Entra ID",
+    icon: RiMicrosoftFill,
+  },
+  {
+    name: "Intune",
+    icon: RiMicrosoftFill,
+  },
+  {
+    name: "Microsoft 365",
+    icon: RiMicrosoftFill,
+  },
+  {
+    name: "Azure",
+    icon: VscAzure,
+  },
+  {
+    name: "UniFi",
+    icon: SiUbiquiti,
+  },
+  {
+    name: "Fortinet",
+    icon: SiFortinet,
+  },
+];
 
 function ConvexIcon({ className }: { className?: string }) {
   return (
@@ -190,7 +170,7 @@ export default function Technologies() {
         <h2 className="text-primary text-2xl">Technologies I know</h2>
       </div>
       <div className="w-full grid grid-cols-3 md:grid-cols-5 border-l border-t group -my-px bg-background">
-        {technologies.backend.items.map((item, index) => (
+        {technologies.map((item, index) => (
           <div
             key={item.name}
             className={cn(
@@ -205,12 +185,12 @@ export default function Technologies() {
         <Placeholders
           cols={3}
           className="block md:hidden"
-          length={technologies.backend.items.length}
+          length={technologies.length}
         />
         <Placeholders
           cols={5}
           className="md:block hidden"
-          length={technologies.backend.items.length}
+          length={technologies.length}
         />
       </div>
     </div>
