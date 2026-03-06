@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { GitBranch } from "lucide-react";
 import { FaReact, FaHtml5, FaCss3, FaNodeJs } from "react-icons/fa";
