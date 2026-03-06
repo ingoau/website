@@ -2,14 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import { GitBranch } from "lucide-react";
-import { forwardRef, useEffect, useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  usePresenceData,
-  useMotionValue,
-  useTransform,
-} from "motion/react";
 import { FaReact, FaHtml5, FaCss3, FaNodeJs } from "react-icons/fa";
 import {
   RiNextjsFill,
@@ -33,13 +25,6 @@ import {
   SiUbiquiti,
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
-import { NICE_EASE } from "@/lib/constants";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import WheelGesturesPlugin from "embla-carousel-wheel-gestures";
 
 const technologies = {
   frontend: {
@@ -201,180 +186,38 @@ function ConvexIcon({ className }: { className?: string }) {
 }
 
 export default function Technologies() {
-  const [selectedCategory, setSelectedCategory] =
-    useState<keyof typeof technologies>("frontend");
-  const [direction, setDirection] = useState<number>(1);
-
-  function setCategory(category: keyof typeof technologies) {
-    const index = Object.keys(technologies).findIndex((k) => k === category);
-    const currentIndex = Object.keys(technologies).findIndex(
-      (k) => k === selectedCategory,
-    );
-    if (index > currentIndex) {
-      setDirection(1);
-    } else if (index < currentIndex) {
-      setDirection(-1);
-    }
-    setSelectedCategory(category as keyof typeof technologies);
-  }
-
   return (
     <div className="w-full mx-auto max-w-5xl border-b sm:px-10 bg-diagonal-lines sm:border-x">
       <div className="border-b border-x p-4">
         <h2 className="text-primary text-2xl">Technologies I know</h2>
       </div>
-      <div className="w-full overflow-auto border-x border-b bg-background">
-        <Carousel opts={{ skipSnaps: true }} plugins={[WheelGesturesPlugin()]}>
-          <CarouselContent className="ml-0">
-            {Object.entries(technologies).map(([key, value]) => (
-              <CarouselItem key={key} className="basis-auto pl-0">
-                <button
-                  className={cn(
-                    "border-r cursor-pointer",
-                    "h-full px-10 py-4 w-fit flex justify-center items-center btn-interactive",
-                    selectedCategory === key ? "text-primary" : "",
-                  )}
-                  onClick={() => {
-                    const index = Object.keys(technologies).findIndex(
-                      (k) => k === key,
-                    );
-                    const currentIndex = Object.keys(technologies).findIndex(
-                      (k) => k === selectedCategory,
-                    );
-                    if (index > currentIndex) {
-                      setDirection(1);
-                    } else if (index < currentIndex) {
-                      setDirection(-1);
-                    }
-                    setSelectedCategory(key as keyof typeof technologies);
-                  }}
-                >
-                  {value.title}
-                </button>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
-      <AnimatePresence mode="popLayout" initial={false} custom={direction}>
-        <Grid
-          key={selectedCategory}
-          selectedCategory={selectedCategory}
-          setCategory={setCategory}
+      <div className="w-full grid grid-cols-3 md:grid-cols-5 border-l border-t group -my-px bg-background">
+        {technologies.backend.items.map((item, index) => (
+          <div
+            key={item.name}
+            className={cn(
+              "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-active:opacity-100 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
+              index % 2 === 0 ? "" : "bg-diagonal-lines",
+            )}
+          >
+            <item.icon className="size-10" />
+            <span className="text-lg">{item.name}</span>
+          </div>
+        ))}
+        {/*<Placeholders
+          cols={3}
+          className="block md:hidden"
+          selectedCategory={props.selectedCategory}
         />
-      </AnimatePresence>
+        <Placeholders
+          cols={5}
+          className="md:block hidden"
+          selectedCategory={props.selectedCategory}
+        />*/}
+      </div>
     </div>
   );
 }
-
-const Grid = forwardRef(function Grid(
-  props: {
-    selectedCategory: keyof typeof technologies;
-    setCategory: (category: keyof typeof technologies) => void;
-  },
-  ref: React.ForwardedRef<HTMLDivElement>,
-) {
-  const direction = usePresenceData();
-  const x = useMotionValue(0);
-  const rotate = useTransform(x, [-100, 0, 100], [-3, 0, 3], { clamp: false });
-  const [willSwipe, setWillSwipe] = useState(false);
-  useEffect(() => {
-    try {
-      if (willSwipe == true) navigator.vibrate(10);
-    } catch {}
-  }, [willSwipe]);
-
-  return (
-    <motion.div
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.05}
-      style={{ x, rotate }}
-      whileDrag={{ scale: 0.98 }}
-      onDrag={(event, info) => {
-        if (Math.abs(info.offset.x) > 100) {
-          setWillSwipe(true);
-        } else {
-          setWillSwipe(false);
-        }
-      }}
-      onDragEnd={(event, info) => {
-        if (info.offset.x < -100) {
-          const index = Object.keys(technologies).findIndex(
-            (k) => k === props.selectedCategory,
-          );
-          if (index === Object.keys(technologies).length - 1) {
-            try {
-              navigator.vibrate([10, 10, 10, 10, 10]);
-            } catch {}
-            props.setCategory(
-              Object.keys(technologies)[0] as keyof typeof technologies,
-            );
-          } else {
-            props.setCategory(
-              Object.keys(technologies)[index + 1] as keyof typeof technologies,
-            );
-          }
-        } else if (info.offset.x > 100) {
-          const index = Object.keys(technologies).findIndex(
-            (k) => k === props.selectedCategory,
-          );
-          if (index === 0) {
-            try {
-              navigator.vibrate([10, 10, 10, 10, 10]);
-            } catch {}
-            props.setCategory(
-              Object.keys(technologies)[
-                Object.keys(technologies).length - 1
-              ] as keyof typeof technologies,
-            );
-          } else {
-            props.setCategory(
-              Object.keys(technologies)[index - 1] as keyof typeof technologies,
-            );
-          }
-        }
-      }}
-      ref={ref}
-      exit={{ opacity: 0, x: direction * -100, filter: "blur(10px)" }}
-      initial={{
-        opacity: 0,
-        x: direction * 100,
-        filter: "blur(10px)",
-        scale: 0.9,
-      }}
-      animate={{ opacity: 1, x: 0, filter: "blur(0px)", scale: 1 }}
-      transition={{
-        duration: 0.2,
-        ease: NICE_EASE,
-      }}
-      className="w-full grid grid-cols-3 md:grid-cols-5 border-l border-t group -my-px bg-background"
-    >
-      {technologies[props.selectedCategory].items.map((item, index) => (
-        <div
-          key={item.name}
-          className={cn(
-            "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-active:opacity-100 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
-            index % 2 === 0 ? "" : "bg-diagonal-lines",
-          )}
-        >
-          <item.icon className="size-10" />
-          <span className="text-lg">{item.name}</span>
-        </div>
-      ))}
-      <Placeholders
-        cols={3}
-        className="block md:hidden"
-        selectedCategory={props.selectedCategory}
-      />
-      <Placeholders
-        cols={5}
-        className="md:block hidden"
-        selectedCategory={props.selectedCategory}
-      />
-    </motion.div>
-  );
-});
 
 function Placeholders({
   cols,
