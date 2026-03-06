@@ -88,17 +88,20 @@ const weekStatsData = await weekStats.json();
 const quickStats = [
   {
     title: "Total Coding Time",
-    value: allTimeStats.data.human_readable_total.replace(/\s*\d+s$/, ""),
+    value:
+      allTimeStats.data.human_readable_total.replace(/\s*\d+s$/, "") || "None",
     className: "col-span-14 bg-diagonal-lines",
   },
   {
     title: "This Week",
-    value: weekStatsData.data.human_readable_total.replace(/\s*\d+s$/, ""),
+    value:
+      weekStatsData.data.human_readable_total.replace(/\s*\d+s$/, "") || "None",
     className: "col-span-9",
   },
   {
     title: "Today",
-    value: dayStatsData.data.human_readable_total.replace(/\s*\d+s$/, ""),
+    value:
+      dayStatsData.data.human_readable_total.replace(/\s*\d+s$/, "") || "None",
     className: "col-span-9",
   },
 ];
