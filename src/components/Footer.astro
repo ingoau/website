@@ -1,6 +1,7 @@
 ---
 import { NAVBAR_ITEMS, OTHER_PAGES } from "@/lib/constants";
 import Separator from "./Separator.astro";
+import { ChevronLeftIcon, ChevronRightIcon } from "@lucide/astro";
 
 const profiles = [
   {
@@ -98,12 +99,26 @@ const webrings = [
       <div class="p-2 font-mono border-x">Webrings</div>
       {
         webrings.map((webring) => (
-          <div>
-            <a href={webring.prev}>Previous</a>
-            <a href={webring.url} onclick={webring.onClick}>
+          <div class="flex flex-row w-full">
+            <a
+              href={webring.prev}
+              class="btn-interactive p-3 aspect-square border-x border-t"
+            >
+              <ChevronLeftIcon class="size-4" />
+            </a>
+            <a
+              href={webring.url}
+              class="btn-interactive px-6 text-sm font-mono grow flex items-center justify-center border-t"
+              onclick={webring.onClick}
+            >
               {webring.name}
             </a>
-            <a href={webring.next}>Next</a>
+            <a
+              href={webring.next}
+              class="btn-interactive p-3 aspect-square border-x border-t"
+            >
+              <ChevronRightIcon class="size-4" />
+            </a>
           </div>
         ))
       }
