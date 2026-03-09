@@ -3,7 +3,7 @@ import Separator from "./Separator.astro";
 
 const profiles = [
   {
-    text: "me@ingo.au",
+    text: "Email",
     href: "mailto:me@ingo.au",
   },
   {
@@ -33,7 +33,7 @@ const profiles = [
         <div class="flex flex-row bg-background w-fit">
           {
             profiles.map((link) => (
-              <a href="/" class="p-6 py-3 btn-interactive border-r">
+              <a href="/" class="px-4 py-2 btn-interactive border-r">
                 {link.text}
               </a>
             ))
