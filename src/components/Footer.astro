@@ -32,15 +32,8 @@ const webrings = [
   },
   {
     name: "page ring",
-    onClick: () => {
-      if ((window as Window & { pagering?: { open: () => void } }).pagering) {
-        (
-          window as Window & { pagering?: { open: () => void } }
-        ).pagering?.open();
-      } else {
-        location.href = "https://pagering.gideon.sh/";
-      }
-    },
+    onClick:
+      "if (window.pagering) { window.pagering.open(); } else { location.href = 'https://pagering.gideon.sh/'; }",
     next: "https://pagering.gideon.sh/to/ingo/next",
     prev: "https://pagering.gideon.sh/to/ingo/prev",
   },
@@ -103,6 +96,17 @@ const webrings = [
     <div class="grow"></div>
     <div class="flex flex-col">
       <div class="p-2 font-mono border-x">Webrings</div>
+      {
+        webrings.map((webring) => (
+          <div>
+            <a href={webring.prev}>Previous</a>
+            <a href={webring.url} onclick={webring.onClick}>
+              {webring.name}
+            </a>
+            <a href={webring.next}>Next</a>
+          </div>
+        ))
+      }
     </div>
   </div>
 </footer>
