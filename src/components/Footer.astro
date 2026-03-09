@@ -16,6 +16,35 @@ const profiles = [
     href: "https://github.com/ingoau",
   },
 ];
+
+const webrings = [
+  {
+    name: "ultrafastparrot",
+    url: "https://ultrafastparrot.net",
+    next: "https://ultrafastparrot.net/next/ingo",
+    prev: "https://ultrafastparrot.net/prev/ingo",
+  },
+  {
+    name: "catppuccin",
+    url: "https://ctp-webr.ing/",
+    next: "https://ctp-webr.ing/ingo/next",
+    prev: "https://ctp-webr.ing/ingo/prev",
+  },
+  {
+    name: "page ring",
+    onClick: () => {
+      if ((window as Window & { pagering?: { open: () => void } }).pagering) {
+        (
+          window as Window & { pagering?: { open: () => void } }
+        ).pagering?.open();
+      } else {
+        location.href = "https://pagering.gideon.sh/";
+      }
+    },
+    next: "https://pagering.gideon.sh/to/ingo/next",
+    prev: "https://pagering.gideon.sh/to/ingo/prev",
+  },
+];
 ---
 
 <Separator />
@@ -70,6 +99,10 @@ const profiles = [
       <a href="https://github.com/ingoau/website" target="_blank">
         open source
       </a>
+    </div>
+    <div class="grow"></div>
+    <div class="flex flex-col">
+      <div class="p-2 font-mono border-x">Webrings</div>
     </div>
   </div>
 </footer>
