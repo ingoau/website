@@ -55,6 +55,11 @@ const profiles = [
             </div>
           ))
         }
+        {
+          [...NAVBAR_ITEMS, ...OTHER_PAGES].length % 2 !== 0 && (
+            <div class="border-r border-b bg-striped-gradient" />
+          )
+        }
       </div>
       <div class="grow min-h-10 border-r"></div>
     </div>
