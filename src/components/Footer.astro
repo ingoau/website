@@ -1,6 +1,14 @@
 ---
 import Separator from "./Separator.astro";
 import { MailIcon } from "@lucide/astro";
+
+const iconLinks = [
+  {
+    icon: MailIcon,
+    alt: "Email",
+    href: "/",
+  },
+];
 ---
 
 <Separator />
@@ -17,9 +25,14 @@ import { MailIcon } from "@lucide/astro";
       </div>
       <div class="border-y w-full">
         <div class="flex flex-row bg-background w-fit">
-          <a href="/" class="p-4 aspect-square btn-interactive border-r">
-            <MailIcon class="size-4" />
-          </a>
+          {
+            iconLinks.map((link) => (
+              <a href="/" class="p-4 aspect-square btn-interactive border-r">
+                <span class="sr-only">{link.alt}</span>
+                <link.icon class="size-4" />
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
