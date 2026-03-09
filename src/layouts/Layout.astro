@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 import { Font } from "astro:assets";
 import Search from "../components/Search.tsx";
 import { ClientRouter } from "astro:transitions";
@@ -28,5 +29,6 @@ import { ClientRouter } from "astro:transitions";
         <slot />
       </main>
     </div>
+    <Footer />
   </body>
 </html>
