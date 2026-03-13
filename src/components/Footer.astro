@@ -2,6 +2,7 @@
 import { NAVBAR_ITEMS, OTHER_PAGES } from "@/lib/constants";
 import Separator from "./Separator.astro";
 import { ChevronLeftIcon, ChevronRightIcon } from "@lucide/astro";
+import Buttons from "./Buttons.astro";
 
 const profiles = [
   {
@@ -87,7 +88,9 @@ const webrings = [
       <div class="grow min-h-10 border-r"></div>
     </div>
   </div>
-  <div class="flex flex-row bg-diagonal-lines bg-fixed border-t items-end">
+  <div
+    class="flex flex-row bg-diagonal-lines bg-fixed border-t items-end border-b"
+  >
     <div class="border-t border-r py-2 px-4 font-mono bg-background h-fit">
       This website is
       <a href="https://github.com/ingoau/website" target="_blank">
@@ -126,6 +129,7 @@ const webrings = [
       }
     </div>
   </div>
+  <Buttons />
 </footer>
 <div class="border-t w-full"></div>
 <div class="max-w-5xl mx-auto w-full border-x h-4"></div>
