@@ -35,6 +35,7 @@ export default function Search() {
         <CommandGroup heading="Pages">
           {pages.map((page) => (
             <CommandItem
+              key={page.url}
               onSelect={() => {
                 location.href = page.url;
               }}
