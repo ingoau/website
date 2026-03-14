@@ -33,7 +33,6 @@ export default function Search() {
   return (
     <CommandDialog open={$isMenuOpen} onOpenChange={isMenuOpen.set}>
       <CommandInput placeholder="Search" />
-      <Prefetcher />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Pages">
@@ -53,23 +52,4 @@ export default function Search() {
       </CommandList>
     </CommandDialog>
   );
-}
-
-function Prefetcher() {
-  const selectedId = useCommandState((state) => state.selectedItemId);
-  const [selectedElement, setSelectedElement] = useState<HTMLElement | null>(
-    null,
-  );
-  useEffect(() => {
-    if (selectedId) {
-      const element = document.getElementById(selectedId);
-      setSelectedElement(element as HTMLElement | null);
-    }
-    const dataUrl = selectedElement?.getAttribute("data-url");
-    if (dataUrl) {
-      prefetch(dataUrl);
-    }
-  }, [selectedId]);
-
-  return null;
 }
