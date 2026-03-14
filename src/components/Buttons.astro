@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const buttons = [
   {
     src: "/buttons/slitro.png",
@@ -91,7 +93,7 @@ const buttons = [
     {
       buttons.map((button) => (
         <a class="block w-[88px] h-[31px] object-cover" href={button.href}>
-          <img src={button.src} alt={button.alt} />
+          <Image width={88} height={31} src={button.src} alt={button.alt} />
         </a>
       ))
     }
