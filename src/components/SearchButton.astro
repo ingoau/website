@@ -20,7 +20,7 @@ import { Menu, Search } from "@lucide/astro";
     isMenuOpen.set(true);
   });
 
-  document.body.addEventListener("keydown", (e) => {
+  document.addEventListener("keydown", (e) => {
     if (
       // Mod pressed
       (e.metaKey || e.ctrlKey) &&
