@@ -21,6 +21,8 @@ import {
 import { isMenuOpen } from "@/lib/state";
 import { useStore } from "@nanostores/react";
 import { NAVBAR_ITEMS, OTHER_PAGES } from "@/lib/constants";
+import { useCommandState } from "cmdk";
+import { useEffect, useState } from "react";
 
 export default function Search() {
   const $isMenuOpen = useStore(isMenuOpen);
@@ -30,12 +32,14 @@ export default function Search() {
   return (
     <CommandDialog open={$isMenuOpen} onOpenChange={isMenuOpen.set}>
       <CommandInput placeholder="Search" />
+      <Preloader />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Pages">
           {pages.map((page) => (
             <CommandItem
               key={page.url}
+              data-url={page.url}
               onSelect={() => {
                 location.href = page.url;
               }}
@@ -48,4 +52,20 @@ export default function Search() {
       </CommandList>
     </CommandDialog>
   );
+}
+
+function Preloader() {
+  const selectedId = useCommandState((state) => state.selectedItemId);
+  const [selectedElement, setSelectedElement] = useState<HTMLElement | null>(
+    null,
+  );
+  useEffect(() => {
+    if (selectedId) {
+      const element = document.getElementById(selectedId);
+      setSelectedElement(element as HTMLElement | null);
+    }
+  }, [selectedId]);
+  const dataUrl = selectedElement?.getAttribute("data-url");
+  
+  return <>{dataUrl}</>;
 }
