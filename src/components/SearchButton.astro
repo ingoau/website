@@ -19,4 +19,18 @@ import { Menu, Search } from "@lucide/astro";
   document.getElementById("search-button")?.addEventListener("click", () => {
     isMenuOpen.set(true);
   });
+
+  document.body.addEventListener("keydown", (e) => {
+    if (
+      // Mod pressed
+      (e.metaKey || e.ctrlKey) &&
+      // K pressed
+      e.key === "k" &&
+      // Not focused on an input or textarea
+      !document.activeElement?.matches("input, textarea")
+    ) {
+      e.preventDefault();
+      isMenuOpen.set(true);
+    }
+  });
 </script>
