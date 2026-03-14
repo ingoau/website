@@ -27,8 +27,13 @@ import { prefetch } from "astro:prefetch";
 
 export default function Search() {
   const $isMenuOpen = useStore(isMenuOpen);
-
   const pages = [...NAVBAR_ITEMS, ...OTHER_PAGES];
+
+  useEffect(() => {
+    if ($isMenuOpen) {
+      pages.forEach((page) => prefetch(page.url));
+    }
+  }, [$isMenuOpen]);
 
   return (
     <CommandDialog open={$isMenuOpen} onOpenChange={isMenuOpen.set}>
