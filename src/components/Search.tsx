@@ -29,7 +29,7 @@ export default function Search() {
 
   return (
     <CommandDialog open={$isMenuOpen} onOpenChange={isMenuOpen.set}>
-      <CommandInput placeholder="Type a command or search..." />
+      <CommandInput placeholder="Search" />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Pages">
