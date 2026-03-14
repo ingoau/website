@@ -31,7 +31,12 @@ export default function Search() {
 
   useEffect(() => {
     if ($isMenuOpen) {
-      pages.forEach((page) => prefetch(page.url));
+      NAVBAR_ITEMS.forEach((page) =>
+        prefetch(page.url, { eagerness: "immediate" }),
+      );
+      OTHER_PAGES.forEach((page) =>
+        prefetch(page.url, { eagerness: "moderate" }),
+      );
     }
   }, [$isMenuOpen]);
 
