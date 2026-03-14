@@ -28,11 +28,7 @@ export default function Search() {
   const pages = [...NAVBAR_ITEMS, ...OTHER_PAGES];
 
   return (
-    <CommandDialog
-      open={$isMenuOpen}
-      onOpenChange={isMenuOpen.set}
-      className="max-w-sm rounded-lg border"
-    >
+    <CommandDialog open={$isMenuOpen} onOpenChange={isMenuOpen.set}>
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
