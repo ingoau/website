@@ -23,6 +23,7 @@ import { useStore } from "@nanostores/react";
 import { NAVBAR_ITEMS, OTHER_PAGES } from "@/lib/constants";
 import { useCommandState } from "cmdk";
 import { useEffect, useState } from "react";
+import { prefetch } from "astro:prefetch";
 
 export default function Search() {
   const $isMenuOpen = useStore(isMenuOpen);
@@ -64,8 +65,11 @@ function Prefetcher() {
       const element = document.getElementById(selectedId);
       setSelectedElement(element as HTMLElement | null);
     }
+    const dataUrl = selectedElement?.getAttribute("data-url");
+    if (dataUrl) {
+      prefetch(dataUrl);
+    }
   }, [selectedId]);
-  const dataUrl = selectedElement?.getAttribute("data-url");
 
-  return <>{dataUrl}</>;
+  return null;
 }
