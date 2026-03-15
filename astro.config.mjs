@@ -24,6 +24,7 @@ export default defineConfig({
     sanity({
       projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
       dataset: process.env.PUBLIC_SANITY_DATASET,
+      studioBasePath: "/admin",
     }),
   ],
 
