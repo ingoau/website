@@ -7,7 +7,7 @@ import { codeInput } from "@sanity/code-input";
 import { schema } from "./sanity/schema";
 
 export default defineConfig({
-  name: "ingo.au",
+  name: "ingo",
   title: "ingo.au",
   projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID!,
   dataset: import.meta.env.PUBLIC_SANITY_DATASET!,
