@@ -57,6 +57,11 @@ export const project = defineType({
       ],
     }),
     defineField({
+      name: "blogPost",
+      type: "reference",
+      to: [{ type: "post" }],
+    }),
+    defineField({
       name: "body",
       type: "blockContent",
     }),
