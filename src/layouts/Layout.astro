@@ -6,6 +6,8 @@ import { Font } from "astro:assets";
 import Search from "../components/Search.tsx";
 import { ClientRouter } from "astro:transitions";
 import Pagering from "@/components/Pagering.astro";
+
+const { title }: { title?: string } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,7 +22,7 @@ import Pagering from "@/components/Pagering.astro";
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />
     <!-- <ClientRouter /> -->
-    <title>Astro Basics</title>
+    <title>{title ?? "Ingo's Site"} {title && "| Ingo's Site"}</title>
   </head>
   <body class="flex flex-col min-h-screen">
     <Navbar />
