@@ -1,0 +1,5 @@
+{
+  "name": "ingo-website",
+  "private": true,
+  "workspaces": ["packages/*"]
+}
