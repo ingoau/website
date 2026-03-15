@@ -6,7 +6,7 @@ import react from "@astrojs/react";
 import cloudflare from "@astrojs/cloudflare";
 import sanity from "@sanity/astro";
 
-const { SANITY_PROJECT_ID, SANITY_DATASET } = loadEnv(
+const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
   process.env.NODE_ENV || "",
   process.cwd(),
   "",
@@ -25,8 +25,8 @@ export default defineConfig({
   integrations: [
     react(),
     sanity({
-      projectId: SANITY_PROJECT_ID,
-      dataset: SANITY_DATASET,
+      projectId: PUBLIC_SANITY_PROJECT_ID,
+      dataset: PUBLIC_SANITY_DATASET,
       studioBasePath: "/admin",
     }),
   ],
