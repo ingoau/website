@@ -1,6 +1,7 @@
 import { Footer } from "@/components/footer";
 import Navbar from "@/components/navbar";
 import Hotkeys from "@/lib/hotkeys";
+import EasterEgg from "@/components/easter-egg";
 
 export default function RootLayout({
   children,
@@ -20,6 +21,7 @@ export default function RootLayout({
         <div className="w-full h-full bg-striped-gradient bg-size-[80px_80px] bg-fixed fixed top-0 left-0 -z-50 opacity-25"></div>
       </div>
       <Hotkeys />
+      <EasterEgg />
     </>
   );
 }
