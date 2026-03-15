@@ -1,13 +1,16 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
-
+import { loadEnv } from "vite";
 import tailwindcss from "@tailwindcss/vite";
-
 import react from "@astrojs/react";
-
 import cloudflare from "@astrojs/cloudflare";
-
 import sanity from "@sanity/astro";
+
+const { SANITY_PROJECT_ID, SANITY_DATASET } = loadEnv(
+  process.env.NODE_ENV || "",
+  process.cwd(),
+  "",
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,8 +25,8 @@ export default defineConfig({
   integrations: [
     react(),
     sanity({
-      projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
-      dataset: process.env.PUBLIC_SANITY_DATASET,
+      projectId: SANITY_PROJECT_ID,
+      dataset: SANITY_DATASET,
       studioBasePath: "/admin",
     }),
   ],
