@@ -19,7 +19,13 @@ export default defineConfig({
     prefetchAll: true,
   },
 
-  integrations: [react(), sanity()],
+  integrations: [
+    react(),
+    sanity({
+      projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
+      dataset: process.env.PUBLIC_SANITY_DATASET,
+    }),
+  ],
 
   compressHTML: true,
 
