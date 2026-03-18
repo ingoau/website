@@ -7,6 +7,7 @@ export default defineCliConfig({
   },
   typegen: {
     enabled: true,
+    path: "src/**/*.{ts,tsx,astro}",
   },
   schemaExtraction: {
     enabled: true,
