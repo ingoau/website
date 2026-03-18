@@ -1,5 +1,20 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { sanityClient } from "sanity:client";
+import { postsQuery } from "@/lib/queries";
+import { type PostsQueryResult } from "sanity.types";
+
+const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
 ---
 
-<Layout title="Blog" />
+<Layout title="Blog">
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.slug?.current}`}>{post.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
