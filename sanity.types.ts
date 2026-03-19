@@ -243,11 +243,18 @@ export type AllSanitySchemaTypes = SanityImageAssetReference | PostReference | P
 
 // Source: src/lib/sanity/queries.ts
 // Variable: postsQuery
-// Query: *[  _type == "post"  && defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
+// Query: *[  _type == "post"  && defined(slug.current)]|order(publishedAt desc){_id, title, slug, image, publishedAt}
 export type PostsQueryResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
   publishedAt: string | null;
 }>;
 
