@@ -14,7 +14,7 @@ const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
       posts.map((post) => (
         <li>
           <a
-            class="block border-b border-x p-2 btn-interactive"
+            class="block border-b border-x p-4 btn-interactive"
             href={`/blog/${post.slug?.current}`}
           >
             <h2 class="text-4xl">{post.title}</h2>
