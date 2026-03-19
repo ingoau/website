@@ -119,7 +119,6 @@ export type Post = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
     _type: "image";
   };
   publishedAt?: string;

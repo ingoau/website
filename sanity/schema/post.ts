@@ -24,13 +24,6 @@ export const post = defineType({
       options: {
         hotspot: true,
       },
-      fields: [
-        defineField({
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-        }),
-      ],
     }),
     // TODO: add tags
     defineField({
