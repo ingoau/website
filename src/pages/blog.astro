@@ -1,9 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { sanityClient } from "sanity:client";
-import { postsQuery } from "@/lib/sanity/queries";
+import { postsQuery, urlFor } from "@/lib/sanity/queries";
 import { type PostsQueryResult } from "sanity.types";
 import FormattedDateTime from "@/components/FormattedDateTime.astro";
+import { Image } from "astro:assets";
 
 const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
 ---
@@ -17,6 +18,14 @@ const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
             class="block border-b border-x p-4 btn-interactive"
             href={`/blog/${post.slug?.current}`}
           >
+            {post.image && post.image.asset && (
+              <Image
+                src={urlFor(post.image.asset).url()}
+                width="1200"
+                height="675"
+                alt=""
+              />
+            )}
             <h2 class="text-4xl">{post.title}</h2>
             <FormattedDateTime
               date={post.publishedAt ?? ""}
