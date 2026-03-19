@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { sanityClient } from "sanity:client";
 import { postsQuery } from "@/lib/sanity/queries";
 import { type PostsQueryResult } from "sanity.types";
+import FormattedDateTime from "@/components/FormattedDateTime.astro";
 
 const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
 ---
@@ -17,6 +18,10 @@ const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
             href={`/blog/${post.slug?.current}`}
           >
             <h2 class="text-4xl">{post.title}</h2>
+            <FormattedDateTime
+              date={post.publishedAt ?? ""}
+              format="DATETIME"
+            />
           </a>
         </li>
       ))
