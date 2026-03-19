@@ -234,7 +234,7 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes = SanityImageAssetReference | PostReference | Project | BlockContent | SanityImageCrop | SanityImageHotspot | Slug | Post | Code | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 
-// Source: src/lib/queries.ts
+// Source: src/lib/sanity/queries.ts
 // Variable: postsQuery
 // Query: *[  _type == "post"  && defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
 export type PostsQueryResult = Array<{
