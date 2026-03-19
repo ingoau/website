@@ -114,6 +114,14 @@ export type Post = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   publishedAt?: string;
   body?: BlockContent;
 };

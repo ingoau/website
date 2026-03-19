@@ -18,6 +18,20 @@ export const post = defineType({
         source: "title",
       },
     }),
+    defineField({
+      name: "image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+        }),
+      ],
+    }),
     // TODO: add tags
     defineField({
       name: "publishedAt",
