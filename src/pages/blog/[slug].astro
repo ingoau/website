@@ -1,0 +1,17 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { postsQuery } from "@/lib/sanity/queries";
+import type { PostsQueryResult } from "sanity.types";
+import { sanityClient } from "sanity:client";
+
+const { slug } = Astro.params;
+
+export const getStaticPaths = async () => {
+  const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
+  return posts.map((post) => ({
+    params: { slug: post.slug?.current ?? "" },
+  }));
+};
+---
+
+<Layout>{slug}</Layout>
