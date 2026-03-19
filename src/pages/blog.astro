@@ -27,7 +27,7 @@ const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
                 class="mx-auto max-w-3xl"
               />
             )}
-            <h2 class="text-4xl">{post.title}</h2>
+            <h2 class="text-4xl text-primary">{post.title}</h2>
             <FormattedDateTime
               date={post.publishedAt ?? ""}
               format="DATETIME"
