@@ -5,36 +5,42 @@ import { postsQuery, urlFor } from "@/lib/sanity/queries";
 import { type PostsQueryResult } from "sanity.types";
 import FormattedDateTime from "@/components/FormattedDateTime.astro";
 import { Image } from "astro:assets";
+import Header from "@/components/Header.astro";
 
 const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
 ---
 
 <Layout title="Blog">
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <a
-            class="block border-b border-x p-4 btn-interactive"
-            href={`/blog/${post.slug?.current}`}
-          >
-            {post.image && post.image.asset && (
-              <Image
-                src={urlFor(post.image.asset).url()}
-                width="1200"
-                height="675"
-                alt=""
-                class="mx-auto max-w-2xl w-full"
-              />
-            )}
-            <h2 class="text-4xl text-primary">{post.title}</h2>
-            <FormattedDateTime
-              date={post.publishedAt ?? ""}
-              format="DATETIME"
-            />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="bg-diagonal-lines border-x border-b">
+    <Header class="bg-background">Blog</Header>
+    <div class="px-4">
+      <ul class="max-w-4xl mx-auto bg-background">
+        {
+          posts.map((post) => (
+            <li class="last:border-b-0 border-b border-x">
+              <a
+                class="block p-4 btn-interactive"
+                href={`/blog/${post.slug?.current}`}
+              >
+                {post.image && post.image.asset && (
+                  <Image
+                    src={urlFor(post.image.asset).url()}
+                    width="1200"
+                    height="675"
+                    alt=""
+                    class="mx-auto max-w-2xl w-full"
+                  />
+                )}
+                <h2 class="text-4xl text-primary">{post.title}</h2>
+                <FormattedDateTime
+                  date={post.publishedAt ?? ""}
+                  format="DATETIME"
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </Layout>
