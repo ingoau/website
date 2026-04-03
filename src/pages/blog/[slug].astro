@@ -5,7 +5,7 @@ import { postQuery, postsQuery, urlFor } from "@/lib/sanity/queries";
 import { Image } from "astro:assets";
 import type { PostsQueryResult, PostQueryResult } from "sanity.types";
 import { sanityClient } from "sanity:client";
-import { PortableText } from "astro-portabletext";
+import { PortableText } from "@/components/portable-text";
 
 const { slug } = Astro.params;
 
