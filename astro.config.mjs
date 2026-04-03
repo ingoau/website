@@ -22,6 +22,16 @@ export default defineConfig({
     prefetchAll: true,
   },
 
+  image: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        pathname: `/images/${PUBLIC_SANITY_PROJECT_ID}/production/**`,
+      },
+    ],
+  },
+
   integrations: [
     react(),
     sanity({
