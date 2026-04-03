@@ -19,6 +19,10 @@ export const post = defineType({
       },
     }),
     defineField({
+      name: "summary",
+      type: "text",
+    }),
+    defineField({
       name: "image",
       type: "image",
       options: {
