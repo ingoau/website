@@ -1,6 +1,8 @@
 ---
+import FormattedDateTime from "@/components/FormattedDateTime.astro";
 import Layout from "@/layouts/Layout.astro";
-import { postQuery, postsQuery } from "@/lib/sanity/queries";
+import { postQuery, postsQuery, urlFor } from "@/lib/sanity/queries";
+import { Image } from "astro:assets";
 import type { PostsQueryResult, PostQueryResult } from "sanity.types";
 import { sanityClient } from "sanity:client";
 
@@ -21,5 +23,19 @@ if (!post) {
 ---
 
 <Layout title={post.title}>
-  {post.title}
+  <div class="block p-4 border-b border-x">
+    {
+      post.image && post.image.asset && (
+        <Image
+          src={urlFor(post.image.asset).url()}
+          width="1200"
+          height="675"
+          alt=""
+          class="mx-auto max-w-2xl w-full"
+        />
+      )
+    }
+    <h2 class="text-4xl text-primary">{post.title}</h2>
+    <FormattedDateTime date={post.publishedAt ?? ""} format="DATETIME" />
+  </div>
 </Layout>
