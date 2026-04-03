@@ -10,6 +10,10 @@ export const postsQuery = defineQuery(`*[
   && defined(slug.current)
 ]|order(publishedAt desc){_id, title, slug, image, publishedAt}`);
 
+export const postQuery = defineQuery(
+  `*[_type == "post" && slug.current == $slug][0]`,
+);
+
 export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }

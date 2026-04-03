@@ -258,3 +258,25 @@ export type PostsQueryResult = Array<{
   publishedAt: string | null;
 }>;
 
+// Source: src/lib/sanity/queries.ts
+// Variable: postQuery
+// Query: *[_type == "post" && slug.current == $slug][0]
+export type PostQueryResult = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  publishedAt?: string;
+  body?: BlockContent;
+} | null;
+
