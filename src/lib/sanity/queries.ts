@@ -8,7 +8,7 @@ import { sanityClient } from "sanity:client";
 export const postsQuery = defineQuery(`*[
   _type == "post"
   && defined(slug.current)
-]|order(publishedAt desc){_id, title, slug, image, publishedAt}`);
+]|order(publishedAt desc){_id, title, slug, image, publishedAt, summary}`);
 
 export const postQuery = defineQuery(
   `*[_type == "post" && slug.current == $slug][0]`,
