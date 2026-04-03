@@ -31,11 +31,14 @@ const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
                     class="mx-auto max-w-2xl w-full"
                   />
                 )}
-                <h2 class="text-4xl text-primary">{post.title}</h2>
-                <FormattedDateTime
-                  date={post.publishedAt ?? ""}
-                  format="DATETIME"
-                />
+                <div class="space-y-1">
+                  <h2 class="text-4xl text-primary">{post.title}</h2>
+                  <p>{post.summary}</p>
+                  <FormattedDateTime
+                    date={post.publishedAt ?? ""}
+                    format="DATETIME"
+                  />
+                </div>
               </a>
             </li>
           ))
