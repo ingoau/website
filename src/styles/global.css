@@ -181,7 +181,3 @@
     @apply px-8 py-4 w-fit flex justify-center items-center h-full;
   }
 }
-
-@view-transition {
-  navigation: auto;
-}
