@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -181,6 +182,6 @@
   }
 }
 
-/*@view-transition {
-    navigation: auto;
-}*/
+@view-transition {
+  navigation: auto;
+}
