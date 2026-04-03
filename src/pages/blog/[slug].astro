@@ -14,6 +14,10 @@ export const getStaticPaths = async () => {
 };
 
 const post: PostQueryResult = await sanityClient.fetch(postQuery, { slug });
+
+if (!post) {
+  return new Response(null, { status: 404 });
+}
 ---
 
 <Layout>{post.title}</Layout>
