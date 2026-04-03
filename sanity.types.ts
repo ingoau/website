@@ -114,6 +114,7 @@ export type Post = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  summary?: string;
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -243,7 +244,7 @@ export type AllSanitySchemaTypes = SanityImageAssetReference | PostReference | P
 
 // Source: src/lib/sanity/queries.ts
 // Variable: postsQuery
-// Query: *[  _type == "post"  && defined(slug.current)]|order(publishedAt desc){_id, title, slug, image, publishedAt}
+// Query: *[  _type == "post"  && defined(slug.current)]|order(publishedAt desc){_id, title, slug, image, publishedAt, summary}
 export type PostsQueryResult = Array<{
   _id: string;
   title: string | null;
@@ -256,6 +257,7 @@ export type PostsQueryResult = Array<{
     _type: "image";
   } | null;
   publishedAt: string | null;
+  summary: string | null;
 }>;
 
 // Source: src/lib/sanity/queries.ts
@@ -269,6 +271,7 @@ export type PostQueryResult = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  summary?: string;
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
