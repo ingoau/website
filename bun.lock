@@ -27,7 +27,6 @@
         "embla-carousel-wheel-gestures": "^8.1.0",
         "lucide-react": "^0.563.0",
         "luxon": "^3.7.2",
-        "motion": "^12.34.0",
         "nanostores": "^1.1.0",
         "prettier": "^3.8.1",
         "prettier-plugin-astro": "^0.14.1",

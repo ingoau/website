@@ -1,8 +1,8 @@
-import { type Easing } from "motion";
+// import { type Easing } from "motion";
 // import { FaDiscord, FaGit, FaGitAlt, FaGithub, FaGoogle } from "react-icons/fa";
 // import { SiGitlab, SiHackclub, SiVercel } from "react-icons/si";
 
-export const NICE_EASE: Easing | Easing[] = [0.165, 0.84, 0.44, 1.0];
+// export const NICE_EASE: Easing | Easing[] = [0.165, 0.84, 0.44, 1.0];
 
 export const NAVBAR_ITEMS = [
   { url: "/", label: "Home" },
