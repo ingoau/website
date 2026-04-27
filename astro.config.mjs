@@ -43,22 +43,20 @@ export default defineConfig({
 
   compressHTML: true,
 
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Geist Mono",
-        cssVariable: "--font-geist-mono",
-        weights: ["100 900"],
-      },
-      {
-        provider: fontProviders.google(),
-        name: "Outfit",
-        cssVariable: "--font-outfit",
-        weights: ["100 900"],
-      },
-    ],
-  },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Geist Mono",
+      cssVariable: "--font-geist-mono",
+      weights: ["100 900"],
+    },
+    {
+      provider: fontProviders.google(),
+      name: "Outfit",
+      cssVariable: "--font-outfit",
+      weights: ["100 900"],
+    },
+  ],
 
   adapter: cloudflare({ imageService: "compile" }),
 });
