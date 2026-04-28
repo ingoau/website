@@ -38,6 +38,7 @@ export default defineConfig({
       projectId: PUBLIC_SANITY_PROJECT_ID,
       dataset: PUBLIC_SANITY_DATASET,
       studioBasePath: "/admin",
+      useCdn: false,
     }),
   ],
 
