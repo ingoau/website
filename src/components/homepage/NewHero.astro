@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import australiaParrot from "@/assets/australiaparrot.gif";
+import ingoIcon from "@/assets/icon/main.svg";
+import Canberra from "@/assets/canberra.svg";
+import { ArrowRight, Building, ClockIcon, Earth, Mail } from "@lucide/astro";
+import Clock from "@/components/homepage/Clock.astro";
+---
+
+<div class="bg-destructive-foreground/30">
+  <div
+    class="h-10 bg-diagonal-lines bg-fixed border-x sm:px-10 border-b sm:block hidden"
+  >
+    <div class="w-full border-x h-full"></div>
+  </div>
+  <div
+    class="w-full mx-auto flex flex-row h-fit sm:border-x sm:border-b max-w-5xl sm:px-10 bg-diagonal-lines bg-fixed"
+  >
+    <div
+      class="flex flex-row sm:flex-row border-x bg-background w-full divide-x"
+    >
+      <div
+        class="h-40 p-4 flex items-center w-xl relative from-destructive-foreground to-background bg-linear-to-br"
+      >
+        <h1 class="text-5xl font-mono leading-15">
+          G'day, <br /> I'm <span class="text-primary">Ingo Wolf</span>
+        </h1>
+        <div
+          class="w-full h-full top-0 left-0 absolute bg-size-[20px_20px] bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% z-0"
+        >
+        </div>
+      </div>
+      <div class="h-40 flex grow relative overflow-hidden">
+        <Canberra
+          class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-54%] opacity-50"
+        />
+        <div
+          class="z-10 from-card to-transparent bg-linear-to-tr p-4 w-full h-full flex items-end"
+        >
+          <p>
+            Based in <br />
+            <span class="text-primary text-xl">Canberra, Australia</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="h-10 bg-diagonal-lines bg-fixed border-x sm:px-10 border-b sm:block hidden"
+  >
+    <div class="w-full border-x h-full"></div>
+  </div>
+</div>
