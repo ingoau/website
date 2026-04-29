@@ -16,7 +16,8 @@ import HTMLIcon from "~icons/simple-icons/html5";
 import NextIcon from "~icons/simple-icons/nextdotjs";
 
 import ServerIcon from "~icons/ph/hard-drives-fill";
-import InfoIcon from "~icons/ph/info-fill";
+
+import FlagOrpheusTop from "@/assets/hackclub/flag-orpheus-top.svg";
 ---
 
 <div class="bg-destructive-foreground/30">
@@ -71,8 +72,8 @@ import InfoIcon from "~icons/ph/info-fill";
         </div>
       </div>
     </div>
-    <div class="flex flex-row border-x bg-background">
-      <div class="flex flex-col gap-2 p-4 border-r items-center">
+    <div class="flex flex-row border-x bg-background border-b divide-x">
+      <div class="flex flex-col gap-2 p-4 items-center">
         <div class="flex flex-row gap-2 relative">
           <div
             class="absolute top-0 left-0 h-full w-20 from-background to-transparent bg-linear-to-r"
@@ -99,7 +100,7 @@ import InfoIcon from "~icons/ph/info-fill";
         <div class="text-2xl font-mono">Web developer</div>
       </div>
       <div
-        class="flex flex-row gap-4 border-r items-center bg-striped-gradient grow justify-center"
+        class="flex flex-row gap-4 items-center bg-striped-gradient grow justify-center"
       >
         <ServerIcon class="size-6" />
         <div class="text-2xl font-mono">Homelab enthusiast</div>
@@ -110,6 +111,18 @@ import InfoIcon from "~icons/ph/info-fill";
           <br />
           years old
         </div>
+      </div>
+    </div>
+    <div class="flex flex-row border-x bg-background divide-x">
+      <div class="bg-card">
+        <a
+          class="flex flex-col border-r px-8 pb-2 btn-interactive"
+          href="https://hackclub.com"
+          target="_blank"
+        >
+          <FlagOrpheusTop class="h-16 w-fit" />
+          <div class="text-2xl font-mono">Hack Clubber</div>
+        </a>
       </div>
     </div>
   </div>
