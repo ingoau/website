@@ -22,12 +22,14 @@ import Clock from "@/components/homepage/Clock.astro";
       <div
         class="h-40 p-4 flex items-center w-xl relative from-destructive-foreground to-background bg-linear-to-br"
       >
-        <h1 class="text-5xl font-mono leading-15">
-          G'day, <br /> I'm <span class="text-primary">Ingo Wolf</span>
-        </h1>
         <div
           class="w-full h-full top-0 left-0 absolute bg-size-[20px_20px] bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% z-0"
         >
+        </div>
+        <div class="z-10">
+          <h1 class="text-5xl font-mono leading-15">
+            G'day, <br /> I'm <span class="text-primary">Ingo Wolf</span>
+          </h1>
         </div>
       </div>
       <div class="h-40 flex grow relative overflow-hidden">
@@ -35,7 +37,7 @@ import Clock from "@/components/homepage/Clock.astro";
           class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 animate-in zoom-in-50 fade-in duration-2000 delay-500 fill-mode-both"
         />
         <div
-          class="z-10 from-background to-transparent bg-linear-to-tr p-4 w-full h-full flex items-end"
+          class="z-10 from-background/50 to-transparent bg-linear-to-tr p-4 w-full h-full flex items-end"
         >
           <p>
             Based in <br />
