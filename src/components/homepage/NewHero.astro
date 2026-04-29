@@ -5,6 +5,17 @@ import ingoIcon from "@/assets/icon/main.svg";
 import Canberra from "@/assets/canberra.svg";
 import { ArrowRight, Building, ClockIcon, Earth, Mail } from "@lucide/astro";
 import Clock from "@/components/homepage/Clock.astro";
+import ReactIcon from "~icons/simple-icons/react";
+import SvelteIcon from "~icons/simple-icons/svelte";
+import TypeScriptIcon from "~icons/simple-icons/typescript";
+import ViteIcon from "~icons/simple-icons/vite";
+import AstroIcon from "~icons/simple-icons/astro";
+import CSSIcon from "~icons/simple-icons/css";
+import TailwindCSSIcon from "~icons/simple-icons/tailwindcss";
+import HTMLIcon from "~icons/simple-icons/html5";
+import NextIcon from "~icons/simple-icons/nextdotjs";
+
+import ServerIcon from "~icons/ph/hard-drives-fill";
 ---
 
 <div class="bg-destructive-foreground/30">
@@ -14,13 +25,13 @@ import Clock from "@/components/homepage/Clock.astro";
     <div class="w-full border-x h-full"></div>
   </div>
   <div
-    class="w-full mx-auto flex flex-row h-fit sm:border-x sm:border-b max-w-5xl sm:px-10 bg-diagonal-lines bg-fixed"
+    class="w-full mx-auto flex flex-col h-fit sm:border-x sm:border-b max-w-5xl sm:px-10 bg-diagonal-lines bg-fixed"
   >
     <div
-      class="flex flex-row sm:flex-row border-x bg-background w-full divide-x"
+      class="flex flex-row sm:flex-row border-x bg-background w-full divide-x border-b h-40"
     >
       <div
-        class="h-40 p-4 flex items-center w-xl relative from-destructive-foreground to-background bg-linear-to-br"
+        class="p-4 flex items-center w-xl relative from-destructive-foreground to-background bg-linear-to-br"
       >
         <div
           class="w-full h-full top-0 left-0 absolute bg-size-[20px_20px] bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% z-0"
@@ -32,7 +43,7 @@ import Clock from "@/components/homepage/Clock.astro";
           </h1>
         </div>
       </div>
-      <div class="h-40 flex grow relative overflow-hidden">
+      <div class="flex grow relative overflow-hidden">
         <Canberra
           class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 animate-in zoom-in-50 fade-in duration-2000 delay-500 fill-mode-both"
         />
@@ -43,6 +54,47 @@ import Clock from "@/components/homepage/Clock.astro";
             Based in <br />
             <span class="text-primary text-xl">Canberra, Australia</span>
           </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row border-x bg-background">
+      <div class="flex flex-col gap-2 p-4 border-r items-center">
+        <div class="flex flex-row gap-2 relative">
+          <div
+            class="absolute top-0 left-0 h-full w-20 from-background to-transparent bg-linear-to-r"
+          >
+          </div>
+          <div
+            class="absolute top-0 right-0 h-full w-20 from-background to-transparent bg-linear-to-l"
+          >
+          </div>
+          {
+            [
+              ReactIcon,
+              NextIcon,
+              SvelteIcon,
+              TypeScriptIcon,
+              ViteIcon,
+              AstroIcon,
+              TailwindCSSIcon,
+              HTMLIcon,
+              CSSIcon,
+            ].map((Icon, index) => <Icon class="size-6" />)
+          }
+        </div>
+        <div class="text-2xl font-mono">Web developer</div>
+      </div>
+      <div
+        class="flex flex-row gap-4 border-r items-center bg-striped-gradient grow justify-center"
+      >
+        <ServerIcon class="size-6" />
+        <div class="text-2xl font-mono">Homelab enthusiast</div>
+      </div>
+      <div class="px-4 min-w-36 flex items-center">
+        <div>
+          <span class="text-4xl font-mono text-primary">16</span>
+          <br />
+          years old
         </div>
       </div>
     </div>
