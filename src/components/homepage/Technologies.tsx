@@ -10,19 +10,13 @@ import {
 import {
   SiBun,
   SiDocker,
-  SiDrizzle,
-  SiFortinet,
-  SiGithubactions,
-  SiGnubash,
   SiLinux,
   SiNixos,
-  SiReactrouter,
   SiSanity,
   SiTraefikproxy,
   SiTypescript,
   SiUbiquiti,
 } from "react-icons/si";
-import { VscAzure } from "react-icons/vsc";
 
 const technologies = [
   {
