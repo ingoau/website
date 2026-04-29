@@ -2,8 +2,22 @@
 import { Image } from "astro:assets";
 import australiaParrot from "@/assets/australiaparrot.gif";
 import ingoIcon from "@/assets/icon/main.svg";
+import Canberra from "@/assets/canberra.svg";
 import { ArrowRight, Building, ClockIcon, Earth, Mail } from "@lucide/astro";
 import Clock from "@/components/homepage/Clock.astro";
+import ReactIcon from "~icons/simple-icons/react";
+import SvelteIcon from "~icons/simple-icons/svelte";
+import TypeScriptIcon from "~icons/simple-icons/typescript";
+import ViteIcon from "~icons/simple-icons/vite";
+import AstroIcon from "~icons/simple-icons/astro";
+import CSSIcon from "~icons/simple-icons/css";
+import TailwindCSSIcon from "~icons/simple-icons/tailwindcss";
+import HTMLIcon from "~icons/simple-icons/html5";
+import NextIcon from "~icons/simple-icons/nextdotjs";
+
+import ServerIcon from "~icons/ph/hard-drives-fill";
+
+import FlagOrpheusTop from "@/assets/hackclub/flag-orpheus-top.svg";
 ---
 
 <div class="bg-destructive-foreground/30">
@@ -13,117 +27,131 @@ import Clock from "@/components/homepage/Clock.astro";
     <div class="w-full border-x h-full"></div>
   </div>
   <div
-    class="w-full mx-auto flex flex-row h-fit sm:border-x sm:border-b max-w-5xl sm:px-10 bg-diagonal-lines bg-fixed"
+    class="w-full mx-auto flex flex-col h-fit sm:border-x sm:border-b max-w-5xl sm:px-10 bg-diagonal-lines bg-fixed"
   >
-    <div class="flex flex-col sm:flex-row border-x bg-background">
-      <div class="flex flex-col">
-        <div class="flex flex-col border-b">
-          <div
-            class="text-primary border-b w-full p-4 from-destructive-foreground to-background bg-linear-to-br relative"
-          >
-            <div
-              class="z-10 relative flex flex-col sm:flex-row sm:items-end justify-between text-4xl/12 lg:text-5xl/15 font-mono"
-            >
-              <h1 class="">
-                Hello, <br /> I&apos;m Ingo Wolf!
-              </h1>
-              <span class="text-lg text-muted-foreground">
-                <a href="https://en.pronouns.page/@ingowolf" target="_blank">
-                  he/him
-                </a>
-              </span>
-            </div>
-            <div
-              class="w-full h-full top-0 left-0 absolute bg-size-[20px_20px] bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% z-0"
-            >
-            </div>
-          </div>
-          <p class="text-xl p-4">
-            I am a 16 year old tech nerd from Canberra, Australia{" "}
-            <Image
-              loading="eager"
-              src={australiaParrot}
-              width={48}
-              height={48}
-              alt="Australia Parrot"
-              class="inline align-baseline size-6"
-            />
-            . I like building random projects, usually with web technologies, especially
-            Next.js. I also like spinning up docker containers in{" "}
-            <a href="https://notoverkill.com" target="_blank">my homelab</a>
-            and reconfiguring my not at all overkill home network. And when I&apos;m
-            not doing any of that, I&apos;m probably doing schoolwork, reading, walking,
-            or chatting on the{" "}
-            <a
-              href="https://hackclub.com"
-              target="_blank"
-              rel="noopener noreferrer">Hack Club</a
-            >
-            Slack.
-          </p>
+    <div
+      class="flex flex-row sm:flex-row border-x bg-background w-full divide-x border-b h-44"
+    >
+      <div
+        class="p-8 flex items-center w-xl relative from-destructive-foreground to-background bg-linear-to-br"
+      >
+        <div
+          class="w-full h-full top-0 left-0 absolute bg-size-[20px_20px] bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% z-0"
+        >
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 h-full">
-          {
-            [
-              // { text: "Projects", link: "/projects" },
-              { text: "Blog", link: "/blog" },
-              { text: "Contact", link: "/contact" },
-            ].map((item, index) => (
-              <div class="border-b md:border-b-0 md:border-r last:border-0">
-                <a
-                  class="flex flex-row gap-2 items-center justify-center p-4 h-full w-full btn-interactive"
-                  href={item.link}
-                >
-                  {item.text}
-                  <ArrowRight class="size-4" />
-                </a>
-              </div>
-            ))
-          }
+        <div class="z-10">
+          <h1 class="text-5xl font-mono leading-15">
+            G'day, <br /> I'm <span class="text-primary">Ingo Wolf</span>
+          </h1>
+        </div>
+        <div class="absolute top-8 right-8">
+          <a href="https://en.pronouns.page/@ingowolf" target="_blank">
+            he/they
+          </a>
         </div>
       </div>
-      <div class="w-full sm:w-0 min-w-64 sm:border-l">
-        <Image
-          loading="eager"
-          src={ingoIcon}
-          alt="Ingo"
-          class="w-full h-fit border-b hidden sm:block"
+      <div class="flex flex-row items-end grow relative overflow-hidden">
+        <Canberra
+          class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 animate-in zoom-in-50 fade-in duration-2000 delay-500 fill-mode-both spin-in-10"
         />
-        <div class="flex flex-col border-t sm:border-t-0">
+        <div
+          class="z-10 from-background/50 to-transparent bg-linear-to-tr p-4 w-full h-full flex items-end"
+        >
+          <p>
+            Based in <br />
+            <span class="text-primary text-xl">Canberra, Australia</span>
+          </p>
+        </div>
+        <div
+          class="p-2 z-10 text-xs absolute top-0 left-0 opacity-20 hover:opacity-100 transition-opacity"
+        >
+          Map adapted from <a
+            href="https://vectormap.net/free_vector_maps_downloads/free-printable-map-canberra-australia-exact-vector-street-map-fully-editable-adobe-illustrator-adobe-pdf-svg-g-view-level-12-5000-meters-scale-full-vector/"
+            >vectormap.net</a
+          >, under <a href="https://creativecommons.org/licenses/by/4.0/"
+            >CC BY 4.0</a
+          >
+        </div>
+        <div class="absolute bottom-0 right-0 z-10 p-4 font-mono">
+          <Clock />
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row border-x bg-background border-b divide-x">
+      <div class="flex flex-col gap-2 p-4 items-center">
+        <div class="flex flex-row gap-2 relative">
+          <div
+            class="absolute top-0 left-0 h-full w-20 from-background to-transparent bg-linear-to-r"
+          >
+          </div>
+          <div
+            class="absolute top-0 right-0 h-full w-20 from-background to-transparent bg-linear-to-l"
+          >
+          </div>
           {
             [
-              { icon: Earth, content: <>Canberra, Australia</> },
-              {
-                icon: ClockIcon,
-                content: (
-                  <>
-                    <Clock />
-                  </>
-                ),
-              },
-              {
-                icon: Building,
-                content: (
-                  <a
-                    href="https://cloudearth.au"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Cloud Earth
-                  </a>
-                ),
-              },
-              {
-                icon: Mail,
-                content: <a href="mailto:me@ingo.au">me@ingo.au</a>,
-              },
-            ].map((item, index) => (
-              <div class="flex flex-row gap-2 items-center p-4 sm:p-2 border-b sm:last:border-b-0 font-mono">
-                <item.icon class="size-5" /> {item.content}
-              </div>
-            ))
+              ReactIcon,
+              NextIcon,
+              SvelteIcon,
+              TypeScriptIcon,
+              ViteIcon,
+              AstroIcon,
+              TailwindCSSIcon,
+              HTMLIcon,
+              CSSIcon,
+            ].map((Icon, index) => <Icon class="size-6" />)
           }
         </div>
+        <div class="text-2xl font-mono">Web developer</div>
+      </div>
+      <div
+        class="flex flex-row gap-4 items-center bg-striped-gradient grow justify-center"
+      >
+        <ServerIcon class="size-6" />
+        <div class="text-2xl font-mono">Homelab enthusiast</div>
+      </div>
+      <div class="px-4 min-w-36 flex items-center">
+        <div>
+          <span class="text-4xl font-mono text-primary">16</span>
+          <br />
+          years old
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row border-x bg-background divide-x">
+      <div>
+        <a
+          class="flex flex-col px-10 py-8 btn-interactive h-full"
+          href="https://cloudearth.au"
+          target="_blank"
+        >
+          Works at
+          <div class="text-2xl font-mono">Cloud Earth</div>
+        </a>
+      </div>
+      <div class="bg-card">
+        <a
+          class="flex flex-col px-8 pb-2 btn-interactive h-full"
+          href="https://hackclub.com"
+          target="_blank"
+        >
+          <FlagOrpheusTop class="h-16 w-fit" />
+          <div class="text-2xl font-mono">Hack Clubber</div>
+        </a>
+      </div>
+      <div class="grow grid grid-cols-2 divide-x">
+        <a
+          class="flex flex-col px-10 items-center justify-center btn-interactive h-full text-3xl"
+          href="/blog"
+        >
+          Blog
+        </a>
+        <a
+          class="flex flex-col px-10 items-center justify-center btn-interactive h-full text-3xl"
+          href="/contact"
+        >
+          Contact
+        </a>
       </div>
     </div>
   </div>
