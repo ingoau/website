@@ -28,8 +28,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
-    "embla-carousel-react": "^8.6.0",
-    "embla-carousel-wheel-gestures": "^8.1.0",
     "eslint": "^10.2.1",
     "eslint-plugin-astro": "^1.7.0",
     "lucide-react": "^1.14.0",
