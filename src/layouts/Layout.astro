@@ -12,7 +12,9 @@ const {
   title,
   description,
   image,
-}: { title?: string; description?: string; image?: string } = Astro.props;
+  pageType,
+}: { title?: string; description?: string; image?: string; pageType?: string } =
+  Astro.props;
 ---
 
 <!doctype html>
@@ -34,7 +36,7 @@ const {
       content={(title ?? "Ingo's Site") + (title && " | Ingo's Site")}
     />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={pageType ?? "website"} />
     <meta property="og:url" content={Astro.url.href} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />

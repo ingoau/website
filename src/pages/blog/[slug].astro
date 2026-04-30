@@ -27,6 +27,7 @@ if (!post) {
   title={post.title}
   description={post.summary}
   image={post.image && post.image.asset && urlFor(post.image.asset).url()}
+  pageType="article"
 >
   <div class="block border-x border-b p-4">
     {
