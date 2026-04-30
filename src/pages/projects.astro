@@ -1,5 +1,41 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { projectsQuery, urlFor } from "@/lib/sanity/queries";
+import { Image } from "astro:assets";
+import type { Project } from "sanity.types";
+import { sanityClient } from "sanity:client";
+
+const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
 ---
 
-<Layout title="Projects" />
+<Layout title="Projects">
+  <div class="grid grid-cols-2 border-l">
+    {
+      projects.map((project, index) => (
+        <div class="flex flex-col border-r border-b">
+          {project.mainImage && project.mainImage.asset && (
+            <Image
+              src={urlFor(project.mainImage)
+                .width(800)
+                .height(450)
+                .fit("crop")
+                .auto("format")
+                .url()}
+              alt={project.title ?? ""}
+              width="800"
+              height="450"
+              class="aspect-video w-full object-cover border-b"
+            />
+          )}
+          <h2 class="w-full p-4 text-2xl border-b">{project.title}</h2>
+          <p class="p-4">{project.description}</p>
+        </div>
+      ))
+    }
+    {
+      projects.length % 2 === 1 && (
+        <div class="bg-striped-gradient border-b border-r hidden md:block" />
+      )
+    }
+  </div>
+</Layout>
