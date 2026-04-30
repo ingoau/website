@@ -13,9 +13,20 @@ interface Props {
 const { node } = Astro.props;
 ---
 
-<Code
-  code={node.code}
-  lang={node.language as CodeLanguage}
-  wrap
-  theme="catppuccin-mocha"
-/>
+<div class="not-prose -mx-4 p-4 bg-diagonal-lines border-y relative">
+  <div class="top-0 left-0 absolute border-b h-4 w-full"></div>
+  <div class="bottom-0 left-0 absolute border-t h-4 w-full"></div>
+  <div class="top-0 left-0 absolute border-r h-full w-4"></div>
+  <div class="top-0 right-0 absolute border-l h-full w-4"></div>
+  <div class="border-b bg-background flex">
+    <div class="p-2 px-4 font-mono">{node.language}</div>
+    <button class="ml-auto px-4 btn-interactive border-l">Copy</button>
+  </div>
+  <Code
+    class="p-4"
+    code={node.code}
+    lang={node.language as CodeLanguage}
+    wrap
+    theme="catppuccin-mocha"
+  />
+</div>
