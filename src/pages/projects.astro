@@ -29,6 +29,17 @@ const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
           )}
           <h2 class="w-full p-4 text-2xl border-b">{project.title}</h2>
           <p class="p-4">{project.description}</p>
+          <div class="w-full flex flex-row mt-auto border-t">
+            {project.links?.map((link) => (
+              <a
+                class="px-4 py-2 border-r btn-interactive"
+                target="_blank"
+                href={link.url}
+              >
+                {link.title}
+              </a>
+            ))}
+          </div>
         </div>
       ))
     }
