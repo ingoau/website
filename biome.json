@@ -9,8 +9,7 @@
     "includes": ["**", "!!**/dist", "!!sanity.types.ts"]
   },
   "formatter": {
-    "enabled": true,
-    "indentStyle": "space"
+    "enabled": false
   },
   "linter": {
     "enabled": true,
