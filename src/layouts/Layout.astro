@@ -72,7 +72,7 @@ const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
     {
       metaTags &&
         Object.entries(metaTags).map(([key, value]) => (
-          <meta name={key} content={value} />
+          <meta property={key} content={value} />
         ))
     }
 

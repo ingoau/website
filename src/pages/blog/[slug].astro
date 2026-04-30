@@ -25,6 +25,7 @@ if (!post) {
 
 const postImage = post.image?.asset && urlFor(post.image.asset).url();
 const postUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const postDate = post.publishedAt ?? post._createdAt;
 const blogPostingSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -51,8 +52,8 @@ const blogPostingSchema = {
     "@id": "https://ingo.au/#website",
   },
   inLanguage: "en-AU",
-  datePublished: post.publishedAt,
-  dateModified: post._updatedAt,
+  datePublished: postDate,
+  dateModified: postDate,
   ...(postImage && { image: postImage }),
 } satisfies WithContext<BlogPosting>;
 ---
@@ -62,6 +63,10 @@ const blogPostingSchema = {
   description={post.summary}
   image={postImage}
   jsonLdSchemas={[blogPostingSchema]}
+  metaTags={{
+    "article:published_time": postDate,
+    "article:modified_time": postDate,
+  }}
   pageType="article"
 >
   <div class="block border-x border-b p-4">
