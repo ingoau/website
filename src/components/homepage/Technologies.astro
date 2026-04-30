@@ -125,7 +125,7 @@ const desktopPlaceholders = placeholders(5);
     {
       technologies.map((item, index) => (
         <div
-          class={cn(
+          class:list={cn(
             "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
             index % 2 === 0 ? "" : "bg-diagonal-lines",
           )}
@@ -138,7 +138,7 @@ const desktopPlaceholders = placeholders(5);
     {
       mobilePlaceholders.map((_, index) => (
         <div
-          class={cn(
+          class:list={cn(
             "block md:hidden border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
             (technologies.length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
           )}
@@ -148,7 +148,7 @@ const desktopPlaceholders = placeholders(5);
     {
       desktopPlaceholders.map((_, index) => (
         <div
-          class={cn(
+          class:list={cn(
             "hidden md:block border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
             (technologies.length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
           )}
