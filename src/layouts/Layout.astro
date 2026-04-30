@@ -7,14 +7,21 @@ import Search from "../components/Search.tsx";
 import Pagering from "@/components/Pagering.astro";
 import Posthog from "@/components/Posthog.astro";
 import { Schema } from "astro-seo-schema";
+import type { ComponentProps } from "astro/types";
 
 const {
   title,
   description,
   image,
   pageType,
-}: { title?: string; description?: string; image?: string; pageType?: string } =
-  Astro.props;
+  jsonLdSchemas,
+}: {
+  title?: string;
+  description?: string;
+  image?: string;
+  pageType?: string;
+  jsonLdSchemas?: ComponentProps<typeof Schema>["item"][];
+} = Astro.props;
 
 const pageTitle = title ? `${title} | Ingo's Site` : "Ingo's Site";
 ---
@@ -79,6 +86,8 @@ const pageTitle = title ? `${title} | Ingo's Site` : "Ingo's Site";
         pronouns: "he/they",
       }}
     />
+
+    {jsonLdSchemas && jsonLdSchemas.map((schema) => <Schema item={schema} />)}
 
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />
