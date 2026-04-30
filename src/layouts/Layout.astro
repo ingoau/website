@@ -8,8 +8,11 @@ import Pagering from "@/components/Pagering.astro";
 import Posthog from "@/components/Posthog.astro";
 import { Schema } from "astro-seo-schema";
 
-const { title, description }: { title?: string; description?: string } =
-  Astro.props;
+const {
+  title,
+  description,
+  image,
+}: { title?: string; description?: string; image?: string } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,8 +38,8 @@ const { title, description }: { title?: string; description?: string } =
     <meta property="og:url" content={Astro.url.href} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    <meta property="og:image" content="https://ingo.au/og.png" />
-    <meta name="twitter:image" content="https://ingo.au/og.png" />
+    <meta property="og:image" content={image ?? "https://ingo.au/og.png"} />
+    <meta name="twitter:image" content={image ?? "https://ingo.au/og.png"} />
 
     <Schema
       item={{
