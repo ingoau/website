@@ -1,0 +1,106 @@
+---
+import { Image } from "astro:assets";
+
+const buttons = [
+  {
+    src: "/buttons/ingo.png",
+    alt: "Ingo",
+    href: "https://ingo.au",
+  },
+  {
+    src: "/buttons/slitro.png",
+    alt: "Slitro Studio",
+    href: "https://site.slitrostudio.me/",
+  },
+  {
+    src: "/buttons/codingcorner.png",
+    alt: "Coding Corner",
+    href: "https://codingcorner.dev",
+  },
+  {
+    src: "/buttons/dwait.jpg",
+    alt: "Dwait Pandhi",
+    href: "https://www.dwait.dev/",
+  },
+  {
+    src: "/buttons/hexaa.gif",
+    alt: "Hexaa",
+    href: "https://hexaa.sh/",
+  },
+  {
+    src: "/buttons/alexander.gif",
+    alt: "alexander.",
+    href: "https://yaoi.tech",
+  },
+  {
+    src: "/buttons/iris.png",
+    alt: "Iris",
+    href: "https://gotlobotomy.tech/",
+  },
+  {
+    src: "/buttons/gideon.gif",
+    alt: "Gideon",
+    href: "https://gideon.sh",
+  },
+  {
+    src: "/buttons/convex.gif",
+    alt: "Convex",
+    href: "https://convex.dev",
+  },
+  {
+    src: "/buttons/ctp.webp",
+    alt: "Catppuccin",
+    href: "https://catppuccin.com",
+  },
+  {
+    src: "/buttons/github.png",
+    alt: "GitHub",
+    href: "https://github.com",
+  },
+  {
+    src: "/buttons/hackclub.gif",
+    alt: "Hack Club",
+    href: "https://hackclub.com",
+  },
+  {
+    src: "/buttons/home-assistant.gif",
+    alt: "Home Assistant",
+    href: "https://home-assistant.io",
+  },
+  {
+    src: "/buttons/macosmade.gif",
+    alt: "Made with macos",
+    href: "https://en.wikipedia.org/wiki/MacOS",
+  },
+  {
+    src: "/buttons/ultrafastparrot.gif",
+    alt: "Ultrafastparrot Cult",
+    href: "https://ultrafastparrot.net",
+  },
+  {
+    src: "/buttons/notoverkill.gif",
+    alt: "Notoverkill",
+    href: "https://notoverkill.com",
+  },
+];
+---
+
+<div class="bg-background flex flex-col border-x">
+  <div class="flex items-center justify-between border-b">
+    <div class="grow px-2 font-mono">88x31 Buttons</div>
+    <a
+      class="btn-interactive border-l px-4 py-2"
+      download
+      href="/buttons/ingo.png">Download my button</a
+    >
+  </div>
+  <div class="mx-auto grid w-fit grid-cols-3 gap-2 p-2 sm:grid-cols-4">
+    {
+      buttons.map((button) => (
+        <a class="block h-[31px] w-[88px] object-cover" href={button.href}>
+          <Image alt={button.alt} height={31} src={button.src} width={88} />
+        </a>
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,202 @@
+---
+import { cn } from "@/lib/utils";
+import { DateTime } from "luxon";
+import HackatimeSkeleton from "./HackatimeSkeleton.astro";
+
+const HACKATIME_TIMEOUT_MS = 5000;
+
+type HackatimeLanguage = {
+  name: string;
+  total_seconds: number;
+  text: string;
+  hours: number;
+  minutes: number;
+  percent: number;
+  digital: string;
+};
+
+type HackatimeStats = {
+  data?: {
+    human_readable_total?: string;
+    languages?: HackatimeLanguage[];
+  };
+};
+
+async function fetchHackatimeStats(url: string) {
+  try {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(HACKATIME_TIMEOUT_MS),
+    });
+
+    if (!response.ok) return null;
+
+    return (await response.json()) as HackatimeStats;
+  } catch {
+    return null;
+  }
+}
+
+function getReadableTotal(stats: HackatimeStats | null) {
+  return stats?.data?.human_readable_total?.replace(/\s*\d+s$/, "") || "None";
+}
+
+// Helper function to deduplicate and merge languages
+function deduplicateLanguages(languages: HackatimeLanguage[]) {
+  const languageMap = new Map();
+
+  // Combine duplicate languages
+  languages.forEach((lang) => {
+    const existing = languageMap.get(lang.name);
+    if (existing) {
+      existing.total_seconds += lang.total_seconds;
+    } else {
+      languageMap.set(lang.name, { ...lang });
+    }
+  });
+
+  // Convert back to array and recalculate percentages
+  const merged = Array.from(languageMap.values());
+  const totalSeconds = merged.reduce(
+    (sum, lang) => sum + lang.total_seconds,
+    0,
+  );
+
+  if (totalSeconds === 0) return [];
+
+  // Recalculate all fields based on new total_seconds
+  merged.forEach((lang) => {
+    lang.percent =
+      Math.round((lang.total_seconds / totalSeconds) * 100 * 100) / 100;
+    lang.hours = Math.floor(lang.total_seconds / 3600);
+    lang.minutes = Math.floor((lang.total_seconds % 3600) / 60);
+    const seconds = lang.total_seconds % 60;
+    lang.digital = `${String(lang.hours).padStart(2, "0")}:${String(lang.minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    lang.text =
+      lang.hours > 0 ? `${lang.hours}h ${lang.minutes}m` : `${lang.minutes}m`;
+  });
+
+  // Sort by total_seconds descending
+  return merged.sort((a, b) => b.total_seconds - a.total_seconds);
+}
+
+const allTimeStats = await fetchHackatimeStats(
+  "https://hackatime.hackclub.com/api/v1/users/ingo/stats",
+);
+
+// I hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones
+const startOfToday = DateTime.now()
+  .setZone("Australia/Sydney")
+  .startOf("day")
+  .toUTC()
+  .toISO();
+
+const endOfToday = DateTime.now()
+  .setZone("Australia/Sydney")
+  .startOf("day")
+  .plus({ hours: 24 })
+  .toUTC()
+  .toISO();
+
+const date7DaysAgo = DateTime.now()
+  .setZone("Australia/Sydney")
+  .startOf("day")
+  .minus({ days: 6 })
+  .toUTC()
+  .toISO();
+
+const dayStatsData = await fetchHackatimeStats(
+  `https://hackatime.hackclub.com/api/v1/users/ingo/stats?start_date=${startOfToday}&end_date=${endOfToday}`,
+);
+
+const weekStatsData = await fetchHackatimeStats(
+  `https://hackatime.hackclub.com/api/v1/users/ingo/stats?start_date=${date7DaysAgo}&end_date=${endOfToday}`,
+);
+
+const hasStats = Boolean(allTimeStats?.data);
+
+const quickStats = [
+  {
+    title: "Total Coding Time",
+    value: getReadableTotal(allTimeStats),
+    className: "col-span-14 bg-diagonal-lines",
+  },
+  {
+    title: "This Week",
+    value: getReadableTotal(weekStatsData),
+    className: "col-span-9",
+  },
+  {
+    title: "Today",
+    value: getReadableTotal(dayStatsData),
+    className: "col-span-9",
+  },
+];
+const data = {
+  quickStats,
+  languages: deduplicateLanguages(allTimeStats?.data?.languages ?? []).slice(
+    0,
+    10,
+  ),
+};
+---
+
+<div class="mx-auto w-full max-w-5xl">
+  {
+    hasStats ? (
+      <div class="grid grid-cols-1 border-l md:grid-cols-32">
+        {data?.quickStats.map((stat, index) => (
+          <div
+            class:list={cn(
+              stat.className,
+              "flex h-28 flex-col items-center justify-center border-r border-b p-4",
+            )}
+          >
+            <div class="text-primary font-mono text-4xl">{stat.value}</div>
+            <div>{stat.title}</div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <>
+        <div class="border-x border-b p-4 text-center">
+          Coding stats are unavailable right now.
+        </div>
+      </>
+    )
+  }
+  <div class="grid grid-cols-1 border-l sm:grid-cols-2">
+    {
+      data?.languages.map(
+        (
+          lang: {
+            name: string;
+            total_seconds: number;
+            text: string;
+            hours: number;
+            minutes: number;
+            percent: number;
+            digital: string;
+          },
+          index: number,
+        ) => (
+          <div class="flex flex-row items-center border-r border-b">
+            <div class="bg-card z-10 flex aspect-square size-14 items-center justify-center border-r font-mono text-xl">
+              {index + 1}
+            </div>
+            <div class="relative flex w-full flex-row overflow-hidden">
+              <div class="z-10 p-4">{lang.name}</div>
+              <div class="grow" />
+              <div class="z-10 p-4 font-mono">{lang.percent.toFixed(2)}%</div>
+              <div
+                class="bg-card bg-striped-gradient animate-in slide-in-from-left absolute top-0 left-0 z-0 h-full"
+                style={{
+                  width: `${lang.percent}%`,
+                }}
+              />
+            </div>
+          </div>
+        ),
+      )
+    }
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<time id="clock">00:00 AM</time>
+
+<script>
+  const getTime = (): string => {
+    const date = new Date();
+    return date.toLocaleString("en-US", {
+      timeZone: "Australia/Sydney",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
+
+  const clockElement = document.getElementById("clock")!;
+  clockElement.textContent = getTime();
+  setInterval(() => {
+    clockElement.textContent = getTime();
+  }, 100);
+</script>

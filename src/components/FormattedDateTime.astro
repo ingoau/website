@@ -1,0 +1,65 @@
+---
+import { DateTime } from "luxon";
+
+const FORMATS = {
+  DATE: "d MMM yyyy",
+  TIME: "h:mm a",
+  DATETIME: "d MMM yyyy, h:mm a",
+} as const;
+
+type FormatKey = keyof typeof FORMATS;
+
+interface Props {
+  date: string;
+  format: FormatKey;
+}
+
+const { date, format } = Astro.props as Props;
+
+const formattedDateTime = DateTime.fromISO(date)
+  .setZone("Australia/Sydney")
+  .toFormat(FORMATS[format]);
+---
+
+<time
+  data-date={date}
+  data-format={format}
+  data-formatted-date-time
+  datetime={date}
+>
+  {formattedDateTime}
+</time>
+
+<script>
+  import { DateTime } from "luxon";
+
+  const FORMATS = {
+    DATE: "d MMM yyyy",
+    TIME: "h:mm a",
+    DATETIME: "d MMM yyyy, h:mm a",
+  };
+
+  const upgradeFormattedDateTimes = () => {
+    document
+      .querySelectorAll("[data-formatted-date-time]")
+      .forEach((element) => {
+        if (!(element instanceof HTMLTimeElement)) {
+          return;
+        }
+
+        const date = element.dataset.date;
+        const format = element.dataset.format;
+
+        if (!date || !format || !(format in FORMATS)) {
+          return;
+        }
+
+        element.textContent = DateTime.fromISO(date)
+          .setZone("local")
+          .toFormat(FORMATS[format as keyof typeof FORMATS]);
+      });
+  };
+
+  upgradeFormattedDateTimes();
+  document.addEventListener("astro:page-load", upgradeFormattedDateTimes);
+</script>

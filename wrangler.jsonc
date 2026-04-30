@@ -1,0 +1,17 @@
+{
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "name": "ingo-website",
+  "compatibility_date": "2026-02-02",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public",
+    "fetch_iterable_type_support",
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist",
+  },
+  "observability": {
+    "enabled": true,
+  },
+}

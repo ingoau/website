@@ -1,0 +1,101 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { Font } from "astro:assets";
+import Search from "../components/Search.tsx";
+import Pagering from "@/components/Pagering.astro";
+import Posthog from "@/components/Posthog.astro";
+import type { Thing, WithContext, WebSite } from "schema-dts";
+
+type JsonLdSchema = WithContext<Thing>;
+
+const {
+  title,
+  description,
+  image,
+  pageType,
+  jsonLdSchemas,
+  metaTags,
+}: {
+  title?: string;
+  description?: string;
+  image?: string;
+  pageType?: string;
+  jsonLdSchemas?: JsonLdSchema[];
+  metaTags?: Record<string, string>;
+} = Astro.props;
+
+const pageTitle = title ? `${title} | Ingo's Site` : "Ingo's Site";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://ingo.au/#website",
+  name: "ingo.au",
+  url: "https://ingo.au",
+  description:
+    "Personal website of Ingo Wolf, a web developer from Canberra, Australia.",
+  inLanguage: "en-AU",
+  publisher: {
+    "@type": "Person",
+    "@id": "https://ingo.au/#person",
+    name: "Ingo Wolf",
+  },
+} satisfies WithContext<WebSite>;
+
+const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width" name="viewport" />
+    <link href="/icons/rounded.svg" rel="icon" type="image/svg+xml" />
+    <link href="/favicon.ico" rel="icon" />
+
+    <link href="/sitemap-index.xml" rel="sitemap" />
+
+    <meta content={Astro.generator} name="generator" />
+
+    <!-- Seo tags -->
+    {description && <meta content={description} name="description" />}
+    <meta content={pageTitle} property="og:title" />
+    <meta content={description} property="og:description" />
+    <meta content={pageType ?? "website"} property="og:type" />
+    <meta content={Astro.url.href} property="og:url" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <link href={new URL(Astro.url.pathname, Astro.site)} rel="canonical" />
+    <meta content={image ?? "https://ingo.au/og.png"} property="og:image" />
+    <meta content={image ?? "https://ingo.au/og.png"} name="twitter:image" />
+    {
+      metaTags &&
+        Object.entries(metaTags).map(([key, value]) => (
+          <meta content={value} property={key} />
+        ))
+    }
+
+    {
+      schemas.map((schema) => (
+        <script set:html={JSON.stringify(schema)} type="application/ld+json" />
+      ))
+    }
+
+    <Font cssVariable="--font-geist-mono" preload transition:persist />
+    <Font cssVariable="--font-outfit" preload transition:persist />
+    <title>{pageTitle}</title>
+    <Posthog />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <Navbar />
+    <Search client:idle />
+    <div class="w-full px-4">
+      <main class="bg-background mx-auto w-full max-w-5xl">
+        <slot />
+      </main>
+    </div>
+    <Footer />
+    <Pagering />
+  </body>
+</html>

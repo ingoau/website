@@ -1,0 +1,174 @@
+---
+import { Image } from "astro:assets";
+import australiaParrot from "@/assets/australiaparrot.gif";
+import ingoIcon from "@/assets/icon/main.svg";
+import Canberra from "@/assets/canberra.svg";
+import Clock from "@/components/homepage/Clock.astro";
+import ReactIcon from "~icons/simple-icons/react";
+import SvelteIcon from "~icons/simple-icons/svelte";
+import TypeScriptIcon from "~icons/simple-icons/typescript";
+import ViteIcon from "~icons/simple-icons/vite";
+import AstroIcon from "~icons/simple-icons/astro";
+import CSSIcon from "~icons/simple-icons/css";
+import TailwindCSSIcon from "~icons/simple-icons/tailwindcss";
+import HTMLIcon from "~icons/simple-icons/html5";
+import NextIcon from "~icons/simple-icons/nextdotjs";
+
+import ServerIcon from "~icons/material-symbols/dns";
+
+import FlagOrpheusTop from "@/assets/hackclub/flag-orpheus-top.svg";
+---
+
+<div class="bg-destructive-foreground/30">
+  <div
+    class="bg-diagonal-lines hidden h-10 border-x border-b bg-fixed md:block md:px-10"
+  >
+    <div class="h-full w-full border-x"></div>
+  </div>
+  <div
+    class="bg-diagonal-lines mx-auto flex h-fit w-full max-w-5xl flex-col bg-fixed md:border-x md:border-b md:px-10"
+  >
+    <div
+      class="bg-background flex w-full flex-col divide-x border-x border-b md:h-44 md:flex-row"
+    >
+      <div
+        class="from-destructive-foreground to-background relative flex items-center bg-linear-to-br p-4 md:w-xl md:p-8"
+      >
+        <div
+          class="absolute top-0 left-0 z-0 h-full w-full bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% bg-size-[20px_20px]"
+        >
+        </div>
+        <div class="z-10">
+          <h1 class="font-mono text-4xl md:text-5xl md:leading-15">
+            G'day, <br /> I'm <span class="text-primary">Ingo Wolf</span>
+          </h1>
+        </div>
+        <div class="absolute top-4 right-4 md:top-8 md:right-8">
+          <a
+            href="https://en.pronouns.page/@ingowolf"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            he/they
+          </a>
+        </div>
+      </div>
+      <div
+        class="relative flex h-52 grow flex-row items-end overflow-hidden border-t md:h-full md:border-t-0"
+      >
+        <Canberra
+          class="animate-in zoom-in-60 fade-in fill-mode-both spin-in-10 absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 delay-500 duration-2000 ease-out"
+        />
+        <div
+          class="from-background/50 z-10 flex h-full w-full items-end bg-linear-to-tr to-transparent p-4"
+        >
+          <p>
+            Based in <br />
+            <span class="text-primary text-xl">Canberra, Australia</span>
+          </p>
+        </div>
+        <div
+          class="absolute top-0 left-0 z-10 p-2 text-xs opacity-20 transition-opacity hover:opacity-100"
+        >
+          Map adapted from <a
+            href="https://vectormap.net/free_vector_maps_downloads/free-printable-map-canberra-australia-exact-vector-street-map-fully-editable-adobe-illustrator-adobe-pdf-svg-g-view-level-12-5000-meters-scale-full-vector/"
+            >vectormap.net</a
+          >, under <a href="https://creativecommons.org/licenses/by/4.0/"
+            >CC BY 4.0</a
+          >
+        </div>
+        <div class="absolute right-0 bottom-0 z-10 p-4 font-mono">
+          <Clock />
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-background flex flex-col divide-y border-x border-b md:flex-row md:divide-x md:divide-y-0"
+    >
+      <div class="flex flex-col items-center gap-2 p-4">
+        <div class="relative flex flex-row gap-2">
+          <div
+            class="from-background absolute top-0 left-0 h-full w-20 bg-linear-to-r to-transparent"
+          >
+          </div>
+          <div
+            class="from-background absolute top-0 right-0 h-full w-20 bg-linear-to-l to-transparent"
+          >
+          </div>
+          {
+            [
+              ReactIcon,
+              NextIcon,
+              SvelteIcon,
+              TypeScriptIcon,
+              ViteIcon,
+              AstroIcon,
+              TailwindCSSIcon,
+              HTMLIcon,
+              CSSIcon,
+            ].map((Icon, index) => <Icon class="size-6" />)
+          }
+        </div>
+        <div class="font-mono text-2xl">Web developer</div>
+      </div>
+      <div
+        class="bg-striped-gradient flex min-h-16 grow flex-row items-center justify-center gap-4"
+      >
+        <ServerIcon class="size-6" />
+        <div class="font-mono text-2xl">Homelab enthusiast</div>
+      </div>
+      <div class="flex min-w-36 items-center p-4">
+        <div>
+          <span class="text-primary font-mono text-4xl">16</span>
+          <br />
+          years old
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-background flex flex-col divide-y border-x md:flex-row md:divide-x md:divide-y-0"
+    >
+      <div>
+        <a
+          class="btn-interactive flex h-full flex-col justify-center p-4 text-nowrap"
+          href="https://cloudearth.au"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Works at
+          <div class="font-mono text-2xl">Cloud Earth</div>
+        </a>
+      </div>
+      <div>
+        <a
+          class="btn-interactive flex h-full flex-col px-4 pb-4 md:px-4"
+          href="https://hackclub.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <FlagOrpheusTop class="h-14 w-fit" />
+          <div class="font-mono text-2xl text-nowrap">Hack Clubber</div>
+        </a>
+      </div>
+      <div class="grid grow grid-cols-2 divide-x border-b md:border-b-0">
+        <a
+          class="btn-interactive flex h-full flex-col items-center justify-center p-4 text-3xl"
+          href="/blog"
+        >
+          Blog
+        </a>
+        <a
+          class="btn-interactive flex h-full flex-col items-center justify-center p-4 text-3xl"
+          href="/contact"
+        >
+          Contact
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    class="bg-diagonal-lines hidden h-10 border-x border-b bg-fixed md:block md:px-10"
+  >
+    <div class="h-full w-full border-x"></div>
+  </div>
+</div>

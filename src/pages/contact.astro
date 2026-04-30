@@ -1,0 +1,110 @@
+---
+import Header from "@/components/Header.astro";
+import Layout from "@/layouts/Layout.astro";
+import { cn } from "@/lib/utils";
+
+const contactMethods = [
+  {
+    title: "Signal",
+    subtitle: "ingo.392",
+    url: "https://signal.me/#eu/aON_wvkns7bfeU-UAj_09B1Yym8WVC2QIWWV8rIhYZzPc2xGLUtBeLWMc9LJoWNB",
+    preferred: true,
+  },
+  {
+    title: "Email",
+    subtitle: "me@ingo.au",
+    url: "mailto:me@ingo.au",
+  },
+  {
+    title: "Whatsapp",
+    subtitle: "Ingo Wolf",
+    url: "https://wa.me/qr/2I6NBPFBJV3UN1",
+  },
+  {
+    title: "Discord",
+    subtitle: "@ingo.au",
+    url: "https://discord.com/users/907855965934714930",
+  },
+];
+
+const socials = [
+  { name: "GitLab", username: "ingowolf", link: "https://gitlab.com/ingowolf" },
+  {
+    name: "Monkeytype",
+    username: "ingow",
+    link: "https://monkeytype.com/profile/ingow",
+  },
+  {
+    name: "Scrapbook",
+    username: "ingo",
+    link: "https://scrapbook.hackclub.com/ingo",
+  },
+  {
+    name: "Spotify",
+    username: "Ingo Wolf",
+    link: "https://open.spotify.com/user/31fo6w35yvebzqgz53cczfuro3bi",
+  },
+  {
+    name: "Last.fm",
+    username: "ingoau",
+    link: "https://last.fm/user/ingoau",
+  },
+  {
+    name: "Nitrotype",
+    username: "ingowolf",
+    link: "https://www.nitrotype.com/racer/ingowolf",
+  },
+];
+---
+
+<Layout
+  description="Contact Ingo for any inquiries or collaborations"   title="Contact"
+>
+  <div class="w-full border-l">
+    <Header class="border-r"> Contact </Header>
+    <div class="grid sm:grid-cols-2">
+      {
+        contactMethods.map((method) => (
+          <div class="h-full w-full border-r border-b">
+            <a
+              class:list={cn(
+                "btn-interactive block p-4",
+                method.preferred
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                  : "",
+              )}
+              href={method.url}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <h1 class="text-2xl">
+                {method.title} {method.preferred ? "(Preferred)" : ""}
+              </h1>
+              <p class="font-mono text-lg">{method.subtitle}</p>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+    <div class="border-r border-b p-4">
+      <h2 class="text-2xl">Socials</h2>
+    </div>
+    <div class="grid sm:grid-cols-3">
+      {
+        socials.map((social) => (
+          <div class="h-full w-full border-r border-b">
+            <a
+              class:list={cn("btn-interactive block p-4")}
+              href={social.link}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <h1 class="text-2xl">{social.name}</h1>
+              <p class="font-mono text-lg">{social.username}</p>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

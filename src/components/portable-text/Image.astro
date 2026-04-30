@@ -1,0 +1,21 @@
+---
+import { urlFor } from "@/lib/sanity/queries";
+import { Image as ImageComponent } from "astro:assets";
+
+export interface Props {
+  node: {
+    alt: string;
+    asset: {
+      _ref: string;
+    };
+  };
+}
+
+const { node } = Astro.props;
+const { alt, asset } = node;
+
+const image = urlFor(asset._ref);
+const src = image.url();
+---
+
+<ImageComponent alt={alt} class="mx-auto" inferSize={true} src={src} />

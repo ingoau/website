@@ -1,0 +1,52 @@
+---
+import { cn } from "@/lib/utils";
+
+const quickStats = [
+  {
+    title: "Total Coding Time",
+    className: "col-span-14 bg-diagonal-lines",
+  },
+  {
+    title: "This Week",
+    className: "col-span-9",
+  },
+  {
+    title: "Today",
+    className: "col-span-9",
+  },
+];
+---
+
+<div class="mx-auto w-full max-w-5xl">
+  <div class="grid grid-cols-1 border-l md:grid-cols-32">
+    {
+      quickStats.map((stat, index) => (
+        <div
+          class:list={cn(
+            stat.className,
+            "flex h-28 flex-col items-center justify-center border-r border-b p-4",
+          )}
+        >
+          <div class="bg-muted mb-2 h-9 w-32 rounded" />
+          <div class="bg-muted h-4 w-24 rounded" />
+        </div>
+      ))
+    }
+  </div>
+  <div class="grid grid-cols-1 border-l sm:grid-cols-2">
+    {
+      Array.from({ length: 10 }).map((_, index) => (
+        <div class="flex flex-row items-center border-r border-b">
+          <div class="bg-card z-10 flex aspect-square size-14 items-center justify-center border-r text-xl">
+            <div class="bg-muted h-6 w-6 rounded" />
+          </div>
+          <div class="relative flex w-full flex-row p-4">
+            <div class="bg-muted h-5 w-24 rounded" />
+            <div class="grow" />
+            <div class="bg-muted h-5 w-16 rounded" />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

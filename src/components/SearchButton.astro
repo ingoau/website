@@ -1,0 +1,33 @@
+<div class="w-fit border-l">
+  <button
+    class="menu-item btn-interactive cursor-pointer gap-2 px-6 md:px-8"
+    id="search-button"
+  >
+    <span class="hidden md:block"> More </span>
+    <span class="md:hidden">Menu</span>
+    <span class="sr-only">Menu</span>
+  </button>
+</div>
+
+<script>
+  import { isMenuOpen } from "@/lib/state";
+
+  document.getElementById("search-button")?.addEventListener("click", () => {
+    isMenuOpen.set(true);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (
+      // Mod pressed
+      (e.metaKey || e.ctrlKey) &&
+      // K pressed
+      e.key === "k" &&
+      // Not focused on an input or textarea
+      !document.activeElement?.matches("input, textarea")
+    ) {
+      e.preventDefault();
+      isMenuOpen.set(true);
+      return false;
+    }
+  });
+</script>

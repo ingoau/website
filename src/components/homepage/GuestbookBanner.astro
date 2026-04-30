@@ -1,0 +1,23 @@
+---
+import ChevronRightIcon from "~icons/material-symbols/chevron-right-rounded";
+---
+
+<div class="bg-diagonal-lines relative border-x border-b p-6">
+  <div class="absolute top-0 left-0 h-6 w-full border-b"></div>
+  <div class="absolute bottom-0 left-0 h-6 w-full border-t"></div>
+  <div class="absolute top-0 left-0 h-full w-6 border-r"></div>
+  <div class="absolute top-0 right-0 h-full w-6 border-l"></div>
+  <div class="bg-card flex flex-col sm:flex-row">
+    <div class="p-4 text-center text-lg">Say Hello in my guestbook :)</div>
+    <div class="grow"></div>
+    <div class="bg-accent/25 border-t sm:border-t-0 sm:border-l">
+      <a
+        class="btn-interactive flex h-full shrink-0 items-center justify-center gap-2 px-8 py-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+        href="/guestbook"
+      >
+        Guestbook
+        <ChevronRightIcon />
+      </a>
+    </div>
+  </div>
+</div>

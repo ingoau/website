@@ -1,0 +1,57 @@
+---
+import Header from "@/components/Header.astro";
+import Layout from "@/layouts/Layout.astro";
+import { projectsQuery, urlFor } from "@/lib/sanity/queries";
+import { Image } from "astro:assets";
+import type { Project } from "sanity.types";
+import { sanityClient } from "sanity:client";
+
+const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
+---
+
+<Layout
+  description="Open source projects and experiments by Ingo"   title="Projects"
+>
+  <Header class:list="border-x">Projects</Header>
+  <div class="grid grid-cols-2 border-l">
+    {
+      projects.map((project, index) => (
+        <div class="flex flex-col border-r border-b">
+          {project.mainImage && project.mainImage.asset && (
+            <Image
+              alt={project.title ?? ""}
+              class="aspect-video w-full border-b object-cover"
+              height="450"
+              src={urlFor(project.mainImage)
+                .width(800)
+                .height(450)
+                .fit("crop")
+                .auto("format")
+                .url()}
+              width="800"
+            />
+          )}
+          <h2 class="w-full border-b p-4 text-2xl">{project.title}</h2>
+          <p class="p-4">{project.description}</p>
+          <div class="mt-auto flex w-full flex-row border-t">
+            {project.links?.map((link) => (
+              <a
+                class="btn-interactive border-r px-4 py-2"
+                href={link.url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {link.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+    {
+      projects.length % 2 === 1 && (
+        <div class="bg-striped-gradient hidden border-r border-b md:block" />
+      )
+    }
+  </div>
+</Layout>

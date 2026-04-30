@@ -1,0 +1,88 @@
+---
+import FormattedDateTime from "@/components/FormattedDateTime.astro";
+import Layout from "@/layouts/Layout.astro";
+import { postQuery, postsQuery, urlFor } from "@/lib/sanity/queries";
+import { Image } from "astro:assets";
+import type { PostsQueryResult, PostQueryResult } from "sanity.types";
+import { sanityClient } from "sanity:client";
+import { PortableText } from "@/components/portable-text";
+import type { BlogPosting, WithContext } from "schema-dts";
+
+const { slug } = Astro.params;
+
+export const getStaticPaths = async () => {
+  const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
+  return posts.map((post) => ({
+    params: { slug: post.slug?.current ?? "" },
+  }));
+};
+
+const post: PostQueryResult = await sanityClient.fetch(postQuery, { slug });
+
+if (!post) {
+  return new Response(null, { status: 404 });
+}
+
+const postImage = post.image?.asset && urlFor(post.image.asset).url();
+const postUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const postDate = post.publishedAt ?? post._createdAt;
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": `${postUrl}#blogposting`,
+  headline: post.title,
+  description: post.summary,
+  url: postUrl,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": postUrl,
+  },
+  author: {
+    "@type": "Person",
+    "@id": "https://ingo.au/#person",
+    name: "Ingo Wolf",
+  },
+  publisher: {
+    "@type": "Person",
+    "@id": "https://ingo.au/#person",
+    name: "Ingo Wolf",
+  },
+  isPartOf: {
+    "@type": "WebSite",
+    "@id": "https://ingo.au/#website",
+  },
+  inLanguage: "en-AU",
+  datePublished: postDate,
+  dateModified: postDate,
+  ...(postImage && { image: postImage }),
+} satisfies WithContext<BlogPosting>;
+---
+
+<Layout
+  description={post.summary}   image={postImage}   jsonLdSchemas={[blogPostingSchema]}   metaTags={{
+    "article:published_time": postDate,
+    "article:modified_time": postDate,
+  }}   pageType="article"   title={post.title}
+>
+  <div class="block border-x border-b p-4">
+    {
+      postImage && (
+        <Image
+          alt={post.title || ""}
+          class="mx-auto w-full max-w-2xl"
+          height="675"
+          src={postImage}
+          width="1200"
+        />
+      )
+    }
+    <div class="space-y-1">
+      <h1 class="text-primary text-4xl">{post.title}</h1>
+      <p>{post.summary}</p>
+      <FormattedDateTime date={post.publishedAt ?? ""} format="DATETIME" />
+    </div>
+  </div>
+  <div class="prose w-full max-w-full border-x border-b p-4">
+    <PortableText value={post.body || []} />
+  </div>
+</Layout>

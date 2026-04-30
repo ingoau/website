@@ -1,7 +1,15 @@
-# Personal website 
-This is my personal website built with Next.js, Tailwind, a bit of shadcn/ui, and Sanity CMS
+# My personal website
+This is my personal website yay
 
-```bash
-bun install
-bun run dev
-```
+## Tech stack
+* Astro
+* Sanity CMS
+* Tailwind CSS
+* Cloudflare Workers
+* Unplugin Icons
+* React (for menu)
+  * cmdk
+  * Radix
+  * Components adapted from shadcn/ui
+* Luxon
+* Nanostores

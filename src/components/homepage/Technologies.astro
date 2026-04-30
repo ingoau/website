@@ -1,0 +1,160 @@
+---
+import { cn } from "@/lib/utils";
+import CommitIcon from "~icons/material-symbols/commit-rounded";
+import MoreHorizontalIcon from "~icons/material-symbols/more-horiz";
+import SiReact from "~icons/simple-icons/react";
+import SiHtml5 from "~icons/simple-icons/html5";
+import SiCss from "~icons/simple-icons/css";
+import SiNodeJs from "~icons/simple-icons/nodedotjs";
+import SiBun from "~icons/simple-icons/bun";
+import SiDocker from "~icons/simple-icons/docker";
+import SiLinux from "~icons/simple-icons/linux";
+import SiNixos from "~icons/simple-icons/nixos";
+import SiSanity from "~icons/simple-icons/sanity";
+import SiTraefikproxy from "~icons/simple-icons/traefikproxy";
+import SiTypescript from "~icons/simple-icons/typescript";
+import SiUbiquiti from "~icons/simple-icons/ubiquiti";
+import SiNextjs from "~icons/simple-icons/nextdotjs";
+import SiTailwindcss from "~icons/simple-icons/tailwindcss";
+import SiSvelte from "~icons/simple-icons/svelte";
+import SiMicrosoft from "~icons/simple-icons/microsoft";
+import SiConvex from "~icons/simple-icons/convex";
+
+const technologies = [
+  {
+    name: "React",
+    icon: SiReact,
+  },
+  {
+    name: "Next.js",
+    icon: SiNextjs,
+  },
+  {
+    name: "TypeScript",
+    icon: SiTypescript,
+  },
+  {
+    name: "Tailwind",
+    icon: SiTailwindcss,
+  },
+  {
+    name: "Svelte",
+    icon: SiSvelte,
+  },
+  {
+    name: "HTML",
+    icon: SiHtml5,
+  },
+  {
+    name: "CSS",
+    icon: SiCss,
+  },
+  {
+    name: "Bun",
+    icon: SiBun,
+  },
+  {
+    name: "Node.js",
+    icon: SiNodeJs,
+  },
+  {
+    name: "Convex",
+    icon: SiConvex,
+  },
+  {
+    name: "Sanity CMS",
+    icon: SiSanity,
+  },
+  {
+    name: "Docker",
+    icon: SiDocker,
+  },
+  {
+    name: "Traefik",
+    icon: SiTraefikproxy,
+  },
+  {
+    name: "Linux",
+    icon: SiLinux,
+  },
+  {
+    name: "Nix",
+    icon: SiNixos,
+  },
+  {
+    name: "Git",
+    icon: CommitIcon,
+  },
+  {
+    name: "Entra ID",
+    icon: SiMicrosoft,
+  },
+  {
+    name: "Intune",
+    icon: SiMicrosoft,
+  },
+  {
+    name: "UniFi",
+    icon: SiUbiquiti,
+  },
+  {
+    name: "More",
+    icon: MoreHorizontalIcon,
+  },
+];
+
+function placeholders(cols: number) {
+  const remaining = technologies.length % cols;
+  if (remaining === 0) return [];
+
+  return Array.from({ length: cols - remaining });
+}
+
+const mobilePlaceholders = placeholders(3);
+const desktopPlaceholders = placeholders(5);
+---
+
+<div
+  class="bg-diagonal-lines mx-auto w-full max-w-5xl border-b sm:border-x sm:px-10"
+>
+  <div class="border-x border-b p-4">
+    <h2 class="text-primary text-2xl">Technologies I know</h2>
+  </div>
+  <div
+    class="group bg-background -my-px grid w-full grid-cols-3 border-t border-l md:grid-cols-5"
+  >
+    {
+      technologies.map((item, index) => (
+        <div
+          class:list={cn(
+            "group-hover:hover:bg-card hover:border-border/75 flex aspect-square flex-col items-center justify-center gap-2 border-r border-b text-center duration-200 group-hover:opacity-75 group-hover:hover:opacity-100",
+            index % 2 === 0 ? "" : "bg-diagonal-lines",
+          )}
+        >
+          <item.icon class="size-10" />
+          <span class="text-lg">{item.name}</span>
+        </div>
+      ))
+    }
+    {
+      mobilePlaceholders.map((_, index) => (
+        <div
+          class:list={cn(
+            "group-hover:hover:bg-card block border-r border-b duration-200 group-hover:opacity-50 group-hover:hover:opacity-100 md:hidden",
+            (technologies.length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
+          )}
+        />
+      ))
+    }
+    {
+      desktopPlaceholders.map((_, index) => (
+        <div
+          class:list={cn(
+            "group-hover:hover:bg-card hidden border-r border-b duration-200 group-hover:opacity-50 group-hover:hover:opacity-100 md:block",
+            (technologies.length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
+          )}
+        />
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { sanityClient } from "sanity:client";
+import { postsQuery, urlFor } from "@/lib/sanity/queries";
+import { type PostsQueryResult } from "sanity.types";
+import FormattedDateTime from "@/components/FormattedDateTime.astro";
+import { Image } from "astro:assets";
+import Header from "@/components/Header.astro";
+
+const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
+---
+
+<Layout
+  description="Posts from Ingo about his takes, experiences, and thoughts"   title="Blog"
+>
+  <div class="bg-diagonal-lines border-x border-b">
+    <Header class="bg-background">Blog</Header>
+    <div class="px-4">
+      <ul class="bg-background mx-auto max-w-4xl">
+        {
+          posts.map((post) => (
+            <li class="border-x border-b last:border-b-0">
+              <a
+                class="btn-interactive block p-4"
+                href={`/blog/${post.slug?.current}`}
+              >
+                {post.image && post.image.asset && (
+                  <Image
+                    alt={post.title || ""}
+                    class="mx-auto w-full max-w-2xl"
+                    height="675"
+                    src={urlFor(post.image.asset).url()}
+                    width="1200"
+                  />
+                )}
+                <div class="space-y-1">
+                  <h2 class="text-primary text-4xl">{post.title}</h2>
+                  <p>{post.summary}</p>
+                  <FormattedDateTime
+                    date={post.publishedAt ?? ""}
+                    format="DATETIME"
+                  />
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Layout>

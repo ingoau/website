@@ -1,0 +1,47 @@
+---
+import type { CodeLanguage } from "astro";
+import { Code } from "astro:components";
+
+interface Props {
+  node: {
+    _key: string;
+    _type: string;
+    code: string;
+    language: string;
+  };
+}
+const { node } = Astro.props;
+---
+
+<div
+  class="not-prose bg-diagonal-lines copyable-code-block relative -mx-4 border-y p-4"
+>
+  <div class="absolute top-0 left-0 h-4 w-full border-b"></div>
+  <div class="absolute bottom-0 left-0 h-4 w-full border-t"></div>
+  <div class="absolute top-0 left-0 h-full w-4 border-r"></div>
+  <div class="absolute top-0 right-0 h-full w-4 border-l"></div>
+  <div class="bg-background flex border-b">
+    <div class="p-2 px-4 font-mono">{node.language}</div>
+    <button class="btn-interactive ml-auto border-l px-4">Copy</button>
+  </div>
+  <Code
+    class="p-4"
+    code={node.code}
+    lang={node.language as CodeLanguage}
+    theme="catppuccin-mocha"     wrap
+  />
+</div>
+
+<script>
+  document.querySelectorAll(".copyable-code-block").forEach((block) => {
+    const copyButton = block.querySelector("button");
+    const code = block.querySelector("pre");
+    copyButton?.addEventListener("click", () => {
+      navigator.clipboard.writeText(code?.textContent || "");
+      copyButton.textContent = "Copied!";
+      setTimeout(() => {
+        copyButton.textContent = "Copy";
+      }, 2000);
+    });
+  });
+</script>

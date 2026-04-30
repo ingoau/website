@@ -1,0 +1,51 @@
+---
+const things = [
+  {
+    title: "Web",
+    description:
+      "I have built many websites for friends and community things, such as Hack Club YSWSes. I also build web apps to solve my problems, and for fun.",
+  },
+  {
+    title: "Infrastructure",
+    description:
+      "I run and maintain about 40 Docker containers in my homelab which are behind Traefik. I have also set up SSO to everything with authentik.",
+  },
+  {
+    title: "Networking",
+    description:
+      "I have set up VLANs in my home network for security and organization, and force my family to use username/password auth.",
+  },
+];
+---
+
+<div
+  class="bg-diagonal-lines bg-destructive-foreground/30 mx-auto grid w-full max-w-5xl grid-cols-1 gap-6 border-x border-b p-6 sm:grid-cols-3 sm:p-8"
+>
+  {
+    things.map((thing) => (
+      <div class="hover-card">
+        <h2 class="text-primary text-2xl">{thing.title}</h2>
+        <p>{thing.description}</p>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  @reference "../../styles/global.css";
+  .hover-card {
+    @apply bg-background outline-border p-4 outline duration-100 ease-out outline-dashed;
+    transition:
+      transform 0.2s ease-out,
+      background-color 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+  }
+  .hover-card:hover {
+    transform: scale(1.05) rotate(0.5deg);
+    @apply bg-card z-50 shadow-2xl;
+    transition:
+      transform 0.2s ease-out,
+      background-color 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+  }
+</style>

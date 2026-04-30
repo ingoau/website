@@ -1,0 +1,53 @@
+---
+import { NAVBAR_ITEMS } from "@/lib/constants";
+import SearchButton from "./SearchButton.astro";
+import { cn } from "@/lib/utils";
+
+const path = Astro.url.pathname;
+---
+
+<div class="bg-background fixed top-0 left-0 z-90 w-full">
+  <div class="w-full px-4">
+    <div class="mx-auto h-4 w-full max-w-5xl">
+      <div class="h-full w-full border-x"></div>
+    </div>
+  </div>
+  <div class="border-y px-4">
+    <div class="mx-auto flex w-full max-w-5xl flex-row border-x">
+      <div class="border-r">
+        <a
+          class="btn-interactive flex min-w-36 items-center justify-center p-4 px-4! py-4! font-mono text-xl font-extrabold active:font-normal"
+          href="/"
+        >
+          Ingo Wolf
+        </a>
+      </div>
+      <div class="bg-diagonal-lines grow self-stretch bg-fixed"></div>
+      {
+        NAVBAR_ITEMS.map((item) => (
+          <div class="hidden border-l md:block">
+            <a
+              class:list={cn(
+                "menu-item btn-interactive flex flex-col",
+                ((path.startsWith(item.url) && item.url !== "/") ||
+                  path === item.url) &&
+                  "text-primary",
+              )}
+              href={item.url}
+            >
+              {item.label}
+            </a>
+          </div>
+        ))
+      }
+      <SearchButton />
+    </div>
+  </div>
+</div>
+
+<div class="w-full px-4">
+  <div
+    class="bg-diagonal-lines mx-auto h-[calc((var(--spacing)*20)-2px)] w-full max-w-5xl border bg-fixed"
+  >
+  </div>
+</div>
