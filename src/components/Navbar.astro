@@ -29,7 +29,9 @@ const path = Astro.url.pathname;
             <a
               class:list={cn(
                 "menu-item btn-interactive flex flex-col",
-                path === item.url && "text-primary",
+                ((path.startsWith(item.url) && item.url !== "/") ||
+                  path === item.url) &&
+                  "text-primary",
               )}
               href={item.url}
             >
