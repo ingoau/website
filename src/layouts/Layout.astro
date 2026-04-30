@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import { Font } from "astro:assets";
 import Search from "../components/Search.tsx";
 import Pagering from "@/components/Pagering.astro";
+import Posthog from "@/components/Posthog.astro";
 
 const { title }: { title?: string } = Astro.props;
 ---
@@ -21,6 +22,7 @@ const { title }: { title?: string } = Astro.props;
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />
     <title>{title ?? "Ingo's Site"} {title && "| Ingo's Site"}</title>
+    <Posthog />
   </head>
   <body class="flex flex-col min-h-screen">
     <Navbar />
