@@ -111,23 +111,23 @@ const data = {
 };
 ---
 
-<div class="w-full mx-auto max-w-5xl">
-  <div class="grid grid-cols-1 md:grid-cols-32 border-l">
+<div class="mx-auto w-full max-w-5xl">
+  <div class="grid grid-cols-1 border-l md:grid-cols-32">
     {
       data?.quickStats.map((stat, index) => (
         <div
           class:list={cn(
             stat.className,
-            "p-4 flex flex-col border-r border-b h-28 items-center justify-center",
+            "flex h-28 flex-col items-center justify-center border-r border-b p-4",
           )}
         >
-          <div class="text-4xl text-primary font-mono">{stat.value}</div>
+          <div class="text-primary font-mono text-4xl">{stat.value}</div>
           <div>{stat.title}</div>
         </div>
       ))
     }
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 border-l">
+  <div class="grid grid-cols-1 border-l sm:grid-cols-2">
     {
       data?.languages.map(
         (
@@ -142,16 +142,16 @@ const data = {
           },
           index: number,
         ) => (
-          <div class="flex flex-row border-r border-b items-center">
-            <div class="size-14 flex justify-center items-center text-xl border-r z-10 aspect-square bg-card font-mono">
+          <div class="flex flex-row items-center border-r border-b">
+            <div class="bg-card z-10 flex aspect-square size-14 items-center justify-center border-r font-mono text-xl">
               {index + 1}
             </div>
-            <div class="w-full flex flex-row relative overflow-hidden">
-              <div class="p-4 z-10">{lang.name}</div>
+            <div class="relative flex w-full flex-row overflow-hidden">
+              <div class="z-10 p-4">{lang.name}</div>
               <div class="grow" />
-              <div class="p-4 z-10 font-mono">{lang.percent.toFixed(2)}%</div>
+              <div class="z-10 p-4 font-mono">{lang.percent.toFixed(2)}%</div>
               <div
-                class="bg-card bg-striped-gradient absolute top-0 left-0 h-full z-0 animate-in slide-in-from-left"
+                class="bg-card bg-striped-gradient animate-in slide-in-from-left absolute top-0 left-0 z-0 h-full"
                 style={{
                   width: `${lang.percent}%`,
                 }}

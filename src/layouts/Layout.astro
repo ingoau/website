@@ -24,11 +24,11 @@ const { title }: { title?: string } = Astro.props;
     <title>{title ?? "Ingo's Site"} {title && "| Ingo's Site"}</title>
     <Posthog />
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex min-h-screen flex-col">
     <Navbar />
     <Search client:idle />
     <div class="w-full px-4">
-      <main class="max-w-5xl mx-auto w-full bg-background">
+      <main class="bg-background mx-auto w-full max-w-5xl">
         <slot />
       </main>
     </div>

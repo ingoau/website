@@ -14,25 +14,25 @@ const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
   <div class="bg-diagonal-lines border-x border-b">
     <Header class="bg-background">Blog</Header>
     <div class="px-4">
-      <ul class="max-w-4xl mx-auto bg-background">
+      <ul class="bg-background mx-auto max-w-4xl">
         {
           posts.map((post) => (
-            <li class="last:border-b-0 border-b border-x">
+            <li class="border-x border-b last:border-b-0">
               <a
-                class="block p-4 btn-interactive"
+                class="btn-interactive block p-4"
                 href={`/blog/${post.slug?.current}`}
               >
                 {post.image && post.image.asset && (
                   <Image
                     alt=""
-                    class="mx-auto max-w-2xl w-full"
+                    class="mx-auto w-full max-w-2xl"
                     height="675"
                     src={urlFor(post.image.asset).url()}
                     width="1200"
                   />
                 )}
                 <div class="space-y-1">
-                  <h2 class="text-4xl text-primary">{post.title}</h2>
+                  <h2 class="text-primary text-4xl">{post.title}</h2>
                   <p>{post.summary}</p>
                   <FormattedDateTime
                     date={post.publishedAt ?? ""}

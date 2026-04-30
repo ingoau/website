@@ -43,24 +43,24 @@ const webrings = [
 ];
 ---
 
-<div class="w-full px-4 grow flex flex-col border-b">
+<div class="flex w-full grow flex-col border-b px-4">
   <Separator class="grow" />
-  <footer class="max-w-5xl mx-auto w-full border-l bg-diagonal-lines bg-fixed">
+  <footer class="bg-diagonal-lines mx-auto w-full max-w-5xl border-l bg-fixed">
     <div class="md:grid md:grid-cols-14">
-      <div class="flex flex-col border-r col-span-6 pb-10">
-        <div class="flex bg-background">
+      <div class="col-span-6 flex flex-col border-r pb-10">
+        <div class="bg-background flex">
           <a
-            class="p-4 btn-interactive text-xl active:font-normal font-extrabold font-mono w-full"
+            class="btn-interactive w-full p-4 font-mono text-xl font-extrabold active:font-normal"
             href="/"
           >
             Ingo Wolf
           </a>
         </div>
-        <div class="border-y w-full">
-          <div class="flex flex-row bg-background w-fit">
+        <div class="w-full border-y">
+          <div class="bg-background flex w-fit flex-row">
             {
               profiles.map((link) => (
-                <a class="px-4 py-2 btn-interactive border-r" href="/">
+                <a class="btn-interactive border-r px-4 py-2" href="/">
                   {link.text}
                 </a>
               ))
@@ -69,13 +69,13 @@ const webrings = [
         </div>
       </div>
       <div class="col-span-4 hidden md:block"></div>
-      <div class="col-span-4 md:border-l flex flex-col border-t md:border-t-0">
-        <div class="p-2 border-b font-mono border-r bg-background">Pages</div>
-        <div class="bg-card w-full grid grid-cols-2">
+      <div class="col-span-4 flex flex-col border-t md:border-t-0 md:border-l">
+        <div class="bg-background border-r border-b p-2 font-mono">Pages</div>
+        <div class="bg-card grid w-full grid-cols-2">
           {
             [...NAVBAR_ITEMS, ...OTHER_PAGES].map((link) => (
-              <div class="border-b border-r flex flex-col bg-background">
-                <a class="p-2 btn-interactive text-sm" href={link.url}>
+              <div class="bg-background flex flex-col border-r border-b">
+                <a class="btn-interactive p-2 text-sm" href={link.url}>
                   {link.label}
                 </a>
               </div>
@@ -83,18 +83,18 @@ const webrings = [
           }
           {
             [...NAVBAR_ITEMS, ...OTHER_PAGES].length % 2 !== 0 && (
-              <div class="border-r border-b bg-striped-gradient" />
+              <div class="bg-striped-gradient border-r border-b" />
             )
           }
         </div>
-        <div class="grow min-h-10 border-r"></div>
+        <div class="min-h-10 grow border-r"></div>
       </div>
     </div>
     <div
-      class="flex flex-col-reverse md:flex-row bg-diagonal-lines bg-fixed border-t md:items-end border-b"
+      class="bg-diagonal-lines flex flex-col-reverse border-t border-b bg-fixed md:flex-row md:items-end"
     >
       <div
-        class="border-t border-r py-2 px-4 font-mono bg-background h-fit text-center"
+        class="bg-background h-fit border-t border-r px-4 py-2 text-center font-mono"
       >
         This website is
         <a href="https://github.com/ingoau/website" target="_blank">
@@ -102,27 +102,27 @@ const webrings = [
         </a>
       </div>
       <div class="grow"></div>
-      <div class="flex flex-col bg-background">
-        <div class="p-2 font-mono border-r md:border-l">Webrings</div>
+      <div class="bg-background flex flex-col">
+        <div class="border-r p-2 font-mono md:border-l">Webrings</div>
         {
           webrings.map((webring) => (
-            <div class="flex flex-row w-full">
+            <div class="flex w-full flex-row">
               <a
-                class="btn-interactive p-3 aspect-square border-r md:border-l border-t"
+                class="btn-interactive aspect-square border-t border-r p-3 md:border-l"
                 href={webring.prev}
               >
                 <span class="sr-only">Previous</span>
                 <ChevronLeftIcon class="size-4" />
               </a>
               <a
-                class="btn-interactive px-6 text-sm font-mono grow flex items-center justify-center border-t cursor-pointer"
+                class="btn-interactive flex grow cursor-pointer items-center justify-center border-t px-6 font-mono text-sm"
                 href={webring.url}
                 onclick={webring.onClick}
               >
                 {webring.name}
               </a>
               <a
-                class="btn-interactive p-3 aspect-square border-x border-t"
+                class="btn-interactive aspect-square border-x border-t p-3"
                 href={webring.next}
               >
                 <span class="sr-only">Previous</span>
@@ -141,5 +141,5 @@ const webrings = [
   </footer>
 </div>
 <div class="w-full px-4">
-  <div class="max-w-5xl mx-auto w-full border-x h-4"></div>
+  <div class="mx-auto h-4 w-full max-w-5xl border-x"></div>
 </div>

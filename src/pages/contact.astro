@@ -63,10 +63,10 @@ const socials = [
     <div class="grid sm:grid-cols-2">
       {
         contactMethods.map((method) => (
-          <div class="border-r border-b w-full h-full">
+          <div class="h-full w-full border-r border-b">
             <a
               class:list={cn(
-                "block p-4 btn-interactive",
+                "btn-interactive block p-4",
                 method.preferred
                   ? "bg-primary text-primary-foreground hover:bg-primary/90"
                   : "",
@@ -77,7 +77,7 @@ const socials = [
               <h1 class="text-2xl">
                 {method.title} {method.preferred ? "(Preferred)" : ""}
               </h1>
-              <p class="text-lg font-mono">{method.subtitle}</p>
+              <p class="font-mono text-lg">{method.subtitle}</p>
             </a>
           </div>
         ))
@@ -89,14 +89,14 @@ const socials = [
     <div class="grid sm:grid-cols-3">
       {
         socials.map((social) => (
-          <div class="border-r border-b w-full h-full">
+          <div class="h-full w-full border-r border-b">
             <a
-              class:list={cn("block p-4 btn-interactive")}
+              class:list={cn("btn-interactive block p-4")}
               href={social.link}
               target="_blank"
             >
               <h1 class="text-2xl">{social.name}</h1>
-              <p class="text-lg font-mono">{social.username}</p>
+              <p class="font-mono text-lg">{social.username}</p>
             </a>
           </div>
         ))

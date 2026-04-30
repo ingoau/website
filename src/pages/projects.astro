@@ -18,7 +18,7 @@ const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
           {project.mainImage && project.mainImage.asset && (
             <Image
               alt={project.title ?? ""}
-              class="aspect-video w-full object-cover border-b"
+              class="aspect-video w-full border-b object-cover"
               height="450"
               src={urlFor(project.mainImage)
                 .width(800)
@@ -29,12 +29,12 @@ const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
               width="800"
             />
           )}
-          <h2 class="w-full p-4 text-2xl border-b">{project.title}</h2>
+          <h2 class="w-full border-b p-4 text-2xl">{project.title}</h2>
           <p class="p-4">{project.description}</p>
-          <div class="w-full flex flex-row mt-auto border-t">
+          <div class="mt-auto flex w-full flex-row border-t">
             {project.links?.map((link) => (
               <a
-                class="px-4 py-2 border-r btn-interactive"
+                class="btn-interactive border-r px-4 py-2"
                 href={link.url}
                 target="_blank"
               >
@@ -47,7 +47,7 @@ const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
     }
     {
       projects.length % 2 === 1 && (
-        <div class="bg-striped-gradient border-b border-r hidden md:block" />
+        <div class="bg-striped-gradient hidden border-r border-b md:block" />
       )
     }
   </div>

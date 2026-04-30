@@ -114,19 +114,19 @@ const desktopPlaceholders = placeholders(5);
 ---
 
 <div
-  class="w-full mx-auto max-w-5xl border-b sm:px-10 bg-diagonal-lines sm:border-x"
+  class="bg-diagonal-lines mx-auto w-full max-w-5xl border-b sm:border-x sm:px-10"
 >
-  <div class="border-b border-x p-4">
+  <div class="border-x border-b p-4">
     <h2 class="text-primary text-2xl">Technologies I know</h2>
   </div>
   <div
-    class="w-full grid grid-cols-3 md:grid-cols-5 border-l border-t group -my-px"
+    class="group -my-px grid w-full grid-cols-3 border-t border-l md:grid-cols-5"
   >
     {
       technologies.map((item, index) => (
         <div
           class:list={cn(
-            "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
+            "group-hover:hover:bg-card hover:border-border/75 flex aspect-square flex-col items-center justify-center gap-2 border-r border-b text-center duration-200 group-hover:opacity-75 group-hover:hover:opacity-100",
             index % 2 === 0 ? "" : "bg-diagonal-lines",
           )}
         >
@@ -139,7 +139,7 @@ const desktopPlaceholders = placeholders(5);
       mobilePlaceholders.map((_, index) => (
         <div
           class:list={cn(
-            "block md:hidden border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
+            "group-hover:hover:bg-card block border-r border-b duration-200 group-hover:opacity-50 group-hover:hover:opacity-100 md:hidden",
             (technologies.length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
           )}
         />
@@ -149,7 +149,7 @@ const desktopPlaceholders = placeholders(5);
       desktopPlaceholders.map((_, index) => (
         <div
           class:list={cn(
-            "hidden md:block border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
+            "group-hover:hover:bg-card hidden border-r border-b duration-200 group-hover:opacity-50 group-hover:hover:opacity-100 md:block",
             (technologies.length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
           )}
         />

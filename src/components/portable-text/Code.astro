@@ -14,15 +14,15 @@ const { node } = Astro.props;
 ---
 
 <div
-  class="not-prose -mx-4 p-4 bg-diagonal-lines border-y relative copyable-code-block"
+  class="not-prose bg-diagonal-lines copyable-code-block relative -mx-4 border-y p-4"
 >
-  <div class="top-0 left-0 absolute border-b h-4 w-full"></div>
-  <div class="bottom-0 left-0 absolute border-t h-4 w-full"></div>
-  <div class="top-0 left-0 absolute border-r h-full w-4"></div>
-  <div class="top-0 right-0 absolute border-l h-full w-4"></div>
-  <div class="border-b bg-background flex">
+  <div class="absolute top-0 left-0 h-4 w-full border-b"></div>
+  <div class="absolute bottom-0 left-0 h-4 w-full border-t"></div>
+  <div class="absolute top-0 left-0 h-full w-4 border-r"></div>
+  <div class="absolute top-0 right-0 h-full w-4 border-l"></div>
+  <div class="bg-background flex border-b">
     <div class="p-2 px-4 font-mono">{node.language}</div>
-    <button class="ml-auto px-4 btn-interactive border-l">Copy</button>
+    <button class="btn-interactive ml-auto border-l px-4">Copy</button>
   </div>
   <Code
     class="p-4"

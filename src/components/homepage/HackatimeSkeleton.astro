@@ -17,33 +17,33 @@ const quickStats = [
 ];
 ---
 
-<div class="w-full mx-auto max-w-5xl">
-  <div class="grid grid-cols-1 md:grid-cols-32 border-l">
+<div class="mx-auto w-full max-w-5xl">
+  <div class="grid grid-cols-1 border-l md:grid-cols-32">
     {
       quickStats.map((stat, index) => (
         <div
           class:list={cn(
             stat.className,
-            "p-4 flex flex-col border-r border-b h-28 items-center justify-center",
+            "flex h-28 flex-col items-center justify-center border-r border-b p-4",
           )}
         >
-          <div class="h-9 w-32 bg-muted rounded mb-2" />
-          <div class="h-4 w-24 bg-muted rounded" />
+          <div class="bg-muted mb-2 h-9 w-32 rounded" />
+          <div class="bg-muted h-4 w-24 rounded" />
         </div>
       ))
     }
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 border-l">
+  <div class="grid grid-cols-1 border-l sm:grid-cols-2">
     {
       Array.from({ length: 10 }).map((_, index) => (
-        <div class="flex flex-row border-r border-b items-center">
-          <div class="size-14 flex justify-center items-center text-xl border-r z-10 aspect-square bg-card">
-            <div class="h-6 w-6 bg-muted rounded" />
+        <div class="flex flex-row items-center border-r border-b">
+          <div class="bg-card z-10 flex aspect-square size-14 items-center justify-center border-r text-xl">
+            <div class="bg-muted h-6 w-6 rounded" />
           </div>
-          <div class="w-full flex flex-row relative p-4">
-            <div class="h-5 w-24 bg-muted rounded" />
+          <div class="relative flex w-full flex-row p-4">
+            <div class="bg-muted h-5 w-24 rounded" />
             <div class="grow" />
-            <div class="h-5 w-16 bg-muted rounded" />
+            <div class="bg-muted h-5 w-16 rounded" />
           </div>
         </div>
       ))

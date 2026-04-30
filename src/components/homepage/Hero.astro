@@ -21,42 +21,42 @@ import FlagOrpheusTop from "@/assets/hackclub/flag-orpheus-top.svg";
 
 <div class="bg-destructive-foreground/30">
   <div
-    class="h-10 bg-diagonal-lines bg-fixed border-x md:px-10 border-b md:block hidden"
+    class="bg-diagonal-lines hidden h-10 border-x border-b bg-fixed md:block md:px-10"
   >
-    <div class="w-full border-x h-full"></div>
+    <div class="h-full w-full border-x"></div>
   </div>
   <div
-    class="w-full mx-auto flex flex-col h-fit md:border-x md:border-b max-w-5xl md:px-10 bg-diagonal-lines bg-fixed"
+    class="bg-diagonal-lines mx-auto flex h-fit w-full max-w-5xl flex-col bg-fixed md:border-x md:border-b md:px-10"
   >
     <div
-      class="flex flex-col md:flex-row border-x bg-background w-full divide-x border-b md:h-44"
+      class="bg-background flex w-full flex-col divide-x border-x border-b md:h-44 md:flex-row"
     >
       <div
-        class="p-4 md:p-8 flex items-center md:w-xl relative from-destructive-foreground to-background bg-linear-to-br"
+        class="from-destructive-foreground to-background relative flex items-center bg-linear-to-br p-4 md:w-xl md:p-8"
       >
         <div
-          class="w-full h-full top-0 left-0 absolute bg-size-[20px_20px] bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% z-0"
+          class="absolute top-0 left-0 z-0 h-full w-full bg-[radial-gradient(#45475A_1px,transparent_1px)] mask-linear-160 mask-linear-from-0% mask-linear-to-100% bg-size-[20px_20px]"
         >
         </div>
         <div class="z-10">
-          <h1 class="text-4xl md:text-5xl font-mono md:leading-15">
+          <h1 class="font-mono text-4xl md:text-5xl md:leading-15">
             G'day, <br /> I'm <span class="text-primary">Ingo Wolf</span>
           </h1>
         </div>
-        <div class="absolute md:top-8 md:right-8 top-4 right-4">
+        <div class="absolute top-4 right-4 md:top-8 md:right-8">
           <a href="https://en.pronouns.page/@ingowolf" target="_blank">
             he/they
           </a>
         </div>
       </div>
       <div
-        class="flex flex-row items-end grow relative overflow-hidden md:h-full h-52 border-t md:border-t-0"
+        class="relative flex h-52 grow flex-row items-end overflow-hidden border-t md:h-full md:border-t-0"
       >
         <Canberra
-          class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 animate-in zoom-in-60 fade-in duration-2000 delay-500 fill-mode-both spin-in-10 ease-out"
+          class="animate-in zoom-in-60 fade-in fill-mode-both spin-in-10 absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 delay-500 duration-2000 ease-out"
         />
         <div
-          class="z-10 from-background/50 to-transparent bg-linear-to-tr p-4 w-full h-full flex items-end"
+          class="from-background/50 z-10 flex h-full w-full items-end bg-linear-to-tr to-transparent p-4"
         >
           <p>
             Based in <br />
@@ -64,7 +64,7 @@ import FlagOrpheusTop from "@/assets/hackclub/flag-orpheus-top.svg";
           </p>
         </div>
         <div
-          class="p-2 z-10 text-xs absolute top-0 left-0 opacity-20 hover:opacity-100 transition-opacity"
+          class="absolute top-0 left-0 z-10 p-2 text-xs opacity-20 transition-opacity hover:opacity-100"
         >
           Map adapted from <a
             href="https://vectormap.net/free_vector_maps_downloads/free-printable-map-canberra-australia-exact-vector-street-map-fully-editable-adobe-illustrator-adobe-pdf-svg-g-view-level-12-5000-meters-scale-full-vector/"
@@ -73,22 +73,22 @@ import FlagOrpheusTop from "@/assets/hackclub/flag-orpheus-top.svg";
             >CC BY 4.0</a
           >
         </div>
-        <div class="absolute bottom-0 right-0 z-10 p-4 font-mono">
+        <div class="absolute right-0 bottom-0 z-10 p-4 font-mono">
           <Clock />
         </div>
       </div>
     </div>
     <div
-      class="flex flex-col md:flex-row border-x bg-background border-b md:divide-x md:divide-y-0 divide-y"
+      class="bg-background flex flex-col divide-y border-x border-b md:flex-row md:divide-x md:divide-y-0"
     >
-      <div class="flex flex-col gap-2 p-4 items-center">
-        <div class="flex flex-row gap-2 relative">
+      <div class="flex flex-col items-center gap-2 p-4">
+        <div class="relative flex flex-row gap-2">
           <div
-            class="absolute top-0 left-0 h-full w-20 from-background to-transparent bg-linear-to-r"
+            class="from-background absolute top-0 left-0 h-full w-20 bg-linear-to-r to-transparent"
           >
           </div>
           <div
-            class="absolute top-0 right-0 h-full w-20 from-background to-transparent bg-linear-to-l"
+            class="from-background absolute top-0 right-0 h-full w-20 bg-linear-to-l to-transparent"
           >
           </div>
           {
@@ -105,54 +105,54 @@ import FlagOrpheusTop from "@/assets/hackclub/flag-orpheus-top.svg";
             ].map((Icon, index) => <Icon class="size-6" />)
           }
         </div>
-        <div class="text-2xl font-mono">Web developer</div>
+        <div class="font-mono text-2xl">Web developer</div>
       </div>
       <div
-        class="flex flex-row gap-4 items-center bg-striped-gradient grow justify-center min-h-16"
+        class="bg-striped-gradient flex min-h-16 grow flex-row items-center justify-center gap-4"
       >
         <ServerIcon class="size-6" />
-        <div class="text-2xl font-mono">Homelab enthusiast</div>
+        <div class="font-mono text-2xl">Homelab enthusiast</div>
       </div>
-      <div class="p-4 min-w-36 flex items-center">
+      <div class="flex min-w-36 items-center p-4">
         <div>
-          <span class="text-4xl font-mono text-primary">16</span>
+          <span class="text-primary font-mono text-4xl">16</span>
           <br />
           years old
         </div>
       </div>
     </div>
     <div
-      class="flex flex-col md:flex-row border-x bg-background md:divide-x md:divide-y-0 divide-y"
+      class="bg-background flex flex-col divide-y border-x md:flex-row md:divide-x md:divide-y-0"
     >
       <div>
         <a
-          class="flex flex-col p-4 btn-interactive h-full justify-center text-nowrap"
+          class="btn-interactive flex h-full flex-col justify-center p-4 text-nowrap"
           href="https://cloudearth.au"
           target="_blank"
         >
           Works at
-          <div class="text-2xl font-mono">Cloud Earth</div>
+          <div class="font-mono text-2xl">Cloud Earth</div>
         </a>
       </div>
       <div>
         <a
-          class="flex flex-col md:px-4 px-4 pb-4 btn-interactive h-full"
+          class="btn-interactive flex h-full flex-col px-4 pb-4 md:px-4"
           href="https://hackclub.com"
           target="_blank"
         >
           <FlagOrpheusTop class="h-14 w-fit" />
-          <div class="text-2xl font-mono text-nowrap">Hack Clubber</div>
+          <div class="font-mono text-2xl text-nowrap">Hack Clubber</div>
         </a>
       </div>
-      <div class="grow grid grid-cols-2 divide-x border-b md:border-b-0">
+      <div class="grid grow grid-cols-2 divide-x border-b md:border-b-0">
         <a
-          class="flex flex-col p-4 items-center justify-center btn-interactive h-full text-3xl"
+          class="btn-interactive flex h-full flex-col items-center justify-center p-4 text-3xl"
           href="/blog"
         >
           Blog
         </a>
         <a
-          class="flex flex-col p-4 items-center justify-center btn-interactive h-full text-3xl"
+          class="btn-interactive flex h-full flex-col items-center justify-center p-4 text-3xl"
           href="/contact"
         >
           Contact
@@ -161,8 +161,8 @@ import FlagOrpheusTop from "@/assets/hackclub/flag-orpheus-top.svg";
     </div>
   </div>
   <div
-    class="h-10 bg-diagonal-lines bg-fixed border-x md:px-10 border-b md:block hidden"
+    class="bg-diagonal-lines hidden h-10 border-x border-b bg-fixed md:block md:px-10"
   >
-    <div class="w-full border-x h-full"></div>
+    <div class="h-full w-full border-x"></div>
   </div>
 </div>

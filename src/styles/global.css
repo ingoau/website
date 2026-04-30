@@ -142,7 +142,7 @@
 
 @layer base {
   * {
-    @apply border-border border-dashed outline-ring/50;
+    @apply border-border outline-ring/50 border-dashed;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -163,11 +163,11 @@
 
 @layer components {
   .btn-interactive {
-    @apply hover:bg-muted active:brightness-75 duration-200 no-underline text-foreground;
+    @apply hover:bg-muted text-foreground no-underline duration-200 active:brightness-75;
   }
 
   a {
-    @apply underline text-primary;
+    @apply text-primary underline;
   }
 
   .bg-striped-gradient {
@@ -178,7 +178,7 @@
     background-size: 10px 10px;
   }
   .menu-item {
-    @apply px-8 py-4 w-fit flex justify-center items-center h-full;
+    @apply flex h-full w-fit items-center justify-center px-8 py-4;
   }
 }
 
