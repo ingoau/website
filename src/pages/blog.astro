@@ -27,7 +27,7 @@ const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
               >
                 {post.image && post.image.asset && (
                   <Image
-                    alt=""
+                    alt={post.title || ""}
                     class="mx-auto w-full max-w-2xl"
                     height="675"
                     src={urlFor(post.image.asset).url()}
