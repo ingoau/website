@@ -62,6 +62,10 @@ export const project = defineType({
       to: [{ type: "post" }],
     }),
     defineField({
+      name: "description",
+      type: "text",
+    }),
+    defineField({
       name: "body",
       type: "blockContent",
     }),
