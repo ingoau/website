@@ -7,7 +7,8 @@ import Search from "../components/Search.tsx";
 import Pagering from "@/components/Pagering.astro";
 import Posthog from "@/components/Posthog.astro";
 
-const { title }: { title?: string } = Astro.props;
+const { title, description }: { title?: string; description?: string } =
+  Astro.props;
 ---
 
 <!doctype html>
@@ -21,6 +22,7 @@ const { title }: { title?: string } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <meta content={Astro.generator} name="generator" />
+    {description && <meta content={description} name="description" />}
 
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />
