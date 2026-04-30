@@ -1,0 +1,201 @@
+---
+import { cn } from "@/lib/utils";
+import CommitIcon from "~icons/material-symbols/commit-rounded";
+import MoreHorizontalIcon from "~icons/material-symbols/more-horiz";
+import SiReact from "~icons/simple-icons/react";
+import SiHtml5 from "~icons/simple-icons/html5";
+import SiCss from "~icons/simple-icons/css";
+import SiNodeJs from "~icons/simple-icons/nodedotjs";
+import SiBun from "~icons/simple-icons/bun";
+import SiDocker from "~icons/simple-icons/docker";
+import SiLinux from "~icons/simple-icons/linux";
+import SiNixos from "~icons/simple-icons/nixos";
+import SiSanity from "~icons/simple-icons/sanity";
+import SiTraefikproxy from "~icons/simple-icons/traefikproxy";
+import SiTypescript from "~icons/simple-icons/typescript";
+import SiUbiquiti from "~icons/simple-icons/ubiquiti";
+import SiNextjs from "~icons/simple-icons/nextdotjs";
+import SiTailwindcss from "~icons/simple-icons/tailwindcss";
+import SiSvelte from "~icons/simple-icons/svelte";
+import SiMicrosoft from "~icons/simple-icons/microsoft";
+
+const technologies = [
+  {
+    name: "React",
+    icon: SiReact,
+  },
+  {
+    name: "Next.js",
+    icon: SiNextjs,
+  },
+  {
+    name: "TypeScript",
+    icon: SiTypescript,
+  },
+  {
+    name: "Tailwind",
+    icon: SiTailwindcss,
+  },
+  {
+    name: "Svelte",
+    icon: SiSvelte,
+  },
+  {
+    name: "HTML",
+    icon: SiHtml5,
+  },
+  {
+    name: "CSS",
+    icon: SiCss,
+  },
+  {
+    name: "Bun",
+    icon: SiBun,
+  },
+  {
+    name: "Node.js",
+    icon: SiNodeJs,
+  },
+  {
+    name: "Convex",
+    icon: SiSanity,
+  },
+  {
+    name: "Sanity CMS",
+    icon: SiSanity,
+  },
+  {
+    name: "Docker",
+    icon: SiDocker,
+  },
+  {
+    name: "Traefik",
+    icon: SiTraefikproxy,
+  },
+  {
+    name: "Linux",
+    icon: SiLinux,
+  },
+  {
+    name: "Nix",
+    icon: SiNixos,
+  },
+  {
+    name: "Git",
+    icon: CommitIcon,
+  },
+  {
+    name: "Entra ID",
+    icon: SiMicrosoft,
+  },
+  {
+    name: "Intune",
+    icon: SiMicrosoft,
+  },
+  {
+    name: "UniFi",
+    icon: SiUbiquiti,
+  },
+  {
+    name: "More",
+    icon: MoreHorizontalIcon,
+  },
+];
+
+// export default function Technologies() {
+//   return (
+//     <div class="w-full mx-auto max-w-5xl border-b sm:px-10 bg-diagonal-lines sm:border-x">
+//       <div class="border-b border-x p-4">
+//         <h2 class="text-primary text-2xl">Technologies I know</h2>
+//       </div>
+//       <div class="w-full grid grid-cols-3 md:grid-cols-5 border-l border-t group -my-px bg-background">
+//         {technologies.map((item, index) => (
+//           <div
+//             key={item.name}
+//             class={cn(
+//               "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
+//               index % 2 === 0 ? "" : "bg-diagonal-lines",
+//             )}
+//           >
+//             <item.icon class="size-10" />
+//             <span class="text-lg">{item.name}</span>
+//           </div>
+//         ))}
+//         <Placeholders
+//           cols={3}
+//           class="block md:hidden"
+//           length={technologies.length}
+//         />
+//         <Placeholders
+//           cols={5}
+//           class="md:block hidden"
+//           length={technologies.length}
+//         />
+//       </div>
+//     </div>
+//   );
+// }
+
+// function Placeholders({
+//   cols,
+//   class,
+//   length,
+// }: {
+//   cols: number;
+//   class: string;
+//   length: number;
+// }) {
+//   if (length % cols === 0) return;
+//   return (
+//     <>
+//       {Array(cols - (length % cols))
+//         .fill(null)
+//         .map((_, index) => (
+//           <div
+//             key={index}
+//             class={cn(
+//               "border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
+//               (length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
+//               class,
+//             )}
+//           ></div>
+//         ))}
+//     </>
+//   );
+// }
+---
+
+<div
+  class="w-full mx-auto max-w-5xl border-b sm:px-10 bg-diagonal-lines sm:border-x"
+>
+  <div class="border-b border-x p-4">
+    <h2 class="text-primary text-2xl">Technologies I know</h2>
+  </div>
+  <div
+    class="w-full grid grid-cols-3 md:grid-cols-5 border-l border-t group -my-px"
+  >
+    {
+      technologies.map((item, index) => (
+        <div
+          class={cn(
+            "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
+            index % 2 === 0 ? "" : "bg-diagonal-lines",
+          )}
+        >
+          <item.icon class="size-10" />
+          <span class="text-lg">{item.name}</span>
+        </div>
+      ))
+    }
+    <!-- <Placeholders
+      cols={3}
+      class="block md:hidden"
+      length={technologies.length}
+    />
+    <Placeholders
+      cols={5}
+      class="md:block hidden"
+      length={technologies.length}
+    /> -->
+  </div>
+</div>
