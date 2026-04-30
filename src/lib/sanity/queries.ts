@@ -14,6 +14,11 @@ export const postQuery = defineQuery(
   `*[_type == "post" && slug.current == $slug][0]`,
 );
 
+export const projectsQuery = defineQuery(`*[
+  _type == "project"
+  && defined(slug.current)
+]|order(publishedAt desc)`);
+
 export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }

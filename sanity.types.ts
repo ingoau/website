@@ -52,6 +52,7 @@ export type Project = {
     _key: string;
   }>;
   blogPost?: PostReference;
+  description?: string;
   body?: BlockContent;
 };
 
@@ -282,4 +283,34 @@ export type PostQueryResult = {
   publishedAt?: string;
   body?: BlockContent;
 } | null;
+
+// Source: src/lib/sanity/queries.ts
+// Variable: projectsQuery
+// Query: *[  _type == "project"  && defined(slug.current)]|order(publishedAt desc)
+export type ProjectsQueryResult = Array<{
+  _id: string;
+  _type: "project";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  mainImage?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  publishedAt?: string;
+  links?: Array<{
+    title?: string;
+    url?: string;
+    _key: string;
+  }>;
+  blogPost?: PostReference;
+  description?: string;
+  body?: BlockContent;
+}>;
 
