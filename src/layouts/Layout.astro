@@ -6,8 +6,9 @@ import { Font } from "astro:assets";
 import Search from "../components/Search.tsx";
 import Pagering from "@/components/Pagering.astro";
 import Posthog from "@/components/Posthog.astro";
-import { Schema } from "astro-seo-schema";
-import type { ComponentProps } from "astro/types";
+import type { Thing, WithContext, WebSite } from "schema-dts";
+
+type JsonLdSchema = WithContext<Thing>;
 
 const {
   title,
@@ -20,12 +21,12 @@ const {
   description?: string;
   image?: string;
   pageType?: string;
-  jsonLdSchemas?: ComponentProps<typeof Schema>["item"][];
+  jsonLdSchemas?: JsonLdSchema[];
 } = Astro.props;
 
 const pageTitle = title ? `${title} | Ingo's Site` : "Ingo's Site";
 
-const websiteSchema: ComponentProps<typeof Schema>["item"] = {
+const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://ingo.au/#website",
@@ -38,7 +39,7 @@ const websiteSchema: ComponentProps<typeof Schema>["item"] = {
     "@id": "https://ingo.au/#person",
     name: "Ingo Wolf",
   },
-};
+} satisfies WithContext<WebSite>;
 
 const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
 ---
@@ -66,7 +67,11 @@ const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
     <meta property="og:image" content={image ?? "https://ingo.au/og.png"} />
     <meta name="twitter:image" content={image ?? "https://ingo.au/og.png"} />
 
-    {schemas.map((schema) => <Schema item={schema} />)}
+    {
+      schemas.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
 
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />

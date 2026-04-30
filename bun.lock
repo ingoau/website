@@ -21,7 +21,6 @@
         "@typescript-eslint/parser": "^8.59.1",
         "astro": "6.2.0",
         "astro-portabletext": "^0.13.0",
-        "astro-seo-schema": "^6.0.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "cmdk": "^1.1.1",
@@ -41,7 +40,6 @@
         "react-is": "^19.2.5",
         "sanity": "^5.23.0",
         "sanity-plugin-media": "^4.2.0",
-        "schema-dts": "^2.0.0",
         "styled-components": "^6.4.1",
         "tailwind-merge": "^3.5.0",
         "tailwindcss": "^4.2.4",
@@ -51,6 +49,7 @@
         "@iconify/json": "^2.2.468",
         "@tailwindcss/typography": "^0.5.19",
         "prettier-plugin-tailwindcss": "^0.8.0",
+        "schema-dts": "^2.0.0",
         "tw-animate-css": "^1.4.0",
         "unplugin-icons": "^23.0.1",
       },
@@ -1262,8 +1261,6 @@
     "astro-eslint-parser": ["astro-eslint-parser@1.4.0", "", { "dependencies": { "@astrojs/compiler": "^2.0.0 || ^3.0.0", "@typescript-eslint/scope-manager": "^7.0.0 || ^8.0.0", "@typescript-eslint/types": "^7.0.0 || ^8.0.0", "astrojs-compiler-sync": "^1.0.0", "debug": "^4.3.4", "entities": "^7.0.0", "eslint-scope": "^8.0.1", "eslint-visitor-keys": "^4.0.0", "espree": "^10.0.0", "fast-glob": "^3.3.3", "is-glob": "^4.0.3", "semver": "^7.3.8" } }, "sha512-+QDcgc7e+au6EZ0YjMmRRjNoQo5bDMlaR45aWDoFsuxQTCM9qmCHRoiKJPELgckJ8Wmr7vcfpa9eCDHBFh6G4w=="],
 
     "astro-portabletext": ["astro-portabletext@0.13.0", "", { "dependencies": { "@portabletext/toolkit": "^5.0.1", "@portabletext/types": "^4.0.1" }, "peerDependencies": { "astro": ">=4.6.0" } }, "sha512-Z9N32H7eRP8tuSavnJqUm4vKqHj59oYEyhqq4YiwsAcFnwDbepbb6cmIRGG5S+eejvHibrjyAKdQxhVINYXCbA=="],
-
-    "astro-seo-schema": ["astro-seo-schema@6.0.0", "", { "peerDependencies": { "astro": "^6.0.0", "schema-dts": "^1.1.0" } }, "sha512-6Etg+9zu7XdlUa40BIZrZP3vd+lReeJ1rNgT8Jer+1bPyGdrA/itQwJOhIkX+t5PadVwTmpt6xZouDycrZys6w=="],
 
     "astrojs-compiler-sync": ["astrojs-compiler-sync@1.1.1", "", { "dependencies": { "synckit": "^0.11.0" }, "peerDependencies": { "@astrojs/compiler": ">=0.27.0" } }, "sha512-0mKvB9sDQRIZPsEJadw6OaFbGJ92cJPPR++ICca9XEyiUAZqgVuk25jNmzHPT0KF80rI94trSZrUR5iHFXGGOQ=="],
 
