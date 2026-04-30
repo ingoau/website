@@ -112,13 +112,13 @@ const data = {
 ---
 
 <div class="w-full mx-auto max-w-5xl">
-  <div class="grid grid-cols-1 md:grid-cols-32 border-l border-dashed">
+  <div class="grid grid-cols-1 md:grid-cols-32 border-l">
     {
       data?.quickStats.map((stat, index) => (
         <div
           class={cn(
             stat.className,
-            "p-4 flex flex-col border-r border-dashed border-b h-28 items-center justify-center",
+            "p-4 flex flex-col border-r border-b h-28 items-center justify-center",
           )}
         >
           <div class="text-4xl text-primary font-mono">{stat.value}</div>
@@ -127,7 +127,7 @@ const data = {
       ))
     }
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 border-l border-dashed">
+  <div class="grid grid-cols-1 sm:grid-cols-2 border-l">
     {
       data?.languages.map(
         (
@@ -142,8 +142,8 @@ const data = {
           },
           index: number,
         ) => (
-          <div class="flex flex-row border-r border-b border-dashed items-center">
-            <div class="size-14 flex justify-center items-center text-xl border-r border-dashed z-10 aspect-square bg-card font-mono">
+          <div class="flex flex-row border-r border-b items-center">
+            <div class="size-14 flex justify-center items-center text-xl border-r z-10 aspect-square bg-card font-mono">
               {index + 1}
             </div>
             <div class="w-full flex flex-row relative overflow-hidden">
