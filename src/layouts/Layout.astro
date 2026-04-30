@@ -15,6 +15,8 @@ const {
   pageType,
 }: { title?: string; description?: string; image?: string; pageType?: string } =
   Astro.props;
+
+const pageTitle = title ? `${title} | Ingo's Site` : "Ingo's Site";
 ---
 
 <!doctype html>
@@ -31,10 +33,7 @@ const {
 
     <!-- Seo tags -->
     {description && <meta content={description} name="description" />}
-    <meta
-      property="og:title"
-      content={(title ?? "Ingo's Site") + (title && " | Ingo's Site")}
-    />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={pageType ?? "website"} />
     <meta property="og:url" content={Astro.url.href} />
@@ -83,7 +82,7 @@ const {
 
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />
-    <title>{title ?? "Ingo's Site"} {title && "| Ingo's Site"}</title>
+    <title>{pageTitle}</title>
     <Posthog />
   </head>
   <body class="flex min-h-screen flex-col">
