@@ -1,19 +1,47 @@
 ---
 import { cn } from "@/lib/utils";
 import { DateTime } from "luxon";
+import HackatimeSkeleton from "./HackatimeSkeleton.astro";
+
+const HACKATIME_TIMEOUT_MS = 5000;
+
+type HackatimeLanguage = {
+  name: string;
+  total_seconds: number;
+  text: string;
+  hours: number;
+  minutes: number;
+  percent: number;
+  digital: string;
+};
+
+type HackatimeStats = {
+  data?: {
+    human_readable_total?: string;
+    languages?: HackatimeLanguage[];
+  };
+};
+
+async function fetchHackatimeStats(url: string) {
+  try {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(HACKATIME_TIMEOUT_MS),
+    });
+
+    if (!response.ok) return null;
+
+    return (await response.json()) as HackatimeStats;
+  } catch {
+    return null;
+  }
+}
+
+function getReadableTotal(stats: HackatimeStats | null) {
+  return stats?.data?.human_readable_total?.replace(/\s*\d+s$/, "") || "None";
+}
 
 // Helper function to deduplicate and merge languages
-function deduplicateLanguages(
-  languages: Array<{
-    name: string;
-    total_seconds: number;
-    text: string;
-    hours: number;
-    minutes: number;
-    percent: number;
-    digital: string;
-  }>,
-) {
+function deduplicateLanguages(languages: HackatimeLanguage[]) {
   const languageMap = new Map();
 
   // Combine duplicate languages
@@ -33,6 +61,8 @@ function deduplicateLanguages(
     0,
   );
 
+  if (totalSeconds === 0) return [];
+
   // Recalculate all fields based on new total_seconds
   merged.forEach((lang) => {
     lang.percent =
@@ -49,10 +79,9 @@ function deduplicateLanguages(
   return merged.sort((a, b) => b.total_seconds - a.total_seconds);
 }
 
-const allTimeStatsRequest = await fetch(
+const allTimeStats = await fetchHackatimeStats(
   "https://hackatime.hackclub.com/api/v1/users/ingo/stats",
 );
-const allTimeStats = await allTimeStatsRequest.json();
 
 // I hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones
 const startOfToday = DateTime.now()
@@ -75,58 +104,66 @@ const date7DaysAgo = DateTime.now()
   .toUTC()
   .toISO();
 
-const dayStats = await fetch(
+const dayStatsData = await fetchHackatimeStats(
   `https://hackatime.hackclub.com/api/v1/users/ingo/stats?start_date=${startOfToday}&end_date=${endOfToday}`,
 );
-const dayStatsData = await dayStats.json();
 
-const weekStats = await fetch(
+const weekStatsData = await fetchHackatimeStats(
   `https://hackatime.hackclub.com/api/v1/users/ingo/stats?start_date=${date7DaysAgo}&end_date=${endOfToday}`,
 );
-const weekStatsData = await weekStats.json();
+
+const hasStats = Boolean(allTimeStats?.data);
 
 const quickStats = [
   {
     title: "Total Coding Time",
-    value:
-      allTimeStats.data.human_readable_total.replace(/\s*\d+s$/, "") || "None",
+    value: getReadableTotal(allTimeStats),
     className: "col-span-14 bg-diagonal-lines",
   },
   {
     title: "This Week",
-    value:
-      weekStatsData.data.human_readable_total.replace(/\s*\d+s$/, "") || "None",
+    value: getReadableTotal(weekStatsData),
     className: "col-span-9",
   },
   {
     title: "Today",
-    value:
-      dayStatsData.data.human_readable_total.replace(/\s*\d+s$/, "") || "None",
+    value: getReadableTotal(dayStatsData),
     className: "col-span-9",
   },
 ];
 const data = {
   quickStats,
-  languages: deduplicateLanguages(allTimeStats.data.languages).slice(0, 10),
+  languages: deduplicateLanguages(allTimeStats?.data?.languages ?? []).slice(
+    0,
+    10,
+  ),
 };
 ---
 
 <div class="mx-auto w-full max-w-5xl">
-  <div class="grid grid-cols-1 border-l md:grid-cols-32">
-    {
-      data?.quickStats.map((stat, index) => (
-        <div
-          class:list={cn(
-            stat.className,
-            "flex h-28 flex-col items-center justify-center border-r border-b p-4",
-          )}
-        >
-          <div class="text-primary font-mono text-4xl">{stat.value}</div>
-          <div>{stat.title}</div>
+  {
+    hasStats ? (
+      <div class="grid grid-cols-1 border-l md:grid-cols-32">
+        {data?.quickStats.map((stat, index) => (
+          <div
+            class:list={cn(
+              stat.className,
+              "flex h-28 flex-col items-center justify-center border-r border-b p-4",
+            )}
+          >
+            <div class="text-primary font-mono text-4xl">{stat.value}</div>
+            <div>{stat.title}</div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <>
+        <div class="border-x border-b p-4 text-center">
+          Coding stats are unavailable right now.
         </div>
-      ))
-    }
-  </div>
+      </>
+    )
+  }
   <div class="grid grid-cols-1 border-l sm:grid-cols-2">
     {
       data?.languages.map(
