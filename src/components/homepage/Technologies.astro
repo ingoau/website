@@ -102,67 +102,15 @@ const technologies = [
   },
 ];
 
-// export default function Technologies() {
-//   return (
-//     <div class="w-full mx-auto max-w-5xl border-b sm:px-10 bg-diagonal-lines sm:border-x">
-//       <div class="border-b border-x p-4">
-//         <h2 class="text-primary text-2xl">Technologies I know</h2>
-//       </div>
-//       <div class="w-full grid grid-cols-3 md:grid-cols-5 border-l border-t group -my-px bg-background">
-//         {technologies.map((item, index) => (
-//           <div
-//             key={item.name}
-//             class={cn(
-//               "flex flex-col gap-2 items-center justify-center aspect-square text-center border-b border-r group-hover:opacity-75 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200 hover:border-border/75",
-//               index % 2 === 0 ? "" : "bg-diagonal-lines",
-//             )}
-//           >
-//             <item.icon class="size-10" />
-//             <span class="text-lg">{item.name}</span>
-//           </div>
-//         ))}
-//         <Placeholders
-//           cols={3}
-//           class="block md:hidden"
-//           length={technologies.length}
-//         />
-//         <Placeholders
-//           cols={5}
-//           class="md:block hidden"
-//           length={technologies.length}
-//         />
-//       </div>
-//     </div>
-//   );
-// }
+function placeholders(cols: number) {
+  const remaining = technologies.length % cols;
+  if (remaining === 0) return [];
 
-// function Placeholders({
-//   cols,
-//   class,
-//   length,
-// }: {
-//   cols: number;
-//   class: string;
-//   length: number;
-// }) {
-//   if (length % cols === 0) return;
-//   return (
-//     <>
-//       {Array(cols - (length % cols))
-//         .fill(null)
-//         .map((_, index) => (
-//           <div
-//             key={index}
-//             class={cn(
-//               "border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
-//               (length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
-//               class,
-//             )}
-//           ></div>
-//         ))}
-//     </>
-//   );
-// }
+  return Array.from({ length: cols - remaining });
+}
+
+const mobilePlaceholders = placeholders(3);
+const desktopPlaceholders = placeholders(5);
 ---
 
 <div
@@ -187,15 +135,25 @@ const technologies = [
         </div>
       ))
     }
-    <!-- <Placeholders
-      cols={3}
-      class="block md:hidden"
-      length={technologies.length}
-    />
-    <Placeholders
-      cols={5}
-      class="md:block hidden"
-      length={technologies.length}
-    /> -->
+    {
+      mobilePlaceholders.map((_, index) => (
+        <div
+          class={cn(
+            "block md:hidden border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
+            (technologies.length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
+          )}
+        />
+      ))
+    }
+    {
+      desktopPlaceholders.map((_, index) => (
+        <div
+          class={cn(
+            "hidden md:block border-b border-r group-hover:opacity-50 group-hover:hover:opacity-100 group-hover:hover:bg-card duration-200",
+            (technologies.length + index) % 2 === 0 ? "" : "bg-diagonal-lines",
+          )}
+        />
+      ))
+    }
   </div>
 </div>
