@@ -36,6 +36,7 @@ const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
               <a
                 class="btn-interactive border-r px-4 py-2"
                 href={link.url}
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 {link.title}
