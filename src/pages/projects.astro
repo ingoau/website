@@ -10,7 +10,7 @@ const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
 
 <Layout title="Projects">
   <div class="grid grid-cols-2 border-l">
-    {
+   {
       projects.map((project, index) => (
         <div class="flex flex-col border-r border-b">
           {project.mainImage && project.mainImage.asset && (
