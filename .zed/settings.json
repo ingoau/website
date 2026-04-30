@@ -11,6 +11,6 @@
     "Svelte": { "formatter": { "language_server": { "name": "biome" } } },
     "TSX": { "formatter": { "language_server": { "name": "biome" } } },
     "TypeScript": { "formatter": { "language_server": { "name": "biome" } } },
-    "Vue.js": { "formatter": { "language_server": { "name": "biome" } } },
-  },
+    "Vue.js": { "formatter": { "language_server": { "name": "biome" } } }
+  }
 }
