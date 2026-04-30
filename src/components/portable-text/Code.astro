@@ -1,4 +1,7 @@
 ---
+import type { CodeLanguage } from "astro";
+import { Code } from "astro:components";
+
 interface Props {
   node: {
     _key: string;
@@ -10,4 +13,9 @@ interface Props {
 const { node } = Astro.props;
 ---
 
-{JSON.stringify(node)}
+<Code
+  code={node.code}
+  lang={node.language as CodeLanguage}
+  wrap
+  theme="catppuccin-mocha"
+/>
