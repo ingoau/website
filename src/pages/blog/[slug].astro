@@ -59,15 +59,10 @@ const blogPostingSchema = {
 ---
 
 <Layout
-  title={post.title}
-  description={post.summary}
-  image={postImage}
-  jsonLdSchemas={[blogPostingSchema]}
-  metaTags={{
+  description={post.summary}   image={postImage}   jsonLdSchemas={[blogPostingSchema]}   metaTags={{
     "article:published_time": postDate,
     "article:modified_time": postDate,
-  }}
-  pageType="article"
+  }}   pageType="article"   title={post.title}
 >
   <div class="block border-x border-b p-4">
     {

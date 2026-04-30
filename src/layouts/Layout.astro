@@ -55,30 +55,30 @@ const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
     <link href="/icons/rounded.svg" rel="icon" type="image/svg+xml" />
     <link href="/favicon.ico" rel="icon" />
 
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link href="/sitemap-index.xml" rel="sitemap" />
 
     <meta content={Astro.generator} name="generator" />
 
     <!-- Seo tags -->
     {description && <meta content={description} name="description" />}
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content={pageType ?? "website"} />
-    <meta property="og:url" content={Astro.url.href} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    <meta property="og:image" content={image ?? "https://ingo.au/og.png"} />
-    <meta name="twitter:image" content={image ?? "https://ingo.au/og.png"} />
+    <meta content={pageTitle} property="og:title" />
+    <meta content={description} property="og:description" />
+    <meta content={pageType ?? "website"} property="og:type" />
+    <meta content={Astro.url.href} property="og:url" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <link href={new URL(Astro.url.pathname, Astro.site)} rel="canonical" />
+    <meta content={image ?? "https://ingo.au/og.png"} property="og:image" />
+    <meta content={image ?? "https://ingo.au/og.png"} name="twitter:image" />
     {
       metaTags &&
         Object.entries(metaTags).map(([key, value]) => (
-          <meta property={key} content={value} />
+          <meta content={value} property={key} />
         ))
     }
 
     {
       schemas.map((schema) => (
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        <script set:html={JSON.stringify(schema)} type="application/ld+json" />
       ))
     }
 
