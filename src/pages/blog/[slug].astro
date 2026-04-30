@@ -23,7 +23,11 @@ if (!post) {
 }
 ---
 
-<Layout title={post.title} description={post.summary}>
+<Layout
+  title={post.title}
+  description={post.summary}
+  image={post.image && post.image.asset && urlFor(post.image.asset).url()}
+>
   <div class="block border-x border-b p-4">
     {
       post.image && post.image.asset && (
