@@ -26,7 +26,10 @@ const { title, description }: { title?: string; description?: string } =
 
     <!-- Seo tags -->
     {description && <meta content={description} name="description" />}
-    <meta property="og:title" content={title} />
+    <meta
+      property="og:title"
+      content={(title ?? "Ingo's Site") + (title && " | Ingo's Site")}
+    />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
