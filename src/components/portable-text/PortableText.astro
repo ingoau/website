@@ -3,6 +3,7 @@ import { PortableText as PortableTextComponent } from "astro-portabletext";
 import type { ComponentProps } from "astro/types";
 import Image from "./Image.astro";
 import Link from "./Link.astro";
+import Code from "./Code.astro";
 
 export interface Props {
   value: ComponentProps<typeof PortableTextComponent>["value"];
@@ -13,6 +14,7 @@ const { value } = Astro.props;
 const components = {
   type: {
     image: Image,
+    code: Code,
   },
   mark: {
     link: Link,

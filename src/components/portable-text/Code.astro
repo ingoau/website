@@ -1,0 +1,13 @@
+---
+interface Props {
+  node: {
+    _key: string;
+    _type: string;
+    code: string;
+    language: string;
+  };
+}
+const { node } = Astro.props;
+---
+
+{JSON.stringify(node)}
