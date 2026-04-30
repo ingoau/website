@@ -11,7 +11,9 @@ export const NAVBAR_ITEMS = [
   { url: "/contact/", label: "Contact" },
 ];
 
-export const OTHER_PAGES = [{ url: "/guestbook", label: "Guestbook" }];
+export const OTHER_PAGES = [
+  // { url: "/guestbook", label: "Guestbook" }
+];
 
 // export const AUTH_PROVIDERS = [
 //   { label: "GitHub", id: "github", icon: FaGithub, type: "social" },
