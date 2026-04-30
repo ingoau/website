@@ -13,7 +13,9 @@ interface Props {
 const { node } = Astro.props;
 ---
 
-<div class="not-prose -mx-4 p-4 bg-diagonal-lines border-y relative">
+<div
+  class="not-prose -mx-4 p-4 bg-diagonal-lines border-y relative copyable-code-block"
+>
   <div class="top-0 left-0 absolute border-b h-4 w-full"></div>
   <div class="bottom-0 left-0 absolute border-t h-4 w-full"></div>
   <div class="top-0 left-0 absolute border-r h-full w-4"></div>
@@ -30,3 +32,17 @@ const { node } = Astro.props;
     theme="catppuccin-mocha"
   />
 </div>
+
+<script>
+  document.querySelectorAll(".copyable-code-block").forEach((block) => {
+    const copyButton = block.querySelector("button");
+    const code = block.querySelector("pre");
+    copyButton?.addEventListener("click", () => {
+      navigator.clipboard.writeText(code?.textContent || "");
+      copyButton.textContent = "Copied!";
+      setTimeout(() => {
+        copyButton.textContent = "Copy";
+      }, 2000);
+    });
+  });
+</script>
