@@ -35,8 +35,9 @@ const webrings = [
   },
   {
     name: "page ring",
+    url: "https://pagering.gideon.sh",
     onClick:
-      "if (window.pagering) { window.pagering.open(); window.pagering.open(); } else { location.href = 'https://pagering.gideon.sh/'; }",
+      "if (window.pagering) { window.pagering.open(); window.pagering.open(); } else { location.href = 'https://pagering.gideon.sh/'; }; return false;",
     next: "https://pagering.gideon.sh/to/ingo/next",
     prev: "https://pagering.gideon.sh/to/ingo/prev",
   },
