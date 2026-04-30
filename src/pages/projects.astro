@@ -9,7 +9,7 @@ import { sanityClient } from "sanity:client";
 const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
 ---
 
-<Layout title="Projects">
+<Layout title="Projects" description="I love building stuff">
   <Header class:list="border-x">Projects</Header>
   <div class="grid grid-cols-2 border-l">
     {

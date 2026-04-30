@@ -10,7 +10,7 @@ import Header from "@/components/Header.astro";
 const posts = (await sanityClient.fetch(postsQuery)) as PostsQueryResult;
 ---
 
-<Layout title="Blog">
+<Layout title="Blog" description="This is where I yap about random stuff">
   <div class="bg-diagonal-lines border-x border-b">
     <Header class="bg-background">Blog</Header>
     <div class="px-4">

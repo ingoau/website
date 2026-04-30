@@ -23,7 +23,7 @@ if (!post) {
 }
 ---
 
-<Layout title={post.title}>
+<Layout title={post.title} description={post.summary}>
   <div class="block border-x border-b p-4">
     {
       post.image && post.image.asset && (
