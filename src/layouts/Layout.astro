@@ -6,6 +6,7 @@ import { Font } from "astro:assets";
 import Search from "../components/Search.tsx";
 import Pagering from "@/components/Pagering.astro";
 import Posthog from "@/components/Posthog.astro";
+import { Schema } from "astro-seo-schema";
 
 const { title, description }: { title?: string; description?: string } =
   Astro.props;
@@ -31,6 +32,44 @@ const { title, description }: { title?: string; description?: string } =
     <meta property="og:url" content={Astro.url.href} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Ingo Wolf",
+        url: "https://ingo.au",
+        email: "me@ingo.au",
+        description: "Web developer from Canberra, Australia",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Canberra",
+          addressRegion: "ACT",
+          addressCountry: "AU",
+        },
+        sameAs: [
+          "https://github.com/ingoau",
+          "https://gitlab.com/ingowolf",
+          "https://en.pronouns.page/@ingowolf",
+          "https://www.linkedin.com/in/ingoau/",
+          "https://monkeytype.com/profile/ingow",
+          "https://last.fm/user/ingoau",
+          "https://x.com/IngoWolfAU",
+        ],
+        knowsAbout: [
+          "Web development",
+          "TypeScript",
+          "React",
+          "Astro",
+          "Svelte",
+          "Infrastructure",
+          "Homelab",
+          "Networking",
+        ],
+        height: "190 cm",
+        pronouns: "he/they",
+      }}
+    />
 
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />
