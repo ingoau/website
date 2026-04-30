@@ -1,4 +1,5 @@
 ---
+import Header from "@/components/Header.astro";
 import Layout from "@/layouts/Layout.astro";
 import { projectsQuery, urlFor } from "@/lib/sanity/queries";
 import { Image } from "astro:assets";
@@ -9,6 +10,7 @@ const projects = (await sanityClient.fetch(projectsQuery)) as Project[];
 ---
 
 <Layout title="Projects">
+  <Header class:list="border-x">Projects</Header>
   <div class="grid grid-cols-2 border-l">
     {
       projects.map((project, index) => (
