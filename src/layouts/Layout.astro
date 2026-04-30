@@ -35,6 +35,8 @@ const { title, description }: { title?: string; description?: string } =
     <meta property="og:url" content={Astro.url.href} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:image" content="https://ingo.au/og.png" />
+    <meta name="twitter:image" content="https://ingo.au/og.png" />
 
     <Schema
       item={{
