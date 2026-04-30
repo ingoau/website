@@ -89,16 +89,16 @@ const buttons = [
   <div class="flex justify-between items-center border-b">
     <div class="grow px-2 font-mono">88x31 Buttons</div>
     <a
-      href="/buttons/ingo.png"
       class="btn-interactive py-2 px-4 border-l"
-      download>Download my button</a
+      download
+      href="/buttons/ingo.png">Download my button</a
     >
   </div>
   <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 w-fit p-2 mx-auto">
     {
       buttons.map((button) => (
         <a class="block w-[88px] h-[31px] object-cover" href={button.href}>
-          <Image width={88} height={31} src={button.src} alt={button.alt} />
+          <Image alt={button.alt} height={31} src={button.src} width={88} />
         </a>
       ))
     }

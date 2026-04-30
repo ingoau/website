@@ -50,8 +50,8 @@ const webrings = [
       <div class="flex flex-col border-r col-span-6 pb-10">
         <div class="flex bg-background">
           <a
-            href="/"
             class="p-4 btn-interactive text-xl active:font-normal font-extrabold font-mono w-full"
+            href="/"
           >
             Ingo Wolf
           </a>
@@ -60,7 +60,7 @@ const webrings = [
           <div class="flex flex-row bg-background w-fit">
             {
               profiles.map((link) => (
-                <a href="/" class="px-4 py-2 btn-interactive border-r">
+                <a class="px-4 py-2 btn-interactive border-r" href="/">
                   {link.text}
                 </a>
               ))
@@ -75,7 +75,7 @@ const webrings = [
           {
             [...NAVBAR_ITEMS, ...OTHER_PAGES].map((link) => (
               <div class="border-b border-r flex flex-col bg-background">
-                <a href={link.url} class="p-2 btn-interactive text-sm">
+                <a class="p-2 btn-interactive text-sm" href={link.url}>
                   {link.label}
                 </a>
               </div>
@@ -108,22 +108,22 @@ const webrings = [
           webrings.map((webring) => (
             <div class="flex flex-row w-full">
               <a
-                href={webring.prev}
                 class="btn-interactive p-3 aspect-square border-r md:border-l border-t"
+                href={webring.prev}
               >
                 <span class="sr-only">Previous</span>
                 <ChevronLeftIcon class="size-4" />
               </a>
               <a
-                href={webring.url}
                 class="btn-interactive px-6 text-sm font-mono grow flex items-center justify-center border-t cursor-pointer"
+                href={webring.url}
                 onclick={webring.onClick}
               >
                 {webring.name}
               </a>
               <a
-                href={webring.next}
                 class="btn-interactive p-3 aspect-square border-x border-t"
+                href={webring.next}
               >
                 <span class="sr-only">Previous</span>
                 <ChevronRightIcon class="size-4" />

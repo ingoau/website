@@ -16,8 +16,8 @@ const path = Astro.url.pathname;
     <div class="border-x w-full max-w-5xl mx-auto flex flex-row">
       <div class="border-r">
         <a
-          href="/"
           class="flex justify-center items-center p-4 text-xl py-4! px-4! active:font-normal font-extrabold min-w-36 font-mono btn-interactive"
+          href="/"
         >
           Ingo Wolf
         </a>
@@ -27,11 +27,11 @@ const path = Astro.url.pathname;
         NAVBAR_ITEMS.map((item) => (
           <div class="border-l hidden md:block">
             <a
-              href={item.url}
-              class={cn(
+              class:list={cn(
                 "menu-item btn-interactive flex flex-col",
                 path === item.url && "text-primary",
               )}
+              href={item.url}
             >
               {item.label}
             </a>

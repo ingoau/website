@@ -6,4 +6,6 @@ type Props = MarkProps<{ href?: string }>;
 const { node } = Astro.props;
 ---
 
-<a href={node.markDef?.href} target="_blank" rel="noopener noreferrer"><slot /></a>
+<a href={node.markDef?.href} rel="noopener noreferrer" target="_blank"
+  ><slot /></a
+>

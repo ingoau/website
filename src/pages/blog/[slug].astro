@@ -28,11 +28,11 @@ if (!post) {
     {
       post.image && post.image.asset && (
         <Image
-          src={urlFor(post.image.asset).url()}
-          width="1200"
-          height="675"
           alt=""
           class="mx-auto max-w-2xl w-full"
+          height="675"
+          src={urlFor(post.image.asset).url()}
+          width="1200"
         />
       )
     }

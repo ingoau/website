@@ -65,14 +65,14 @@ const socials = [
         contactMethods.map((method) => (
           <div class="border-r border-b w-full h-full">
             <a
-              href={method.url}
-              target="_blank"
-              class={cn(
+              class:list={cn(
                 "block p-4 btn-interactive",
                 method.preferred
                   ? "bg-primary text-primary-foreground hover:bg-primary/90"
                   : "",
               )}
+              href={method.url}
+              target="_blank"
             >
               <h1 class="text-2xl">
                 {method.title} {method.preferred ? "(Preferred)" : ""}
@@ -91,9 +91,9 @@ const socials = [
         socials.map((social) => (
           <div class="border-r border-b w-full h-full">
             <a
+              class:list={cn("block p-4 btn-interactive")}
               href={social.link}
               target="_blank"
-              class={cn("block p-4 btn-interactive")}
             >
               <h1 class="text-2xl">{social.name}</h1>
               <p class="text-lg font-mono">{social.username}</p>
