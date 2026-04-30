@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "13.3.0",
     "@astrojs/react": "5.0.4",
+    "@astrojs/sitemap": "^3.7.2",
     "@nanostores/react": "^1.1.0",
     "@sanity/astro": "^3.3.1",
     "@sanity/client": "^7.22.0",

@@ -17,8 +17,11 @@ const { title }: { title?: string } = Astro.props;
     <meta content="width=device-width" name="viewport" />
     <link href="/icons/rounded.svg" rel="icon" type="image/svg+xml" />
     <link href="/favicon.ico" rel="icon" />
-    <meta content="same-origin" name="view-transition" />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
     <meta content={Astro.generator} name="generator" />
+
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />
     <title>{title ?? "Ingo's Site"} {title && "| Ingo's Site"}</title>

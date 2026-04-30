@@ -6,6 +6,7 @@ import react from "@astrojs/react";
 import cloudflare from "@astrojs/cloudflare";
 import sanity from "@sanity/astro";
 import Icons from "unplugin-icons/vite";
+import sitemap from "@astrojs/sitemap";
 
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
   process.env.NODE_ENV || "",
@@ -15,6 +16,7 @@ const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://ingo.au",
   vite: {
     plugins: [
       tailwindcss(),
@@ -46,6 +48,7 @@ export default defineConfig({
       studioBasePath: "/admin",
       useCdn: false,
     }),
+    sitemap(),
   ],
 
   compressHTML: true,
