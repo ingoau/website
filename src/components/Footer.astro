@@ -12,7 +12,7 @@ const profiles = [
   },
   {
     text: "Signal",
-    href: "",
+    href: "https://signal.me/#eu/aON_wvkns7bfeU-UAj_09B1Yym8WVC2QIWWV8rIhYZzPc2xGLUtBeLWMc9LJoWNB",
   },
   {
     text: "GitHub",
@@ -37,7 +37,7 @@ const webrings = [
     name: "page ring",
     url: "https://pagering.gideon.sh",
     onClick:
-      "if (window.pagering) { window.pagering.open(); window.pagering.open(); } else { location.href = 'https://pagering.gideon.sh/'; }; return false;",
+      "if (window.pagering) { window.pagering.open(); window.pagering.open(); } else { location.href = 'https://pagering.gideon.sh/'; } return false;",
     next: "https://pagering.gideon.sh/to/ingo/next",
     prev: "https://pagering.gideon.sh/to/ingo/prev",
   },
@@ -61,7 +61,7 @@ const webrings = [
           <div class="bg-background flex w-fit flex-row">
             {
               profiles.map((link) => (
-                <a class="btn-interactive border-r px-4 py-2" href="/">
+                <a class="btn-interactive border-r px-4 py-2" href={link.href}>
                   {link.text}
                 </a>
               ))
