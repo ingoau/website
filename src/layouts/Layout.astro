@@ -24,6 +24,23 @@ const {
 } = Astro.props;
 
 const pageTitle = title ? `${title} | Ingo's Site` : "Ingo's Site";
+
+const websiteSchema: ComponentProps<typeof Schema>["item"] = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://ingo.au/#website",
+  name: "ingo.au",
+  url: "https://ingo.au",
+  description: "Personal website of Ingo Wolf, a web developer from Canberra, Australia.",
+  inLanguage: "en-AU",
+  publisher: {
+    "@type": "Person",
+    "@id": "https://ingo.au/#person",
+    name: "Ingo Wolf",
+  },
+};
+
+const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
 ---
 
 <!doctype html>
@@ -49,7 +66,7 @@ const pageTitle = title ? `${title} | Ingo's Site` : "Ingo's Site";
     <meta property="og:image" content={image ?? "https://ingo.au/og.png"} />
     <meta name="twitter:image" content={image ?? "https://ingo.au/og.png"} />
 
-    {jsonLdSchemas && jsonLdSchemas.map((schema) => <Schema item={schema} />)}
+    {schemas.map((schema) => <Schema item={schema} />)}
 
     <Font cssVariable="--font-geist-mono" preload transition:persist />
     <Font cssVariable="--font-outfit" preload transition:persist />
