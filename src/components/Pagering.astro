@@ -1,139 +1,142 @@
+---
+const minifyCss = (css: string) =>
+  css
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/\s+/g, " ")
+    .replace(/\s*([{};,>])\s*/g, "$1")
+    .replace(/;}/g, "}")
+    .trim();
+
+const pageringCss = minifyCss(`
+  /* Catppuccin Mocha styling */
+
+  /* Border colors */
+  .border-border {
+    border-color: #585b70 !important; /* surface2 */
+    border-style: dashed !important;
+    border-width: 1px !important;
+  }
+
+  /* Main background & text */
+  .bg-white {
+    background-color: #1e1e2e !important; /* base */
+    color: #cdd6f4 !important; /* text */
+  }
+
+  .text-black {
+    color: #cdd6f4 !important; /* text */
+  }
+
+  /* Header/toolbar background */
+  .bg-neutral-100 {
+    background-color: #45475a !important; /* surface1 */
+  }
+
+  /* Button hover states */
+  .hover\\:bg-neutral-200:hover {
+    background-color: #6c7086 !important; /* overlay0 */
+  }
+
+  /* Divider/separator lines */
+  .border-neutral-300 {
+    border-color: #585b70 !important; /* surface2 */
+    border-width: 1px !important;
+    border-style: dashed !important;
+  }
+
+  .border-dashed.border-neutral-200 {
+    border-color: #585b70 !important; /* surface2 */
+    border-width: 1px !important;
+  }
+
+  /* Muted/secondary text */
+  .text-neutral-600 {
+    color: #a6adc8 !important; /* subtext0 */
+  }
+
+  /* Link hover background */
+  .hover\\:bg-teal-100:hover {
+    background-color: #6c7086 !important; /* overlay0 */
+  }
+
+  /* Link hover ring */
+  .hover\\:ring-1:hover {
+    --tw-ring-color: transparent !important;
+  }
+
+  /* Link text color */
+  .text-link {
+    color: #cba6f7 !important; /* mauve */
+  }
+
+  /* Link hover color */
+  .hover\\:text-teal-900:hover {
+    color: #cba6f7 !important; /* mauve */
+  }
+
+  .hover\\:underline:hover {
+    text-decoration: underline !important;
+  }
+
+  /* Exit button */
+  .text-red-700 {
+    color: #f38ba8 !important; /* red */
+  }
+
+  .hover\\:text-red-900:hover {
+    color: #f38ba8 !important; /* red */
+  }
+
+  /* Body text sizes */
+  .text-sm {
+    color: #cdd6f4 !important; /* text */
+  }
+
+  /* Small/secondary text */
+  .text-xs {
+    color: #a6adc8 !important; /* subtext0 */
+  }
+
+  /* Lucide icons */
+  .lucide-icon,
+  svg[class*="lucide"] {
+    color: #cba6f7 !important; /* mauve */
+    stroke: #cba6f7 !important;
+  }
+
+  .group:hover .lucide-icon,
+  .group:hover svg[class*="lucide"] {
+    color: #cba6f7 !important; /* mauve */
+    stroke: #cba6f7 !important;
+  }
+
+  .not-group-hover .lucide-icon,
+  .not-group-hover svg[class*="lucide"] {
+    color: #a6adc8 !important; /* subtext0 */
+    stroke: #a6adc8 !important;
+  }
+
+  /* Horizontal rule */
+  hr {
+    border-color: #585b70 !important; /* surface2 */
+    border-width: 1px !important;
+    border-style: dashed !important;
+  }
+
+  /* Hide SVG arrow */
+  [class*="pointer-events-none"][class*="top-8"] {
+    display: none !important;
+  }
+`);
+---
+
 <script defer id="pagering" is:inline src="https://pagering.gideon.sh/embed.js"
 ></script>
-<script>
+<script define:vars={{ pageringCss }} is:inline>
   //
   // Thanks Claude Haiku 4.5 for this script
   //
 
-  const minifyCss = (css: string) =>
-    css
-      .replace(/\/\*[\s\S]*?\*\//g, "")
-      .replace(/\s+/g, " ")
-      .replace(/\s*([{};,>])\s*/g, "$1")
-      .replace(/;}/g, "}")
-      .trim();
-
-  const pageringCss = minifyCss(`
-    /* Catppuccin Mocha styling */
-
-    /* Border colors */
-    .border-border {
-      border-color: #585b70 !important; /* surface2 */
-      border-style: dashed !important;
-      border-width: 1px !important;
-    }
-
-    /* Main background & text */
-    .bg-white {
-      background-color: #1e1e2e !important; /* base */
-      color: #cdd6f4 !important; /* text */
-    }
-
-    .text-black {
-      color: #cdd6f4 !important; /* text */
-    }
-
-    /* Header/toolbar background */
-    .bg-neutral-100 {
-      background-color: #45475a !important; /* surface1 */
-    }
-
-    /* Button hover states */
-    .hover\\:bg-neutral-200:hover {
-      background-color: #6c7086 !important; /* overlay0 */
-    }
-
-    /* Divider/separator lines */
-    .border-neutral-300 {
-      border-color: #585b70 !important; /* surface2 */
-      border-width: 1px !important;
-      border-style: dashed !important;
-    }
-
-    .border-dashed.border-neutral-200 {
-      border-color: #585b70 !important; /* surface2 */
-      border-width: 1px !important;
-    }
-
-    /* Muted/secondary text */
-    .text-neutral-600 {
-      color: #a6adc8 !important; /* subtext0 */
-    }
-
-    /* Link hover background */
-    .hover\\:bg-teal-100:hover {
-      background-color: #6c7086 !important; /* overlay0 */
-    }
-
-    /* Link hover ring */
-    .hover\\:ring-1:hover {
-      --tw-ring-color: transparent !important;
-    }
-
-    /* Link text color */
-    .text-link {
-      color: #cba6f7 !important; /* mauve */
-    }
-
-    /* Link hover color */
-    .hover\\:text-teal-900:hover {
-      color: #cba6f7 !important; /* mauve */
-    }
-
-    .hover\\:underline:hover {
-      text-decoration: underline !important;
-    }
-
-    /* Exit button */
-    .text-red-700 {
-      color: #f38ba8 !important; /* red */
-    }
-
-    .hover\\:text-red-900:hover {
-      color: #f38ba8 !important; /* red */
-    }
-
-    /* Body text sizes */
-    .text-sm {
-      color: #cdd6f4 !important; /* text */
-    }
-
-    /* Small/secondary text */
-    .text-xs {
-      color: #a6adc8 !important; /* subtext0 */
-    }
-
-    /* Lucide icons */
-    .lucide-icon,
-    svg[class*="lucide"] {
-      color: #cba6f7 !important; /* mauve */
-      stroke: #cba6f7 !important;
-    }
-
-    .group:hover .lucide-icon,
-    .group:hover svg[class*="lucide"] {
-      color: #cba6f7 !important; /* mauve */
-      stroke: #cba6f7 !important;
-    }
-
-    .not-group-hover .lucide-icon,
-    .not-group-hover svg[class*="lucide"] {
-      color: #a6adc8 !important; /* subtext0 */
-      stroke: #a6adc8 !important;
-    }
-
-    /* Horizontal rule */
-    hr {
-      border-color: #585b70 !important; /* surface2 */
-      border-width: 1px !important;
-      border-style: dashed !important;
-    }
-
-    /* Hide SVG arrow */
-    [class*="pointer-events-none"][class*="top-8"] {
-      display: none !important;
-    }
-  `);
   document.addEventListener("DOMContentLoaded", () => {
     const pageringScript = document.getElementById("pagering");
 
