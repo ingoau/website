@@ -45,6 +45,10 @@ const websiteSchema = {
 } satisfies WithContext<WebSite>;
 
 const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
+const previewImage = image ?? "https://ingo.au/og.png";
+const previewImageAlt = title
+  ? `${title} | Ingo's Site`
+  : "Ingo Wolf's personal website";
 ---
 
 <!doctype html>
@@ -65,10 +69,18 @@ const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
     <meta content={description} property="og:description" />
     <meta content={pageType ?? "website"} property="og:type" />
     <meta content={Astro.url.href} property="og:url" />
+    <meta content="en_AU" property="og:locale" />
+    <meta content="Ingo's site" property="og:site_name" />
     <meta content="summary_large_image" name="twitter:card" />
+    <meta content={pageTitle} name="twitter:title" />
+    <meta content={description} name="twitter:description" />
     <link href={new URL(Astro.url.pathname, Astro.site)} rel="canonical" />
-    <meta content={image ?? "https://ingo.au/og.png"} property="og:image" />
-    <meta content={image ?? "https://ingo.au/og.png"} name="twitter:image" />
+    <meta content={previewImage} property="og:image" />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta content={previewImageAlt} property="og:image:alt" />
+    <meta content={previewImage} name="twitter:image" />
+    <meta content={previewImageAlt} name="twitter:image:alt" />
     {
       metaTags &&
         Object.entries(metaTags).map(([key, value]) => (
