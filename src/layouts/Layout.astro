@@ -26,16 +26,20 @@ const {
   metaTags?: Record<string, string>;
 } = Astro.props;
 
-const pageTitle = title ? `${title} | Ingo's Site` : "Ingo's Site";
+const siteName = "Ingo's site";
+const defaultDescription =
+  "Personal website of Ingo Wolf, a web developer from Canberra, Australia.";
+const resolvedDescription = description ?? defaultDescription;
+const pageTitle = title ? `${title} | ${siteName}` : "Ingo Wolf";
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://ingo.au/#website",
-  name: "ingo.au",
+  name: "Ingo's site",
   url: "https://ingo.au",
-  description:
-    "Personal website of Ingo Wolf, a web developer from Canberra, Australia.",
+  description: defaultDescription,
   inLanguage: "en-AU",
   publisher: {
     "@type": "Person",
@@ -45,10 +49,10 @@ const websiteSchema = {
 } satisfies WithContext<WebSite>;
 
 const schemas = [websiteSchema, ...(jsonLdSchemas ?? [])];
-const previewImage = image ?? "https://ingo.au/og.png";
+const previewImage = new URL(image ?? "/og.png", Astro.site).toString();
 const previewImageAlt = title
-  ? `${title} | Ingo's Site`
-  : "Ingo Wolf's personal website";
+  ? `${title} | ${siteName}`
+  : "Ingo's personal website";
 ---
 
 <!doctype html>
@@ -64,20 +68,19 @@ const previewImageAlt = title
     <meta content={Astro.generator} name="generator" />
 
     <!-- Seo tags -->
-    {description && <meta content={description} name="description" />}
+    <meta content={resolvedDescription} name="description" />
     <meta content={pageTitle} property="og:title" />
-    <meta content={description} property="og:description" />
+    <meta content={resolvedDescription} property="og:description" />
     <meta content={pageType ?? "website"} property="og:type" />
-    <meta content={Astro.url.href} property="og:url" />
+    <meta content={canonicalUrl} property="og:url" />
     <meta content="en_AU" property="og:locale" />
-    <meta content="Ingo's site" property="og:site_name" />
+    <meta content={siteName} property="og:site_name" />
     <meta content="summary_large_image" name="twitter:card" />
     <meta content={pageTitle} name="twitter:title" />
-    <meta content={description} name="twitter:description" />
-    <link href={new URL(Astro.url.pathname, Astro.site)} rel="canonical" />
+    <meta content={resolvedDescription} name="twitter:description" />
+    <link href={canonicalUrl} rel="canonical" />
     <meta content={previewImage} property="og:image" />
-    <meta content="1200" property="og:image:width" />
-    <meta content="630" property="og:image:height" />
+    <meta content={previewImage} property="og:image:secure_url" />
     <meta content={previewImageAlt} property="og:image:alt" />
     <meta content={previewImage} name="twitter:image" />
     <meta content={previewImageAlt} name="twitter:image:alt" />
