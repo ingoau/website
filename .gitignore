@@ -26,3 +26,6 @@ pnpm-debug.log*
 .sanity/
 
 .wrangler
+
+# Local Netlify folder
+.netlify
