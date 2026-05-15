@@ -8,6 +8,8 @@ import sanity from "@sanity/astro";
 import Icons from "unplugin-icons/vite";
 import sitemap from "@astrojs/sitemap";
 
+import netlify from "@astrojs/netlify";
+
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
   process.env.NODE_ENV || "",
   process.cwd(),
@@ -68,5 +70,5 @@ export default defineConfig({
     },
   ],
 
-  adapter: cloudflare({ imageService: "compile" }),
+  adapter: netlify(),
 });
