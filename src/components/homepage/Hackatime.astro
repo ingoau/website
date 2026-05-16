@@ -4,6 +4,7 @@ import { DateTime } from "luxon";
 import HackatimeSkeleton from "./HackatimeSkeleton.astro";
 
 const HACKATIME_TIMEOUT_MS = 5000;
+const HACKATIME_USERNAME = "inw";
 
 type HackatimeLanguage = {
   name: string;
@@ -80,7 +81,7 @@ function deduplicateLanguages(languages: HackatimeLanguage[]) {
 }
 
 const allTimeStats = await fetchHackatimeStats(
-  "https://hackatime.hackclub.com/api/v1/users/ingo/stats",
+  `https://hackatime.hackclub.com/api/v1/users/${HACKATIME_USERNAME}/stats`,
 );
 
 // I hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones i hate timezones
@@ -105,11 +106,11 @@ const date7DaysAgo = DateTime.now()
   .toISO();
 
 const dayStatsData = await fetchHackatimeStats(
-  `https://hackatime.hackclub.com/api/v1/users/ingo/stats?start_date=${startOfToday}&end_date=${endOfToday}`,
+  `https://hackatime.hackclub.com/api/v1/users/${HACKATIME_USERNAME}/stats?start_date=${startOfToday}&end_date=${endOfToday}`,
 );
 
 const weekStatsData = await fetchHackatimeStats(
-  `https://hackatime.hackclub.com/api/v1/users/ingo/stats?start_date=${date7DaysAgo}&end_date=${endOfToday}`,
+  `https://hackatime.hackclub.com/api/v1/users/${HACKATIME_USERNAME}/stats?start_date=${date7DaysAgo}&end_date=${endOfToday}`,
 );
 
 const hasStats = Boolean(allTimeStats?.data);
