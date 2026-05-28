@@ -58,3 +58,6 @@ I found I discovered a lot of songs through Tidal, with it's daily discovery pla
 
 ### Apple Music
 Yes, they have an Android app, and I believe it's actually better than the iOS app which is ironic. You see, when you swipe the now playing screen, the animation should follow your finger. On the android version, swiping it into view followed my finger but
+
+
+[i gave up on writing this halfway through lmao]
