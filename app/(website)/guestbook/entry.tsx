@@ -25,10 +25,7 @@ export default function Entry({
 }: {
   entry: FunctionReturnType<typeof api.guestbook.get>[number];
 }) {
-  const user = useQuery(api.auth.getCurrentUser);
-  const deleteEntry = useMutation(api.guestbook.deleteEntry);
-  const setStatus = useMutation(api.guestbook.setStatus);
-
+  const user = undefined;
   return (
     <div
       className={cn(
@@ -53,7 +50,7 @@ export default function Entry({
         />
       </div>
       <div className="text-lg">{entry.message}</div>
-      <div className="flex flex-row absolute top-0 right-0">
+      {/*<div className="flex flex-row absolute top-0 right-0">
         {user?.role == "admin" && (
           <>
             <Dialog>
@@ -175,7 +172,7 @@ export default function Entry({
             </DialogContent>
           </Dialog>
         )}
-      </div>
+      </div>*/}
     </div>
   );
 }

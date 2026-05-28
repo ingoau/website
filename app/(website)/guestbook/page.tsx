@@ -1,9 +1,9 @@
 import Header from "@/components/header";
-import PreloadedSection from "./preloaded-section";
 import { Suspense } from "react";
 import { Spinner } from "@/components/ui/spinner";
 
 import { Metadata } from "next";
+import Page from "./content";
 
 export const metadata: Metadata = {
   title: "Guestbook",
@@ -21,7 +21,7 @@ export default async function PageWrapper() {
           </div>
         }
       >
-        <PreloadedSection />
+        <Page />
       </Suspense>
     </div>
   );

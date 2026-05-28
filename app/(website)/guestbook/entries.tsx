@@ -1,18 +1,23 @@
 "use client";
 
-import { Preloaded, usePreloadedQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
 import Entry from "./entry";
 
-export function Entries(props: {
-  preloadedEntries: Preloaded<typeof api.guestbook.get>;
-}) {
-  const entries = usePreloadedQuery(props.preloadedEntries);
-
+export function Entries() {
   return (
     <>
-      {entries &&
-        entries?.map((entry) => <Entry entry={entry} key={entry.id} />)}
+      <Entry
+        entry={{
+          id: "1",
+          message: "Here is a guestbook message for demonstration purposes",
+          name: "Ingo",
+          creationTime: 1779944724000,
+          status: "approved",
+          userId: "e",
+          verified: true,
+        }}
+      />
+      {/*{entries &&
+        entries?.map((entry) => <Entry entry={entry} key={entry.id} />)}*/}
     </>
   );
 }
