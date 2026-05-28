@@ -1,5 +1,5 @@
 ---
-title: Why is there no good music streaming apps?
+title: Why are there no good music streaming apps?
 image:
 description:
 posted:
