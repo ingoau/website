@@ -47,6 +47,7 @@
 	"dependencies": {
 		"@fontsource-variable/geist": "^5.2.6",
 		"@fontsource-variable/geist-mono": "^5.2.6",
+		"@sveltejs/adapter-static": "^3.0.10",
 		"dayjs": "^1.11.13",
 		"mdsvex": "^0.12.6"
 	}
