@@ -40,17 +40,17 @@ export default function RootLayout({
       <body
         className={`${jost.className} ${geistMono.variable} ${winFont.variable} antialiased`}
       >
-        <ConvexClientProvider>
-          <ThemeProvider attribute="class" forcedTheme="dark">
-            {children}
-            <Toaster position="top-right" offset={{ top: 16, right: 16 }} />
-            <Search />
-            <PosthogIdentify />
-            <Suspense>
-              <ErrorParamHandler />
-            </Suspense>
-          </ThemeProvider>
-        </ConvexClientProvider>
+        {/*<ConvexClientProvider>*/}
+        <ThemeProvider attribute="class" forcedTheme="dark">
+          {children}
+          <Toaster position="top-right" offset={{ top: 16, right: 16 }} />
+          <Search />
+          <PosthogIdentify />
+          <Suspense>
+            <ErrorParamHandler />
+          </Suspense>
+        </ThemeProvider>
+        {/*</ConvexClientProvider>*/}
       </body>
     </html>
   );
