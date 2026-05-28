@@ -1,5 +1,6 @@
 import posthog from 'posthog-js';
 import { browser } from '$app/environment';
+export const prerender = true;
 
 export const load = async () => {
 	if (browser) {
