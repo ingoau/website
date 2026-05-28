@@ -16,10 +16,7 @@ export async function getPosts() {
 		})
 	);
 
-	// Filter out draft posts
-	const filteredPosts = posts.filter((post) => !(post.posted == undefined));
-
-	let sortedPosts = filteredPosts.sort((a, b) => b.posted - a.posted);
+	let sortedPosts = posts.sort((a, b) => b.posted - a.posted);
 
 	let finalPosts = sortedPosts.map((post) => ({
 		title: post.title,
