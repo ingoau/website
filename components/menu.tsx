@@ -26,7 +26,6 @@ import {
   Trash,
 } from "lucide-react";
 import { useMutation, useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -48,7 +47,6 @@ const menuItems = [
 
 export default function Menu() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const me = useQuery(api.auth.getMe);
   const pathname = usePathname();
   const hideSidebar =
     pathname.startsWith("/projects/") ||
@@ -89,7 +87,7 @@ export default function Menu() {
                 setMobileMenuOpen={setMobileMenuOpen}
               />
             ))}
-            {me && (
+            {/*{me && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -99,7 +97,7 @@ export default function Menu() {
               >
                 <User />
               </motion.div>
-            )}
+            )}*/}
           </AnimatePresence>
         </motion.div>
 
@@ -119,11 +117,11 @@ export default function Menu() {
                   setMobileMenuOpen={setMobileMenuOpen}
                 />
               ))}
-              {me && (
+              {/*{me && (
                 <div className="border border-dashed rounded p-2 ">
                   <User setMobileMenuOpen={setMobileMenuOpen} />
                 </div>
-              )}
+              )}*/}
             </div>
           </DrawerContent>
         </Drawer>
@@ -173,100 +171,100 @@ function MenuItem({
   );
 }
 
-function User({
-  setMobileMenuOpen,
-}: {
-  setMobileMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
-  const me = useQuery(api.auth.getMe);
-  const [accountDrawerOpen, setAccountDrawerOpen] = useState(false);
-  const [deleteAccountDrawerOpen, setDeleteAccountDrawerOpen] = useState(false);
-  const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
-  const { signOut } = useAuthActions();
+// function User({
+//   setMobileMenuOpen,
+// }: {
+//   setMobileMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+// }) {
+//   const me = undefined;
+//   const [accountDrawerOpen, setAccountDrawerOpen] = useState(false);
+//   const [deleteAccountDrawerOpen, setDeleteAccountDrawerOpen] = useState(false);
+//   const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
+//   const { signOut } = useAuthActions();
 
-  return (
-    <div className="flex w-full items-center gap-2">
-      {me?.role == "write" && <Pen className="size-4" />}
-      <div className="flex flex-col grow">
-        <span>{me?.name}</span>
-        <span>{me?.email}</span>
-      </div>
-      <NestedDrawer
-        open={accountDrawerOpen}
-        onOpenChange={setAccountDrawerOpen}
-        shouldScaleBackground
-      >
-        <DrawerTrigger
-          className={buttonVariants({ variant: "ghost", size: "icon" })}
-        >
-          <MoreVertical />
-        </DrawerTrigger>
-        <DrawerContent>
-          <DrawerTitle className="flex flex-row gap-2 p-2 items-center w-full max-w-lg mx-auto">
-            <Avatar>
-              <AvatarImage src={me?.img} />
-              <AvatarFallback>{me?.name?.charAt(0)}</AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col">
-              <p>{me?.name}</p>
-              <p className="text-foreground/75 text-xs">{me?.email}</p>
-            </div>
-          </DrawerTitle>
-          <div className="mx-auto w-full max-w-lg p-2 flex flex-col gap-2">
-            <NestedDrawer
-              open={profileDrawerOpen}
-              onOpenChange={setProfileDrawerOpen}
-              shouldScaleBackground
-            >
-              <DrawerTrigger className={buttonVariants({ variant: "default" })}>
-                <Pen />
-                Edit profile
-              </DrawerTrigger>
-              <DrawerContent>
-                <DrawerHeader>
-                  <DrawerTitle>Edit Profile</DrawerTitle>
-                </DrawerHeader>
-                Not implemented
-              </DrawerContent>
-            </NestedDrawer>
-            <Button
-              variant="outline"
-              onClick={() => {
-                setAccountDrawerOpen(false);
-                if (setMobileMenuOpen) {
-                  setMobileMenuOpen(false);
-                }
-                toast.promise(signOut, {
-                  loading: "Logging out...",
-                  success: "Logged out!",
-                  error: "Failed to log out",
-                });
-              }}
-            >
-              <LogOut />
-              Logout
-            </Button>
-            <NestedDrawer
-              open={deleteAccountDrawerOpen}
-              onOpenChange={setDeleteAccountDrawerOpen}
-              shouldScaleBackground
-            >
-              <DrawerTrigger
-                className={buttonVariants({ variant: "destructive" })}
-              >
-                <Trash />
-                Delete account
-              </DrawerTrigger>
-              <DrawerContent>
-                <DrawerHeader>
-                  <DrawerTitle>Delete Account</DrawerTitle>
-                </DrawerHeader>
-                Not implemented
-              </DrawerContent>
-            </NestedDrawer>
-          </div>
-        </DrawerContent>
-      </NestedDrawer>
-    </div>
-  );
-}
+//   return (
+//     <div className="flex w-full items-center gap-2">
+//       {me?.role == "write" && <Pen className="size-4" />}
+//       <div className="flex flex-col grow">
+//         <span>{me?.name}</span>
+//         <span>{me?.email}</span>
+//       </div>
+//       <NestedDrawer
+//         open={accountDrawerOpen}
+//         onOpenChange={setAccountDrawerOpen}
+//         shouldScaleBackground
+//       >
+//         <DrawerTrigger
+//           className={buttonVariants({ variant: "ghost", size: "icon" })}
+//         >
+//           <MoreVertical />
+//         </DrawerTrigger>
+//         <DrawerContent>
+//           <DrawerTitle className="flex flex-row gap-2 p-2 items-center w-full max-w-lg mx-auto">
+//             <Avatar>
+//               <AvatarImage src={me?.img} />
+//               <AvatarFallback>{me?.name?.charAt(0)}</AvatarFallback>
+//             </Avatar>
+//             <div className="flex flex-col">
+//               <p>{me?.name}</p>
+//               <p className="text-foreground/75 text-xs">{me?.email}</p>
+//             </div>
+//           </DrawerTitle>
+//           <div className="mx-auto w-full max-w-lg p-2 flex flex-col gap-2">
+//             <NestedDrawer
+//               open={profileDrawerOpen}
+//               onOpenChange={setProfileDrawerOpen}
+//               shouldScaleBackground
+//             >
+//               <DrawerTrigger className={buttonVariants({ variant: "default" })}>
+//                 <Pen />
+//                 Edit profile
+//               </DrawerTrigger>
+//               <DrawerContent>
+//                 <DrawerHeader>
+//                   <DrawerTitle>Edit Profile</DrawerTitle>
+//                 </DrawerHeader>
+//                 Not implemented
+//               </DrawerContent>
+//             </NestedDrawer>
+//             <Button
+//               variant="outline"
+//               onClick={() => {
+//                 setAccountDrawerOpen(false);
+//                 if (setMobileMenuOpen) {
+//                   setMobileMenuOpen(false);
+//                 }
+//                 toast.promise(signOut, {
+//                   loading: "Logging out...",
+//                   success: "Logged out!",
+//                   error: "Failed to log out",
+//                 });
+//               }}
+//             >
+//               <LogOut />
+//               Logout
+//             </Button>
+//             <NestedDrawer
+//               open={deleteAccountDrawerOpen}
+//               onOpenChange={setDeleteAccountDrawerOpen}
+//               shouldScaleBackground
+//             >
+//               <DrawerTrigger
+//                 className={buttonVariants({ variant: "destructive" })}
+//               >
+//                 <Trash />
+//                 Delete account
+//               </DrawerTrigger>
+//               <DrawerContent>
+//                 <DrawerHeader>
+//                   <DrawerTitle>Delete Account</DrawerTitle>
+//                 </DrawerHeader>
+//                 Not implemented
+//               </DrawerContent>
+//             </NestedDrawer>
+//           </div>
+//         </DrawerContent>
+//       </NestedDrawer>
+//     </div>
+//   );
+// }

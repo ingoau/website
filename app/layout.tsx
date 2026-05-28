@@ -25,27 +25,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ConvexAuthNextjsServerProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={`${geistMono.className} antialiased`}>
-          <ConvexClientProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              disableTransitionOnChange
-            >
-              <div
-                vaul-drawer-wrapper=""
-                className="flex flex-row w-full bg-background min-h-screen"
-              >
-                <Menu />
-                <div className="w-full">{children}</div>
-              </div>
-              <Toaster />
-            </ThemeProvider>
-          </ConvexClientProvider>
-        </body>
-      </html>{" "}
-    </ConvexAuthNextjsServerProvider>
+    // <ConvexAuthNextjsServerProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistMono.className} antialiased`}>
+        {/*<ConvexClientProvider>*/}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          disableTransitionOnChange
+        >
+          <div
+            vaul-drawer-wrapper=""
+            className="flex flex-row w-full bg-background min-h-screen"
+          >
+            <Menu />
+            <div className="w-full">{children}</div>
+          </div>
+          <Toaster />
+        </ThemeProvider>
+        {/*</ConvexClientProvider>*/}
+      </body>
+    </html>
+    // </ConvexAuthNextjsServerProvider>
   );
 }
