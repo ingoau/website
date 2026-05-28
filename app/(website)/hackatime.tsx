@@ -103,7 +103,7 @@ function deduplicateLanguages(
 
 export default async function Hackatime() {
   const allTimeStatsRequest = await fetch(
-    "https://hackatime.hackclub.com/api/v1/users/ingo/stats",
+    "https://hackatime.hackclub.com/api/v1/users/inw/stats",
   );
   const allTimeStats = await allTimeStatsRequest.json();
 
@@ -129,12 +129,12 @@ export default async function Hackatime() {
     .toISO();
 
   const dayStats = await fetch(
-    `https://hackatime.hackclub.com/api/v1/users/ingo/stats?start_date=${startOfToday}&end_date=${endOfToday}`,
+    `https://hackatime.hackclub.com/api/v1/users/inw/stats?start_date=${startOfToday}&end_date=${endOfToday}`,
   );
   const dayStatsData = await dayStats.json();
 
   const weekStats = await fetch(
-    `https://hackatime.hackclub.com/api/v1/users/ingo/stats?start_date=${date7DaysAgo}&end_date=${endOfToday}`,
+    `https://hackatime.hackclub.com/api/v1/users/inw/stats?start_date=${date7DaysAgo}&end_date=${endOfToday}`,
   );
   const weekStatsData = await weekStats.json();
 
