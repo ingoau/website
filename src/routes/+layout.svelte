@@ -16,6 +16,7 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import Cursor from '$lib/components/cursor.svelte';
 	import { Toaster } from '$lib/components/ui/sonner/index.js';
+	import { ModeWatcher } from 'mode-watcher';
 
 	// Icons
 	import Home from 'svelte-material-icons/Home.svelte';
@@ -65,6 +66,7 @@
 	</Sidebar.Inset>
 </Sidebar.Provider>
 
+<ModeWatcher />
 <Toaster />
 <Cursor />
 
