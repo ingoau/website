@@ -3,8 +3,6 @@ import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Menu from "@/components/menu";
-import { ConvexClientProvider } from "./ConvexClientProvider";
-import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { Toaster } from "@/components/ui/sonner";
 
 const geistMono = Geist_Mono({
@@ -25,10 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <ConvexAuthNextjsServerProvider>
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistMono.className} antialiased`}>
-        {/*<ConvexClientProvider>*/}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -43,9 +39,7 @@ export default function RootLayout({
           </div>
           <Toaster />
         </ThemeProvider>
-        {/*</ConvexClientProvider>*/}
       </body>
     </html>
-    // </ConvexAuthNextjsServerProvider>
   );
 }

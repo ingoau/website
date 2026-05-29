@@ -1,6 +1,5 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
-import { client } from "./sanity/lib/client";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],

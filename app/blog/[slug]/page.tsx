@@ -1,15 +1,22 @@
-import { PortableText, type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { client } from "@/sanity/lib/client";
-import Link from "next/link";
+import PortableText, { type PortableTextBlock } from "@/components/portableText";
+import { client, type SanityDocument } from "@/sanity/lib/client";
 import Content from "@/components/content";
-import { Badge } from "@/components/ui/badge";
 import BackButton from "../../../components/backButton";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
-const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{_id, title, description, slug, mainImage, tags[]-> { title, slug }, body, publishedAt}`;
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{_id, title, description, slug, mainImage, body, publishedAt}`;
+const POST_SLUGS_QUERY = `*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`;
+
+type BlogPost = SanityDocument & {
+  title: string;
+  description?: string;
+  mainImage?: SanityImageSource;
+  body?: PortableTextBlock[];
+  publishedAt: string;
+};
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
@@ -19,12 +26,26 @@ const urlFor = (source: SanityImageSource) =>
 
 const options = { next: { revalidate: 30 } };
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const posts = await client.fetch<{ slug: string }[]>(
+    POST_SLUGS_QUERY,
+    {},
+    options,
+  );
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const post = await client.fetch<SanityDocument>(
+  const post = await client.fetch<BlogPost>(
     POST_QUERY,
     await params,
     options,
@@ -43,7 +64,7 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const post = await client.fetch<SanityDocument>(
+  const post = await client.fetch<BlogPost>(
     POST_QUERY,
     await params,
     options,
@@ -77,32 +98,15 @@ export default async function PostPage({
             <div className="flex flex-row gap-2 w-full">
               <div className="flex flex-col gap-2">
                 <h1 className="text-6xl">{post.title}</h1>
-                <div className="flex flex-row gap-2 flex-wrap">
-                  <div className="flex flex-row gap-1 flex-wrap">
-                    {post.tags &&
-                      (
-                        post.tags as {
-                          title: string;
-                          slug: { current: string };
-                        }[]
-                      ).map((tag) => (
-                        <Badge key={tag.title} variant="outline" asChild>
-                          <Link href={`/blog/tag/${tag.slug.current}`}>
-                            {tag.title}
-                          </Link>
-                        </Badge>
-                      ))}
-                  </div>
-                  <h2 className="text-xl">
-                    {post.description}
-                    {post.description && " - "}
-                    {new Date(post.publishedAt).toLocaleDateString("en-AU", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </h2>
-                </div>
+                <h2 className="text-xl">
+                  {post.description}
+                  {post.description && " - "}
+                  {new Date(post.publishedAt).toLocaleDateString("en-AU", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </h2>
               </div>
             </div>
           </div>

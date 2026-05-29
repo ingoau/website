@@ -1,5 +1,5 @@
 import { File } from "lucide-react";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const postType = defineType({
   name: "post",
@@ -35,11 +35,6 @@ export const postType = defineType({
           title: "Alternative text",
         }),
       ],
-    }),
-    defineField({
-      name: "tags",
-      type: "array",
-      of: [defineArrayMember({ type: "reference", to: { type: "postTag" } })],
     }),
     defineField({
       name: "publishedAt",
