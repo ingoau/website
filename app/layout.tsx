@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import Search from "@/components/search";
-import { ConvexClientProvider } from "./ConvexClientProvider";
 import ErrorParamHandler from "@/components/error-param-handler";
 import { Suspense } from "react";
 import PosthogIdentify from "@/components/posthog-identify";
@@ -40,7 +39,6 @@ export default function RootLayout({
       <body
         className={`${jost.className} ${geistMono.variable} ${winFont.variable} antialiased`}
       >
-        {/*<ConvexClientProvider>*/}
         <ThemeProvider attribute="class" forcedTheme="dark">
           {children}
           <Toaster position="top-right" offset={{ top: 16, right: 16 }} />
@@ -50,7 +48,6 @@ export default function RootLayout({
             <ErrorParamHandler />
           </Suspense>
         </ThemeProvider>
-        {/*</ConvexClientProvider>*/}
       </body>
     </html>
   );

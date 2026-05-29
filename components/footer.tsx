@@ -1,7 +1,6 @@
 import Link from "@/components/custom-link";
 import NextLink from "next/link";
-import { ArrowLeft, ArrowRight, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Mail } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { SiSignal } from "react-icons/si";
 import { MENU_ITEMS, OTHER_PAGES } from "@/lib/constants";

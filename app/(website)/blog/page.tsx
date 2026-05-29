@@ -7,7 +7,7 @@ const POSTS_QUERY = `*[
   _type == "post"
   && defined(slug.current)
 ]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, body}`;
-const options = { next: { revalidate: 30 } };
+const options = { cache: "force-cache" as const };
 
 export const metadata: Metadata = {
   title: "Blog",

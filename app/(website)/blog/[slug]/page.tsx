@@ -23,6 +23,25 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   }
 }`;
 
+const POST_SLUGS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]{ "slug": slug.current }`;
+
+const options: FilteredResponseQueryOptions = {
+  cache: "force-cache",
+};
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const posts = await client.fetch<{ slug: string }[]>(POST_SLUGS_QUERY);
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -35,14 +54,9 @@ export async function generateMetadata({
   );
 
   return {
-    title: post.title,
+    title: post?.title,
   };
 }
-
-const options: FilteredResponseQueryOptions = {
-  next: { revalidate: 30 },
-  cache: "no-cache",
-};
 
 export default async function PostPage({
   params,

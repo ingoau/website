@@ -1,41 +1,10 @@
 "use client";
 
-import { api } from "@/convex/_generated/api";
-import {
-  Authenticated,
-  AuthLoading,
-  Preloaded,
-  Unauthenticated,
-  useMutation,
-} from "convex/react";
-import { Spinner } from "@/components/ui/spinner";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { authClient } from "@/lib/auth-client";
-import { toast } from "sonner";
-import { AUTH_PROVIDERS } from "@/lib/constants";
-import { usePathname } from "next/navigation";
 import { LogOut, Pencil } from "lucide-react";
 import { StripedSeparator } from "@/components/striped-separator";
-import posthog from "posthog-js";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { Entries } from "./entries";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 
 export default function Page() {
   // const session = authClient.useSession();

@@ -1,31 +1,24 @@
 "use client";
 
 import { FormattedDateTime } from "@/components/formatted-date";
-import { Button } from "@/components/ui/button";
-import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
-import { useMutation, useQuery } from "convex/react";
-import { FunctionReturnType } from "convex/server";
-import { Check, Gavel, Trash, Undo, Verified } from "lucide-react";
+import { Verified } from "lucide-react";
 
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { toast } from "sonner";
-import { authClient } from "@/lib/auth-client";
+export type GuestbookEntry = {
+  id: string;
+  message: string;
+  name: string;
+  creationTime: number;
+  status: "pending" | "approved";
+  userId: string;
+  verified: boolean;
+};
 
 export default function Entry({
   entry,
 }: {
-  entry: FunctionReturnType<typeof api.guestbook.get>[number];
+  entry: GuestbookEntry;
 }) {
-  const user = undefined;
   return (
     <div
       className={cn(

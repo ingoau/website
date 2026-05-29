@@ -33,7 +33,7 @@ export default function Home() {
   );
 }
 
-export function Hero() {
+function Hero() {
   return (
     <div className="w-full mx-auto flex flex-col sm:flex-row h-fit border border-t-0 border-b-0 sm:border-b border-dashed max-w-4xl">
       <div className="flex flex-col">

@@ -9,7 +9,7 @@ const POSTS_QUERY = `*[
   _type == "project"
   && defined(slug.current)
 ]|order(publishedAt desc){_id, title, slug, body, "mainImageUrl": mainImage.asset->url, links}`;
-const options = { next: { revalidate: 30 } };
+const options = { cache: "force-cache" as const };
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -37,7 +37,7 @@ export default async function Projects() {
   );
 }
 
-export function ProjectCard({ project }: { project: SanityDocument }) {
+function ProjectCard({ project }: { project: SanityDocument }) {
   return (
     <div className="flex flex-col border-r border-b border-dashed">
       <Image

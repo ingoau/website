@@ -2,7 +2,6 @@
 
 import { Check, Share, TriangleAlert } from "lucide-react";
 import { Button } from "./ui/button";
-import { SanityDocument } from "sanity";
 import { useState } from "react";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "motion/react";

@@ -8,7 +8,6 @@ import { ArrowLeft, Menu, Search } from "lucide-react";
 import { useUiState } from "@/lib/state";
 import { useScroll, useSpring, useTransform } from "motion/react";
 import { motion } from "motion/react";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 function NavbarContainer({

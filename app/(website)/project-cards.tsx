@@ -1,7 +1,5 @@
-import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { client } from "@/sanity/lib/client";
-import { Metadata } from "next";
 import { SanityDocument } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,11 +7,7 @@ const POSTS_QUERY = `*[
   _type == "project"
   && defined(slug.current)
 ]|order(publishedAt desc)[0...4]{_id, title, slug, body, "mainImageUrl": mainImage.asset->url, links}`;
-const options = { next: { revalidate: 30 } };
-
-export const metadata: Metadata = {
-  title: "Projects",
-};
+const options = { cache: "force-cache" as const };
 
 export default async function ProjectCards() {
   const projects = await client.fetch<SanityDocument[]>(
