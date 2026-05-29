@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/sonner";
 import Search from "@/components/search";
 import ErrorParamHandler from "@/components/error-param-handler";
 import { Suspense } from "react";
-import PosthogIdentify from "@/components/posthog-identify";
 import localFont from "next/font/local";
 import Script from "next/script";
 
@@ -43,7 +42,6 @@ export default function RootLayout({
           {children}
           <Toaster position="top-right" offset={{ top: 16, right: 16 }} />
           <Search />
-          <PosthogIdentify />
           <Suspense>
             <ErrorParamHandler />
           </Suspense>

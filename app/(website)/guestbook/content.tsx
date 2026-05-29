@@ -165,10 +165,7 @@ export default function Page() {
                   setLoading(true);
                   toast.promise(authClient.signOut(), {
                     loading: "Signing out...",
-                    success: () => {
-                      posthog.reset();
-                      return "Signed out";
-                    },
+                    success: "Signed out",
                     error: "Failed to sign out",
                     finally: () => setLoading(false),
                   });

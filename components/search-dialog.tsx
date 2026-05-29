@@ -22,7 +22,6 @@ import {
   Trash,
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
-import posthog from "posthog-js";
 import { useEffect, useState } from "react";
 
 interface PostWithSlug extends SanityDocument {
@@ -67,10 +66,7 @@ export function SearchDialog({ posts }: SearchDialogProps) {
               setSearchOpen(false);
               toast.promise(authClient.signOut(), {
                 loading: "Signing out...",
-                success: () => {
-                  posthog.reset();
-                  return "Signed out";
-                },
+                success: "Signed out",
                 error: "Failed to sign out",
               });
             },
@@ -84,10 +80,7 @@ export function SearchDialog({ posts }: SearchDialogProps) {
               if (deletingAccount) {
                 toast.promise(authClient.deleteUser(), {
                   loading: "Deleting account...",
-                  success: () => {
-                    posthog.reset();
-                    return "Account deleted";
-                  },
+                  success: "Account deleted",
                   error: "Failed to delete account",
                 });
               } else {
