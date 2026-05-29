@@ -26,18 +26,18 @@ const {
   metaTags?: Record<string, string>;
 } = Astro.props;
 
-const siteName = "Ingo's site";
+const siteName = "Ingo's Site";
 const defaultDescription =
   "Personal website of Ingo Wolf, a web developer from Canberra, Australia.";
 const resolvedDescription = description ?? defaultDescription;
-const pageTitle = title ? `${title} | ${siteName}` : "Ingo Wolf";
+const pageTitle = title ? `${title} | ${siteName}` : siteName;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://ingo.au/#website",
-  name: "Ingo's site",
+  name: "Ingo's Site",
   url: "https://ingo.au",
   description: defaultDescription,
   inLanguage: "en-AU",
