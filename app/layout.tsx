@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Menu from "@/components/menu";
 import { Toaster } from "@/components/ui/sonner";
+import Script from "next/script";
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
           </div>
           <Toaster />
         </ThemeProvider>
+        <Script src="https://archive.ingo.au/switcher.js" defer />
       </body>
     </html>
   );
