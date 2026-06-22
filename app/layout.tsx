@@ -46,6 +46,7 @@ export default function RootLayout({
             <ErrorParamHandler />
           </Suspense>
         </ThemeProvider>
+        <Script src="https://archive.ingo.au/switcher.js" defer />
       </body>
     </html>
   );
