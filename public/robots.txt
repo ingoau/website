@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ingo.au/sitemap-index.xml
