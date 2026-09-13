@@ -9,6 +9,9 @@
         "astro": "^7.3.2",
         "tailwindcss": "^4.3.3",
       },
+      "devDependencies": {
+        "@catppuccin/tailwindcss": "^1.0.0",
+      },
     },
   },
   "packages": {
@@ -69,6 +72,8 @@
     "@bruits/satteri-win32-x64-msvc": ["@bruits/satteri-win32-x64-msvc@0.10.5", "", { "os": "win32", "cpu": "x64" }, "sha512-C3IfPvfvMXmlzBxaMPKFS1XiuV9pu2mC7YqkPk7PSvTgPZ8gbdASIpHpztDLvTTQjqZ0z1Ol8tK5X+V6XXC0wQ=="],
 
     "@capsizecss/unpack": ["@capsizecss/unpack@4.0.1", "", { "dependencies": { "fontkitten": "^1.0.3" } }, "sha512-CuNiSqg7+e1cO/GjffyMOm5Tt2jUF9CWHHnvQ/UkqvtkGfHdgwEC0wpmq7fkN3gxwpRnrAN0WzO3vREKmNolMQ=="],
+
+    "@catppuccin/tailwindcss": ["@catppuccin/tailwindcss@1.0.0", "", {}, "sha512-l8pOlcYe2ncGd8a1gUmL5AHmKlxR2+CHuG5kt4Me6IZwzntW1DoLmj89BH+DcsPHBsdDGLrTSv35emlYyU3FeQ=="],
 
     "@clack/core": ["@clack/core@1.5.0", "", { "dependencies": { "fast-wrap-ansi": "^0.2.0", "sisteransi": "^1.0.5" } }, "sha512-zNikCcd8BbcEvzzG1sbXFrRHFk5kHPrpwZwksPvf9qyQO1Teb7JaXaOAxXZei9nZLDW0gaZawiuTCji88bTBhw=="],
 

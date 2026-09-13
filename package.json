@@ -18,5 +18,8 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@catppuccin/tailwindcss": "^1.0.0"
   }
 }
