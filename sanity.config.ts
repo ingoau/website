@@ -9,8 +9,8 @@ import { schema } from "./sanity/schema";
 export default defineConfig({
   name: "ingo",
   title: "ingo.au",
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-  dataset: process.env.SANITY_STUDIO_DATASET!,
+  projectId: "n6kwawc1",
+  dataset: "production",
   plugins: [structureTool(), visionTool(), media(), codeInput()],
   schema,
 });
