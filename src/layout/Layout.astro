@@ -18,7 +18,7 @@ const path = Astro.url.pathname;
         <title>Astro</title>
     </head>
     <body class="bg-ctp-crust text-ctp-text">
-        <div class="max-w-3xl mx-auto w-full flex p-2 gap-4">
+        <div class="max-w-3xl mx-auto w-full flex p-2 gap-1">
             <a href="" class="font-mono">
                 Ingo Wolf
             </a>
@@ -27,9 +27,13 @@ const path = Astro.url.pathname;
                 <>
                     <a
                         href={item.href}
-                        class={cn("px-2 py-0.5", {
-                            "bg-ctp-mauve text-ctp-crust": item.href === path,
-                        })}
+                        class={cn(
+                            "px-2 py-0.5 hover:bg-ctp-base active:opacity-90",
+                            {
+                                "bg-ctp-mauve text-ctp-crust hover:bg-ctp-mauve":
+                                    item.href === path,
+                            },
+                        )}
                     >
                         {item.title}
                     </a>
