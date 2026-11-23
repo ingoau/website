@@ -3,7 +3,7 @@ export const menuItems: {
   href: string;
 }[] = [
   {
-    title: "Home",
+    title: "home",
     href: "/",
   },
 ]
