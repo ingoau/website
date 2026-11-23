@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Fonts from "./Fonts.astro";
+import { menuItems } from "../lib/menu";
 ---
 
 <html lang="en">
@@ -19,7 +20,9 @@ import Fonts from "./Fonts.astro";
                 Ingo Wolf
             </a>
             <div class="grow"></div>
-            <a href="">cheese</a>
+            {menuItems.map((item) => (
+                <a href={item.href}>{item.title}</a>
+            ))}
         </div>
         <slot />
     </body>
