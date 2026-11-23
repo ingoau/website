@@ -2,6 +2,9 @@
 import "../styles/global.css";
 import Fonts from "./Fonts.astro";
 import { menuItems } from "../lib/menu";
+import { cn } from "cn";
+
+const path = Astro.url.pathname;
 ---
 
 <html lang="en">
@@ -15,13 +18,22 @@ import { menuItems } from "../lib/menu";
         <title>Astro</title>
     </head>
     <body class="bg-ctp-crust text-ctp-text">
-        <div class="max-w-3xl mx-auto w-full flex p-4 gap-4">
+        <div class="max-w-3xl mx-auto w-full flex p-2 gap-4">
             <a href="" class="font-mono">
                 Ingo Wolf
             </a>
             <div class="grow"></div>
             {menuItems.map((item) => (
-                <a href={item.href}>{item.title}</a>
+                <>
+                    <a
+                        href={item.href}
+                        class={cn("px-2 py-0.5", {
+                            "bg-ctp-mauve text-ctp-crust": item.href === path,
+                        })}
+                    >
+                        {item.title}
+                    </a>
+                </>
             ))}
         </div>
         <slot />
